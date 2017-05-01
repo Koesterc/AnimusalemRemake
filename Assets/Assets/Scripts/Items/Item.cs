@@ -13,39 +13,39 @@ public class Item : ScriptableObject
     float weight;
 
     //enhancements
-    int enhancedDamage;
-    float enhancedFireRate;
-    float enhancedReload;
-    int enhancedCapacity;
-    int enhancedAccuracy;
-    int enhancedCriticalChance;
-    int enhancedCriticalHit;
+    public int enhancedDamage;
+    public float enhancedFireRate;
+    public float enhancedReload;
+    public int enhancedCapacity;
+    public int enhancedAccuracy;
+    public int enhancedCriticalChance;
+    public int enhancedCriticalHit;
     //exclusives
-    int poisonDamage;
-    int lightDamage;
-    int fireDamage;
-    int coldDamage;
-    int ignoreArmor;
-    int coldRes;
-    int fireRes;
-    int lightRes;
-    int poisonRes;
-    float stun;
-    int leech; //leeches enemyhealth (heals the palyer's health based on the amount of damage done
-    float regen; //the rate at which a player regenerates health
-    float aimAssist; //makes the crossair travel slower when it touches the enemy
-    int additionalXP;
-    int additionalGold;
+    public int poisonDamage;
+    public int lightDamage;
+    public int fireDamage;
+    public int coldDamage;
+    public int ignoreArmor;
+    public int coldRes;
+    public int fireRes;
+    public int lightRes;
+    public int poisonRes;
+    public float stun;
+    public int leech; //leeches enemyhealth (heals the palyer's health based on the amount of damage done
+    public float regen; //the rate at which a player regenerates health
+    public float aimAssist; //makes the crossair travel slower when it touches the enemy
+    public int additionalXP;
+    public int additionalGold;
     //Bonuses/ Perks
-    int luck;
-    int strength;
-    int charisma;
-    int agility;
-    int perception;
-    int constitution;
-    int dexterity;
-    int intelligence;
-    int fortitude;
+    public int luck;
+    public int strength;
+    public int charisma;
+    public int agility;
+    public int perception;
+    public int constitution;
+    public int dexterity;
+    public int intelligence;
+    public int fortitude;
 
     public enum ItemType { weapon, ring, belt, boots, gloves, amulate, key, aid, quest };
 
