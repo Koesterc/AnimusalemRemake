@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Weapons : Item
+public class Weapons : BaseItem
 {
 
 
@@ -45,11 +45,11 @@ public class Weapons : Item
 
     public void CreateWeapon()
     {
-        BaseWeapon newWeapon = new BaseWeapon();
-        weaponName = newWeapon.HGNames[Random.Range(0, newWeapon.HGNames.Length)];
-        newWeapon.itemID = Random.Range(0, 1000);
-        newWeapon.levelRestriction = Random.Range(1, 50);
-        newWeapon.dmg = Random.Range(10* newWeapon.levelRestriction, 20 * newWeapon.levelRestriction);
+        //BaseWeapon newWeapon = new BaseWeapon();
+        //weaponName = newWeapon.HGNames[Random.Range(0, newWeapon.HGNames.Length)];
+        //newWeapon.itemID = Random.Range(0, 1000);
+        //newWeapon.levelRestriction = Random.Range(1, 50);
+        //newWeapon.dmg = Random.Range(10* newWeapon.levelRestriction, 20 * newWeapon.levelRestriction);
     }
 }
 

@@ -78,9 +78,12 @@
     <Compile Include="Assets\Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\GameInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\WeaponSelection.cs" />
-    <Compile Include="Assets\Assets\Scripts\Items\BaseWeapon.cs" />
-    <Compile Include="Assets\Assets\Scripts\Items\Equipment\Weapons\Gun.cs" />
-    <Compile Include="Assets\Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\BaseScripts\BaseArmor.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\BaseScripts\BaseItem.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\BaseScripts\BaseMisc.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\BaseScripts\BaseStatItem.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\BaseScripts\BaseWeapon.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\ItemCreation\CreateNewWeapon.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Items.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\WeaponPerks.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Weapons.cs" />
