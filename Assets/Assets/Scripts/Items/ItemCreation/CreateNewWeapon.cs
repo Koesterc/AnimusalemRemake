@@ -9,24 +9,52 @@ public class CreateNewWeapon : MonoBehaviour {
     void Start()
     {
         CreateWeapon();
+
         print(newWeapon.ItemDesc);
         print(newWeapon.ItemName);
         print(newWeapon.Constitution);
+        print(newWeapon.Strength);
+        print(newWeapon.Intelligence);
+        print(newWeapon.Dexterity);
+        print(newWeapon.Agility);
+        print(newWeapon.Luck);
+        print(newWeapon.Charisma);
     }
 
     public void CreateWeapon()
     {
         newWeapon = new BaseWeapon();
-        int temp = Random.Range(0, handgun.Length);
         newWeapon.ItemDesc = "This is a very powerful weapon";
         newWeapon.ItemID = Random.Range(0, 10000);
-        newWeapon.Constitution += Random.Range(0, 5);
-        newWeapon.Strength += Random.Range(0, 5);
-        newWeapon.Intelligence += Random.Range(0, 5);
-        newWeapon.Dexterity += Random.Range(0, 5);
-        newWeapon.Fortitude += Random.Range(0, 5);
-        newWeapon.Agility += Random.Range(0, 5);
-        newWeapon.Perception += Random.Range(0, 5);
+        int temp = Random.Range(0, 10);
+        if (temp >= 10)//use luck here to increae the chance of magic item
+        newWeapon.Constitution += Random.Range(1, 5);
+        temp = Random.Range(0, 12);
+        if (temp >= 10)
+            newWeapon.Strength += Random.Range(1, 5);
+        Debug.Log("temp:" +temp);
+        temp = Random.Range(0, 12);
+        if (temp >= 10)
+            newWeapon.Intelligence += Random.Range(1, 5);
+        Debug.Log("temp:" +temp);
+        temp = Random.Range(0, 12);
+        if (temp >= 10)
+            newWeapon.Dexterity += Random.Range(1, 5);
+        Debug.Log("temp:" +temp);
+        temp = Random.Range(0, 12);
+        if (temp >= 10)
+            newWeapon.Fortitude += Random.Range(1, 5);
+        Debug.Log("temp:" + temp);
+        temp = Random.Range(0, 12);
+        if (temp >= 10)
+            newWeapon.Agility += Random.Range(1, 5);
+        Debug.Log("temp:" + temp);
+        temp = Random.Range(0, 12);
+        if (temp >= 10)
+            newWeapon.Perception += Random.Range(1, 5);
+        Debug.Log("temp:" + temp);
+
+
         ChooseWeaponType();
 
         //setting the damage, and other weapon stats
@@ -46,21 +74,33 @@ public class CreateNewWeapon : MonoBehaviour {
                 break;
             case 1:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Rifle;
+                temp = Random.Range(0, 2);
+                newWeapon.ItemName = handgun[temp];
                 break;
             case 2:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Shotgun;
+                temp = Random.Range(0, 2);
+                newWeapon.ItemName = handgun[temp];
                 break;
             case 3:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Machinegun;
+                temp = Random.Range(0, 2);
+                newWeapon.ItemName = handgun[temp];
                 break;
             case 4:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.AssaultRifle;
+                temp = Random.Range(0, 2);
+                newWeapon.ItemName = handgun[temp];
                 break;
             case 5:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Magnum;
+                temp = Random.Range(0, 2);
+                newWeapon.ItemName = handgun[temp];
                 break;
             case 6:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Explosive;
+                temp = Random.Range(0, 2);
+                newWeapon.ItemName = handgun[temp];
                 break;
         }
     }

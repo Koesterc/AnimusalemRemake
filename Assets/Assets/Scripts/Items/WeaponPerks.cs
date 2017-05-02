@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class WeaponPerks : MonoBehaviour
 {
-   // public Gun perks;
+    // public Gun perks;
+    public Gun perks;
 }

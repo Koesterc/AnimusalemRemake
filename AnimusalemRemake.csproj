@@ -83,6 +83,7 @@
     <Compile Include="Assets\Assets\Scripts\Items\BaseScripts\BaseMisc.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\BaseScripts\BaseStatItem.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\BaseScripts\BaseWeapon.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\Gun.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\ItemCreation\CreateNewWeapon.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Items.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\WeaponPerks.cs" />
