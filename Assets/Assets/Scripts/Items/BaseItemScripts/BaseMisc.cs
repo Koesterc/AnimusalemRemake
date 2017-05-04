@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class BaseMisc : BaseItem {
 
     public enum MiscType
@@ -9,11 +9,15 @@ public class BaseMisc : BaseItem {
         SmallAid,
         MediumAid,
         LargeAid,
+        PainKiller,
+        HolyWater,
+        DreamCatcher,
+        Ammo,
         OldKey
     }
     private MiscType miscTypes;
 
-    public MiscType miscType
+    public MiscType MiscTypes
     {
         get { return miscTypes; }
         set { miscTypes = value; }

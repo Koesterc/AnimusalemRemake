@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseWeapon : BaseStatItem
+[System.Serializable]
+public class BaseWeapon : BaseItem
 {
     public enum WeaponType
     {

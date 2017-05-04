@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BaseArmor : BaseStatItem
+[System.Serializable]
+public class BaseArmor : BaseItem
 {
     public enum ArmorType
     {
@@ -12,8 +12,8 @@ public class BaseArmor : BaseStatItem
     }
     private ArmorType armorTypes;
 
-    public int speedReduction;
-    public int defense;
+    private int speedReduction;
+    private int defense;
 
     public ArmorType ArmorTypes
     {

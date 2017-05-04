@@ -13,6 +13,6 @@ public class Gun : MonoBehaviour
 
     public void Fire()
     {
-    print("Hello");
+  //  print("Hello");
     }
 }

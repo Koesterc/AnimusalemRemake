@@ -12,7 +12,7 @@ public class WeaponSelection : MonoBehaviour
         Transform guns = gameObject.transform.Find("Guns");
         foreach (Transform gun in guns)
         {
-            Debug.Log(gun.transform.Find("MyScript").GetComponent<Gun>());
+        //    Debug.Log(gun.transform.Find("MyScript").GetComponent<Gun>());
             weapon.Add(gun.GetComponent<WeaponPerks>().perks);        // Adds x to the end of the list
         }
     }

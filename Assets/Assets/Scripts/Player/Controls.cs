@@ -20,11 +20,14 @@ public class Controls : MonoBehaviour
     public Animator reflectionAnim;
     float horizontal;
     float vertical;
+    bool canDo = true;
+    public static Transform _Player;
 
 
 
-    void Start()
+    void Awake()
     {
+        _Player = gameObject.transform;
     }
 
 
@@ -50,6 +53,21 @@ public class Controls : MonoBehaviour
         //    anim.SetBool("isWalking", false);
         //    reflectionAnim.SetBool("isWalking", false);
         //}
+        //accessing the inventory
+        if (Input.GetKeyDown("i") && canDo)
+        {
+            canDo = false;
+            if (Inventory.inventory.activeSelf)
+            {
+                StartCoroutine(FadeOut());
+            }
+            else
+            {
+                speed = 0;
+                Inventory.inventory.SetActive(true);
+                StartCoroutine(FadeIn());
+            }
+        }
     }//end of update
 
     //void PlayerAnimation()
@@ -61,5 +79,28 @@ public class Controls : MonoBehaviour
     //    reflectionAnim.SetFloat("horizontal", -horizontal);
     //    reflectionAnim.SetFloat("vertical", -vertical);
     //}
+
+    IEnumerator FadeOut()
+    {
+        print("off");
+        while (Inventory.fade.alpha > 0)
+        {
+            yield return new WaitForSeconds(.01f);
+            Inventory.fade.alpha -= .01f;
+        }
+        Inventory.inventory.SetActive(false);
+        speed = 3;
+        canDo = true;
+    }
+    IEnumerator FadeIn()
+    {
+        print("on");
+        while (Inventory.fade.alpha < 1)
+        {
+            yield return new WaitForSeconds(.01f);
+            Inventory.fade.alpha += .01f;
+        }
+        canDo = true;
+    }
 
 }//end of class

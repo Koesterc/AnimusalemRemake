@@ -6,46 +6,46 @@ public class PlayerStats : ScriptableObject
 {
     //player Info
     [Header("Items")]
-    public int money;
+    public static int money;
     [Tooltip("Handgun Ammo")]
-    public int hgAmmo;
+    public static int hgAmmo;
     [Tooltip("Shotgun Ammo")]
-    public int sgAmmo;
+    public static int sgAmmo;
     [Tooltip("MachineGun Ammo")]
-    public int mgAmmo;
+    public static int mgAmmo;
     [Tooltip("Assault Rifle Ammo")]
-    public int arAmmo;
-    public int rifleAmmo;
-    public int magnumAmmo;
-    public int explosiveAmmo;
+    public static int arAmmo;
+    public static int rifleAmmo;
+    public static int magnumAmmo;
+    public static int explosiveAmmo;
     [Space]
 
     [Header("Player Info")]
-    public int health;
-    public int maxHealth;
-    public int XP;
-    public int maxXP;
-    public int damage;
-    public int defense;
-    public int curLevel;
-    public int statPoints;
-    public float speed;
-    public float lightRadius;
-    public float curWeight;
-    public float maxWeight;
+    public static int health;
+    public static int maxHealth;
+    public static int XP;
+    public static int maxXP;
+    public static int damage;
+    public static int defense;
+    public static int curLevel;
+    public static int statPoints;
+    public static float speed;
+    public static float lightRadius;
+    public static float curWeight;
+    public static float maxWeight;
 
 
 
     //player Stats
     [Header("Player Stats")]
-    public int constitution;
-    public int fortitude;
-    public int dexterity;
-    public int strength;
-    public int intelligence;
-    public int charisma;
-    public int agility;
-    public int luck;
-    public float perception;
+    public static int constitution;
+    public static int fortitude;
+    public static int dexterity;
+    public static int strength;
+    public static int intelligence;
+    public static int charisma;
+    public static int agility;
+    public static int luck;
+    public static float perception;
 
 }
