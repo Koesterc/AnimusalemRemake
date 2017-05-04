@@ -12,4 +12,9 @@ public class DroppedArmor : MonoBehaviour
         //subtract player's weight
     }
 
+    public BaseArmor ArmorStats
+    {
+        get { return dropArmor; }
+    }
+
 }

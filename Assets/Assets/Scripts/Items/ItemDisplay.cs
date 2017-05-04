@@ -13,18 +13,19 @@ public class ItemDisplay : MonoBehaviour {
         {
             StopAllCoroutines();
             StartCoroutine(Enable());
-            print("yes");
          }
-}
+        if (other.tag == "Interact")
+        {
+            Display();
+        }
+    }
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
             StopAllCoroutines();
             StartCoroutine(Disable());
-            print("no");
         }
-            
     }
 
     IEnumerator Disable()
@@ -46,6 +47,50 @@ public class ItemDisplay : MonoBehaviour {
             c.a += .1f;
             myText.color = c;
         }
+    }
+
+    public void Display()
+    {
+        DroppedArmor droppedArmor = gameObject.GetComponent<DroppedArmor>();
+
+        GameManagerScript.statDisplay[0].text = droppedArmor.ArmorStats.ItemName;
+        GameManagerScript.statDisplay[1].text = "Defense: " +droppedArmor.ArmorStats.Defense.ToString();
+        GameManagerScript.statDisplay[2].text = "Level Restriction: " + droppedArmor.ArmorStats.LevelRestriction.ToString();
+        GameManagerScript.statDisplay[3].text = "Required Strength: " + droppedArmor.ArmorStats.RequiredStrength.ToString();
+        GameManagerScript.statDisplay[4].text = "Required Dexterity: " + droppedArmor.ArmorStats.RequiredDexterity.ToString();
+        GameManagerScript.statDisplay[5].text = "Required Intelligence: " + droppedArmor.ArmorStats.RequiredIntelligence.ToString();
+        GameManagerScript.statDisplay[6].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString();
+        GameManagerScript.statDisplay[7].text = "Value: " + droppedArmor.ArmorStats.SellValue.ToString();
+        GameManagerScript.statDisplay[8].text = "Constitution: +" + droppedArmor.ArmorStats.Constitution.ToString();
+        GameManagerScript.statDisplay[9].text = "Strength: +" + droppedArmor.ArmorStats.Strength.ToString();
+        GameManagerScript.statDisplay[10].text = "Dexterity: +" + droppedArmor.ArmorStats.Dexterity.ToString();
+        GameManagerScript.statDisplay[11].text = "Intelligence: +" + droppedArmor.ArmorStats.Intelligence.ToString();
+        GameManagerScript.statDisplay[12].text = "Agility: +" + droppedArmor.ArmorStats.Agility.ToString();
+        GameManagerScript.statDisplay[13].text = "Charisma: +" + droppedArmor.ArmorStats.Charisma.ToString();
+        GameManagerScript.statDisplay[14].text = "Perception: +" + droppedArmor.ArmorStats.Perception.ToString();
+        GameManagerScript.statDisplay[15].text = "Fortitude: +" + droppedArmor.ArmorStats.Fortitude.ToString();
+        GameManagerScript.statDisplay[16].text = "Luck: +" + droppedArmor.ArmorStats.Luck.ToString();
+
+
+        // for (int i = 0; i < GameManagerScript.statDisplay.Count; i++)
+        // {
+        //      GameManagerScript.statDisplay[0].text = "";
+        //   }
+
+        //GameManagerScript.itemDisplay.text = "*" + "Level Restriction: " + droppedArmor.ArmorStats.LevelRestriction + "\n"
+        //+ "*" + "Required Strength: " + droppedArmor.ArmorStats.RequiredStrength + "\n"
+        //+ "*" + "Required Int: " + droppedArmor.ArmorStats.RequiredIntelligence + "\n"
+        //+ "*" + "Required Dexterity: " + droppedArmor.ArmorStats.RequiredDexterity + "\n"
+        //+ "\n"
+        //+ "Defense: " + droppedArmor.ArmorStats.Defense + "\n"
+        //+ "*" + "Constitution: + " + droppedArmor.ArmorStats.Constitution + "\n"
+        //+ "*" + "Strength: + " + droppedArmor.ArmorStats.Strength + "\n"
+        //+ "*" + "Luck: + " + droppedArmor.ArmorStats.Luck + "\n"
+        //+ "*" + "Intelligence: + " + droppedArmor.ArmorStats.Intelligence + "\n"
+        //+ "*" + "Agility: + " + droppedArmor.ArmorStats.Agility + "\n"
+        //+ "*" + "Fortitude: + " + droppedArmor.ArmorStats.Fortitude + "\n"
+        //+ "*" + "Charisma: + " + droppedArmor.ArmorStats.Charisma + "\n"
+        //+ "*" + "Perception: + " + droppedArmor.ArmorStats.Perception + "\n";
     }
 
 }
