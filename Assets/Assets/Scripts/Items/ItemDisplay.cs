@@ -55,10 +55,18 @@ public class ItemDisplay : MonoBehaviour {
 
         GameManagerScript.statDisplay[0].text = droppedArmor.ArmorStats.ItemName;
         GameManagerScript.statDisplay[1].text = "Defense: " +droppedArmor.ArmorStats.Defense.ToString();
-        GameManagerScript.statDisplay[2].text = "Level Restriction: " + droppedArmor.ArmorStats.LevelRestriction.ToString();
+        GameManagerScript.statDisplay[2].text = "Level Restriction: Level " + droppedArmor.ArmorStats.LevelRestriction.ToString();
+        if (droppedArmor.ArmorStats.LevelRestriction > PlayerStats.curLevel)
+            GameManagerScript.statDisplay[2].GetComponent<Outline>().effectColor = Color.red;
         GameManagerScript.statDisplay[3].text = "Required Strength: " + droppedArmor.ArmorStats.RequiredStrength.ToString();
+        if (droppedArmor.ArmorStats.RequiredStrength > PlayerStats.strength)
+            GameManagerScript.statDisplay[3].GetComponent<Outline>().effectColor = Color.red;
         GameManagerScript.statDisplay[4].text = "Required Dexterity: " + droppedArmor.ArmorStats.RequiredDexterity.ToString();
+        if (droppedArmor.ArmorStats.RequiredDexterity > PlayerStats.dexterity)
+            GameManagerScript.statDisplay[4].GetComponent<Outline>().effectColor = Color.red;
         GameManagerScript.statDisplay[5].text = "Required Intelligence: " + droppedArmor.ArmorStats.RequiredIntelligence.ToString();
+        if (droppedArmor.ArmorStats.RequiredIntelligence > PlayerStats.intelligence)
+            GameManagerScript.statDisplay[5].GetComponent<Outline>().effectColor = Color.red;
         GameManagerScript.statDisplay[6].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString();
         GameManagerScript.statDisplay[7].text = "Value: " + droppedArmor.ArmorStats.SellValue.ToString();
         GameManagerScript.statDisplay[8].text = "Constitution: +" + droppedArmor.ArmorStats.Constitution.ToString();
@@ -71,11 +79,6 @@ public class ItemDisplay : MonoBehaviour {
         GameManagerScript.statDisplay[15].text = "Fortitude: +" + droppedArmor.ArmorStats.Fortitude.ToString();
         GameManagerScript.statDisplay[16].text = "Luck: +" + droppedArmor.ArmorStats.Luck.ToString();
 
-
-        // for (int i = 0; i < GameManagerScript.statDisplay.Count; i++)
-        // {
-        //      GameManagerScript.statDisplay[0].text = "";
-        //   }
 
         //GameManagerScript.itemDisplay.text = "*" + "Level Restriction: " + droppedArmor.ArmorStats.LevelRestriction + "\n"
         //+ "*" + "Required Strength: " + droppedArmor.ArmorStats.RequiredStrength + "\n"
