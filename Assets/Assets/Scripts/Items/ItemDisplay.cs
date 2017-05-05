@@ -30,6 +30,8 @@ public class ItemDisplay : MonoBehaviour {
             GameManagerScript.stat.gameObject.SetActive(false);
             myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f,1,1);
             Color c = myText.GetComponent<Outline>().effectColor;
+            Transform canvas = transform.Find("MyCanvas");
+            canvas.GetComponent<Canvas>().sortingOrder = 500;
             c.a = .5f;
             myText.GetComponent<Outline>().effectColor = c;
         }
@@ -44,6 +46,8 @@ public class ItemDisplay : MonoBehaviour {
             Color c = myText.GetComponent<Outline>().effectColor;
             c.a = .5f;
             myText.GetComponent<Outline>().effectColor = c;
+            Transform canvas = transform.Find("MyCanvas");
+            canvas.GetComponent<Canvas>().sortingOrder = 501;
             Display();
         }
     }
