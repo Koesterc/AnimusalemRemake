@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ItemDisplay : MonoBehaviour {
 
     public Text myText;
+    static bool isActive = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -14,19 +15,36 @@ public class ItemDisplay : MonoBehaviour {
             StopAllCoroutines();
             StartCoroutine(Enable());
          }
-        if (other.tag == "Interact")
-        {
-            GameManagerScript.stat.gameObject.SetActive(true);
-            Display();
-        }
     }
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
         {
-            GameManagerScript.stat.gameObject.SetActive(false);
+            isActive = false;
             StopAllCoroutines();
             StartCoroutine(Disable());
+        }
+        if (other.tag == "Interact")
+        {
+            isActive = false;
+            GameManagerScript.stat.gameObject.SetActive(false);
+            myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f,1,1);
+            Color c = myText.GetComponent<Outline>().effectColor;
+            c.a = .5f;
+            myText.GetComponent<Outline>().effectColor = c;
+        }
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Interact" && !isActive)
+        {
+            isActive = true;
+            GameManagerScript.stat.gameObject.SetActive(true);
+            myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.8f, 1, 1);
+            Color c = myText.GetComponent<Outline>().effectColor;
+            c.a = .5f;
+            myText.GetComponent<Outline>().effectColor = c;
+            Display();
         }
     }
 
@@ -101,47 +119,47 @@ public class ItemDisplay : MonoBehaviour {
             i++;
             if (droppedArmor.ArmorStats.Constitution > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Constitution: +" + droppedArmor.ArmorStats.Constitution.ToString();
+                GameManagerScript.statDisplay[i].text = "*Constitution: +" + droppedArmor.ArmorStats.Constitution.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Strength > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Strength: +" + droppedArmor.ArmorStats.Strength.ToString();
+                GameManagerScript.statDisplay[i].text = "*Strength: +" + droppedArmor.ArmorStats.Strength.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Dexterity > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Dexterity: +" + droppedArmor.ArmorStats.Dexterity.ToString();
+                GameManagerScript.statDisplay[i].text = "*Dexterity: +" + droppedArmor.ArmorStats.Dexterity.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Intelligence > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Intelligence: +" + droppedArmor.ArmorStats.Intelligence.ToString();
+                GameManagerScript.statDisplay[i].text = "*Intelligence: +" + droppedArmor.ArmorStats.Intelligence.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Agility > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Agility: +" + droppedArmor.ArmorStats.Agility.ToString();
+                GameManagerScript.statDisplay[i].text = "*Agility: +" + droppedArmor.ArmorStats.Agility.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Charisma > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Charisma: +" + droppedArmor.ArmorStats.Charisma.ToString();
+                GameManagerScript.statDisplay[i].text = "*Charisma: +" + droppedArmor.ArmorStats.Charisma.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Perception > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Perception: +" + droppedArmor.ArmorStats.Perception.ToString();
+                GameManagerScript.statDisplay[i].text = "*Perception: +" + droppedArmor.ArmorStats.Perception.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Fortitude > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Fortitude: +" + droppedArmor.ArmorStats.Fortitude.ToString();
+                GameManagerScript.statDisplay[i].text = "*Fortitude: +" + droppedArmor.ArmorStats.Fortitude.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Luck > 0)
             {
-                GameManagerScript.statDisplay[i].text = "Luck: +" + droppedArmor.ArmorStats.Luck.ToString();
+                GameManagerScript.statDisplay[i].text = "*Luck: +" + droppedArmor.ArmorStats.Luck.ToString();
                 i++;
             }
             while (i < (GameManagerScript.statDisplay.Count - 1))
@@ -154,7 +172,7 @@ public class ItemDisplay : MonoBehaviour {
         {
             DroppedWeapon droppedWeapon = gameObject.GetComponent<DroppedWeapon>();
             int i = 0;
-            GameManagerScript.statDisplay[i].text = droppedWeapon.WeaponStats.ItemType.ToString();
+            GameManagerScript.statDisplay[i].text = droppedWeapon.WeaponStats.WeaponTypes.ToString();
             i++;
             if (droppedWeapon.WeaponStats.LevelRestriction > 0)
             {
@@ -175,6 +193,79 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].text = "Required Dexterity: " + droppedWeapon.WeaponStats.RequiredDexterity.ToString();
                 if (droppedWeapon.WeaponStats.RequiredDexterity > PlayerStats.dexterity)
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                i++;
+            }
+            GameManagerScript.statDisplay[i].text = "Weight: " + droppedWeapon.WeaponStats.Weight.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = "Value: " + droppedWeapon.WeaponStats.SellValue.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = " ";
+            i++;
+            GameManagerScript.statDisplay[i].text = "Damage: " + droppedWeapon.WeaponStats.Damage.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = "Firerate: " + droppedWeapon.WeaponStats.Firerate.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = "Reload: " + droppedWeapon.WeaponStats.Reload.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = "Capacity: " + droppedWeapon.WeaponStats.Capacity.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = "Accuracy: " + droppedWeapon.WeaponStats.Accuracy.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = "Critical Damage: " + (droppedWeapon.WeaponStats.CriticalDamage/100).ToString()+"%";
+            i++;
+            GameManagerScript.statDisplay[i].text = "Critical Chance: " + (droppedWeapon.WeaponStats.CriticalChance/100).ToString()+"%";
+            i++;
+            GameManagerScript.statDisplay[i].text = " ";
+            i++;
+            GameManagerScript.statDisplay[i].text = " ";
+            if (droppedWeapon.WeaponStats.EnhancedDamage > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Enhanced Damage: +" + droppedWeapon.WeaponStats.EnhancedDamage.ToString();
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.ExtendedClip > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Extended Magazine: +" + droppedWeapon.WeaponStats.ExtendedClip.ToString();
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.IncreasedCriticalChance > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Increased Critical Chance: +" + droppedWeapon.WeaponStats.IncreasedCriticalChance.ToString()+"%";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.IgnoreArmor > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Ignore Target's Defense: -" + droppedWeapon.WeaponStats.IgnoreArmor.ToString();
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.PoisonDamage > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Poison Damage: +" + droppedWeapon.WeaponStats.PoisonDamage.ToString();
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.AimAssist > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Assisted Aim: +" + droppedWeapon.WeaponStats.AimAssist.ToString()+"%";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.Leech > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Leeches "+droppedWeapon.WeaponStats.Leech.ToString()+" health per each kill";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.AdditionalXP > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*+"+droppedWeapon.WeaponStats.AdditionalXP.ToString()+"% more experience after each kill";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.AdditionalGold > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*+"+droppedWeapon.WeaponStats.AdditionalGold.ToString() + "% more gold after each kill";
+                i++;
+            }
+            while (i < (GameManagerScript.statDisplay.Count - 1))
+            {
+                GameManagerScript.statDisplay[i].gameObject.SetActive(false);
                 i++;
             }
         }

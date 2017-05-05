@@ -40,28 +40,28 @@ public class CreateNewWeapon : MonoBehaviour {
  
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newWeapon.Strength += Random.Range(1, 5);
+            newWeapon.PoisonDamage += Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newWeapon.Intelligence += Random.Range(1, 5);
+            newWeapon.EnhancedDamage += Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newWeapon.Dexterity += Random.Range(1, 5);
+            newWeapon.ExtendedClip += Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newWeapon.Fortitude += Random.Range(1, 5);
+            newWeapon.IncreasedCriticalChance += Random.Range(.03f, .05f);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newWeapon.Agility += Random.Range(1, 5);
+            newWeapon.IgnoreArmor += Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newWeapon.Perception += Random.Range(1, 5);
+            newWeapon.Leech += Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newWeapon.Charisma += Random.Range(1, 5);
+            newWeapon.AdditionalXP += Random.Range(.25f, .50f);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newWeapon.Luck += Random.Range(1, 5);
+            newWeapon.AdditionalGold += Random.Range(.25f, .50f);
  
 
 

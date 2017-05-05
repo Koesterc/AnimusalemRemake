@@ -42,6 +42,69 @@ public class BaseWeapon : BaseItem
     int accuracyLvl;
     int capacityLvl;
 
+    //exclusives
+    private int poisonDamage;
+    private int enhancedDamage;
+    private int extendedClip;
+    private float increasedCriticalChance;
+    private int ignoreArmor;
+    private float stun;
+    private int leech; //leeches enemyhealth (heals the palyer's health based on the amount of damage done
+    private float aimAssist; //makes the crossair travel slower when it touches the enemy
+    private float additionalXP;
+    private float additionalGold;
+
+    //getters setters
+    public int PoisonDamage
+    {
+        get { return poisonDamage; }
+        set { poisonDamage = value; }
+    }
+    public int EnhancedDamage
+    {
+        get { return enhancedDamage; }
+        set { enhancedDamage = value; }
+    }
+    public int ExtendedClip
+    {
+        get { return extendedClip; }
+        set { extendedClip = value; }
+    }
+    public float IncreasedCriticalChance
+    {
+        get { return increasedCriticalChance; }
+        set { increasedCriticalChance = value; }
+    }
+    public int IgnoreArmor
+    {
+        get { return ignoreArmor; }
+        set { ignoreArmor = value; }
+    }
+    public float Stun
+    {
+        get { return stun; }
+        set { stun = value; }
+    }
+    public int Leech
+    {
+        get { return leech; }
+        set { leech = value; }
+    }
+    public float AimAssist
+    {
+        get { return aimAssist; }
+        set { aimAssist = value; }
+    }
+    public float AdditionalXP
+    {
+        get { return additionalXP; }
+        set { additionalXP = value; }
+    }
+    public float AdditionalGold
+    {
+        get { return additionalGold; }
+        set { additionalGold = value; }
+    }
 
     //getters setters
     public WeaponType WeaponTypes
@@ -81,8 +144,8 @@ public class BaseWeapon : BaseItem
     }
     public float CriticalDamage
     {
-        get { return CriticalDamage; }
-        set { CriticalDamage = value; }
+        get { return criticalDamage; }
+        set { criticalDamage = value; }
     }
     //upgrades
     public int UpDamage
