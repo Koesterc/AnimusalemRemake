@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManagerScript : MonoBehaviour
 {
 
-    Transform stat;
+    public static Transform stat;
     public static List <Text> statDisplay = new List<Text>();
 
 	// Use this for initialization

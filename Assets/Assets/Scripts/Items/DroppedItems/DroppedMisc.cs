@@ -11,5 +11,8 @@ public class DroppedMisc : MonoBehaviour
         gameObject.GetComponent<ItemDisplay>().myText.text = dropMisc.MiscTypes.ToString();
         //subtract player's weight
     }
-
+    public BaseMisc MiscStats
+    {
+        get { return dropMisc; }
+    }
 }

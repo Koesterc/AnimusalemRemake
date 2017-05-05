@@ -11,5 +11,8 @@ public class DroppedWeapon : MonoBehaviour
         gameObject.GetComponent<ItemDisplay>().myText.text = dropWeapon.WeaponTypes.ToString();
         //subtract player's weight
     }
-
+    public BaseWeapon WeaponStats
+    {
+        get { return dropWeapon; }
+    }
 }

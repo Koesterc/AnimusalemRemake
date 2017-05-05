@@ -16,6 +16,7 @@ public class ItemDisplay : MonoBehaviour {
          }
         if (other.tag == "Interact")
         {
+            GameManagerScript.stat.gameObject.SetActive(true);
             Display();
         }
     }
@@ -23,6 +24,7 @@ public class ItemDisplay : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            GameManagerScript.stat.gameObject.SetActive(false);
             StopAllCoroutines();
             StartCoroutine(Disable());
         }
@@ -51,49 +53,130 @@ public class ItemDisplay : MonoBehaviour {
 
     public void Display()
     {
-        DroppedArmor droppedArmor = gameObject.GetComponent<DroppedArmor>();
-
-        GameManagerScript.statDisplay[0].text = droppedArmor.ArmorStats.ItemName;
-        GameManagerScript.statDisplay[1].text = "Defense: " +droppedArmor.ArmorStats.Defense.ToString();
-        GameManagerScript.statDisplay[2].text = "Level Restriction: Level " + droppedArmor.ArmorStats.LevelRestriction.ToString();
-        if (droppedArmor.ArmorStats.LevelRestriction > PlayerStats.curLevel)
-            GameManagerScript.statDisplay[2].GetComponent<Outline>().effectColor = Color.red;
-        GameManagerScript.statDisplay[3].text = "Required Strength: " + droppedArmor.ArmorStats.RequiredStrength.ToString();
-        if (droppedArmor.ArmorStats.RequiredStrength > PlayerStats.strength)
-            GameManagerScript.statDisplay[3].GetComponent<Outline>().effectColor = Color.red;
-        GameManagerScript.statDisplay[4].text = "Required Dexterity: " + droppedArmor.ArmorStats.RequiredDexterity.ToString();
-        if (droppedArmor.ArmorStats.RequiredDexterity > PlayerStats.dexterity)
-            GameManagerScript.statDisplay[4].GetComponent<Outline>().effectColor = Color.red;
-        GameManagerScript.statDisplay[5].text = "Required Intelligence: " + droppedArmor.ArmorStats.RequiredIntelligence.ToString();
-        if (droppedArmor.ArmorStats.RequiredIntelligence > PlayerStats.intelligence)
-            GameManagerScript.statDisplay[5].GetComponent<Outline>().effectColor = Color.red;
-        GameManagerScript.statDisplay[6].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString();
-        GameManagerScript.statDisplay[7].text = "Value: " + droppedArmor.ArmorStats.SellValue.ToString();
-        GameManagerScript.statDisplay[8].text = "Constitution: +" + droppedArmor.ArmorStats.Constitution.ToString();
-        GameManagerScript.statDisplay[9].text = "Strength: +" + droppedArmor.ArmorStats.Strength.ToString();
-        GameManagerScript.statDisplay[10].text = "Dexterity: +" + droppedArmor.ArmorStats.Dexterity.ToString();
-        GameManagerScript.statDisplay[11].text = "Intelligence: +" + droppedArmor.ArmorStats.Intelligence.ToString();
-        GameManagerScript.statDisplay[12].text = "Agility: +" + droppedArmor.ArmorStats.Agility.ToString();
-        GameManagerScript.statDisplay[13].text = "Charisma: +" + droppedArmor.ArmorStats.Charisma.ToString();
-        GameManagerScript.statDisplay[14].text = "Perception: +" + droppedArmor.ArmorStats.Perception.ToString();
-        GameManagerScript.statDisplay[15].text = "Fortitude: +" + droppedArmor.ArmorStats.Fortitude.ToString();
-        GameManagerScript.statDisplay[16].text = "Luck: +" + droppedArmor.ArmorStats.Luck.ToString();
-
-
-        //GameManagerScript.itemDisplay.text = "*" + "Level Restriction: " + droppedArmor.ArmorStats.LevelRestriction + "\n"
-        //+ "*" + "Required Strength: " + droppedArmor.ArmorStats.RequiredStrength + "\n"
-        //+ "*" + "Required Int: " + droppedArmor.ArmorStats.RequiredIntelligence + "\n"
-        //+ "*" + "Required Dexterity: " + droppedArmor.ArmorStats.RequiredDexterity + "\n"
-        //+ "\n"
-        //+ "Defense: " + droppedArmor.ArmorStats.Defense + "\n"
-        //+ "*" + "Constitution: + " + droppedArmor.ArmorStats.Constitution + "\n"
-        //+ "*" + "Strength: + " + droppedArmor.ArmorStats.Strength + "\n"
-        //+ "*" + "Luck: + " + droppedArmor.ArmorStats.Luck + "\n"
-        //+ "*" + "Intelligence: + " + droppedArmor.ArmorStats.Intelligence + "\n"
-        //+ "*" + "Agility: + " + droppedArmor.ArmorStats.Agility + "\n"
-        //+ "*" + "Fortitude: + " + droppedArmor.ArmorStats.Fortitude + "\n"
-        //+ "*" + "Charisma: + " + droppedArmor.ArmorStats.Charisma + "\n"
-        //+ "*" + "Perception: + " + droppedArmor.ArmorStats.Perception + "\n";
-    }
-
+        for (int i = 0; i < GameManagerScript.statDisplay.Count - 1; i++)
+        {
+            GameManagerScript.statDisplay[i].gameObject.SetActive(true);
+        }
+        if (gameObject.GetComponent<DroppedArmor>())
+        {
+            DroppedArmor droppedArmor = gameObject.GetComponent<DroppedArmor>();
+            int i = 0;
+            GameManagerScript.statDisplay[i].text = droppedArmor.ArmorStats.ItemName;
+            i++;
+            GameManagerScript.statDisplay[i].text = "Defense: " + droppedArmor.ArmorStats.Defense.ToString();
+            i++;
+            if (droppedArmor.ArmorStats.LevelRestriction > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Level Restriction: Level " + droppedArmor.ArmorStats.LevelRestriction.ToString();
+                if (droppedArmor.ArmorStats.LevelRestriction > PlayerStats.curLevel)
+                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                i++;
+            }
+            if (droppedArmor.ArmorStats.RequiredStrength > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Required Strength: " + droppedArmor.ArmorStats.RequiredStrength.ToString();
+                if (droppedArmor.ArmorStats.RequiredStrength > PlayerStats.strength)
+                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                i++;
+            }
+            if (droppedArmor.ArmorStats.RequiredDexterity > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Required Dexterity: " + droppedArmor.ArmorStats.RequiredDexterity.ToString();
+                if (droppedArmor.ArmorStats.RequiredDexterity > PlayerStats.dexterity)
+                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                i++;
+            }
+            if (droppedArmor.ArmorStats.RequiredIntelligence > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Required Intelligence: " + droppedArmor.ArmorStats.RequiredIntelligence.ToString();
+                if (droppedArmor.ArmorStats.RequiredIntelligence > PlayerStats.intelligence)
+                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                i++;
+            }
+            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = "Value: " + droppedArmor.ArmorStats.SellValue.ToString();
+            i++;
+            GameManagerScript.statDisplay[i].text = " ";
+            i++;
+            if (droppedArmor.ArmorStats.Constitution > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Constitution: +" + droppedArmor.ArmorStats.Constitution.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.Strength > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Strength: +" + droppedArmor.ArmorStats.Strength.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.Dexterity > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Dexterity: +" + droppedArmor.ArmorStats.Dexterity.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.Intelligence > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Intelligence: +" + droppedArmor.ArmorStats.Intelligence.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.Agility > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Agility: +" + droppedArmor.ArmorStats.Agility.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.Charisma > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Charisma: +" + droppedArmor.ArmorStats.Charisma.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.Perception > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Perception: +" + droppedArmor.ArmorStats.Perception.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.Fortitude > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Fortitude: +" + droppedArmor.ArmorStats.Fortitude.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.Luck > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Luck: +" + droppedArmor.ArmorStats.Luck.ToString();
+                i++;
+            }
+            while (i < (GameManagerScript.statDisplay.Count - 1))
+            {
+                GameManagerScript.statDisplay[i].gameObject.SetActive(false);
+                i++;
+            }
+        }//end of if
+        else if (gameObject.GetComponent<DroppedWeapon>())//checking the weapon
+        {
+            DroppedWeapon droppedWeapon = gameObject.GetComponent<DroppedWeapon>();
+            int i = 0;
+            GameManagerScript.statDisplay[i].text = droppedWeapon.WeaponStats.ItemType.ToString();
+            i++;
+            if (droppedWeapon.WeaponStats.LevelRestriction > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Level Restriction: Level " + droppedWeapon.WeaponStats.LevelRestriction.ToString();
+                if (droppedWeapon.WeaponStats.LevelRestriction > PlayerStats.curLevel)
+                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.RequiredStrength > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Required Strength: " + droppedWeapon.WeaponStats.RequiredStrength.ToString();
+                if (droppedWeapon.WeaponStats.RequiredStrength > PlayerStats.strength)
+                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.RequiredDexterity > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "Required Dexterity: " + droppedWeapon.WeaponStats.RequiredDexterity.ToString();
+                if (droppedWeapon.WeaponStats.RequiredDexterity > PlayerStats.dexterity)
+                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                i++;
+            }
+        }
+    }//end of else if
 }
