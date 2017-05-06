@@ -82,7 +82,6 @@ public class Controls : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        print("off");
         while (Inventory.fade.alpha > 0)
         {
             yield return new WaitForSeconds(.01f);
@@ -94,7 +93,6 @@ public class Controls : MonoBehaviour
     }
     IEnumerator FadeIn()
     {
-        print("on");
         while (Inventory.fade.alpha < 1)
         {
             yield return new WaitForSeconds(.01f);

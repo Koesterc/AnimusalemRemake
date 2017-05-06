@@ -80,6 +80,8 @@ public class ItemDisplay : MonoBehaviour {
         for (int i = 0; i < GameManagerScript.statDisplay.Count - 1; i++)
         {
             GameManagerScript.statDisplay[i].gameObject.SetActive(true);
+            GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f, 1, 1);
+
         }
         if (gameObject.GetComponent<DroppedArmor>())
         {
@@ -115,6 +117,8 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].text = "Required Intelligence: " + droppedArmor.ArmorStats.RequiredIntelligence.ToString();
                 if (droppedArmor.ArmorStats.RequiredIntelligence > PlayerStats.intelligence)
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                else
+                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.blue;
                 i++;
             }
             GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString()+" lbs";
@@ -123,6 +127,11 @@ public class ItemDisplay : MonoBehaviour {
             i++;
             GameManagerScript.statDisplay[i].text = " ";
             i++;
+            if (droppedArmor.ArmorStats.EnhancedDefense > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Enhanced Defense: +" + droppedArmor.ArmorStats.EnhancedDefense.ToString();
+                i++;
+            }
             if (droppedArmor.ArmorStats.Constitution > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Constitution: +" + droppedArmor.ArmorStats.Constitution.ToString();
@@ -235,7 +244,7 @@ public class ItemDisplay : MonoBehaviour {
             }
             if (droppedWeapon.WeaponStats.IncreasedCriticalChance > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*Increased Critical Chance: +" + droppedWeapon.WeaponStats.IncreasedCriticalChance.ToString()+"%";
+                GameManagerScript.statDisplay[i].text = "*Increased Critical Chance: +" + (droppedWeapon.WeaponStats.IncreasedCriticalChance*100).ToString()+"%";
                 i++;
             }
             if (droppedWeapon.WeaponStats.IgnoreArmor > 0)
@@ -273,6 +282,6 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].gameObject.SetActive(false);
                 i++;
             }
-        }
+        }//end of display function
     }//end of else if
-}
+}//end of class

@@ -24,10 +24,6 @@ public class CreateNewWeapon : MonoBehaviour {
         newWeapon.ItemID = Random.Range(0, 10000);
         int temp = Random.Range(0, 100);
         if (temp >= 90)//use luck here to increase the chance of magic item
-        newWeapon.Constitution += Random.Range(1, 5);
- 
-        temp = Random.Range(0, 100);
-        if (temp >= 90)
             newWeapon.Leech += Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
@@ -37,6 +33,8 @@ public class CreateNewWeapon : MonoBehaviour {
             newWeapon.AdditionalGold = Mathf.Round(Random.Range(.25f, .5f) * 100) / 100;
 
         ChooseWeaponType();
+        newWeapon.SellValue += ((int)(newWeapon.AdditionalGold * 8) + ((int)newWeapon.AdditionalXP * 8) +
+            newWeapon.Leech * 2);
     }
 
     private void ChooseWeaponType()
@@ -77,6 +75,11 @@ public class CreateNewWeapon : MonoBehaviour {
                 newWeapon.Accuracy = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
                 newWeapon.CriticalChance = Mathf.Round(Random.Range(.03f + newWeapon.IncreasedCriticalChance, .05f + newWeapon.IncreasedCriticalChance) * 100) / 100;
                 newWeapon.CriticalDamage = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
+
+                newWeapon.SellValue = (newWeapon.IgnoreArmor * 2 + (int)(newWeapon.Capacity/8) + newWeapon.PoisonDamage +
+                    (int)(newWeapon.Damage/4) + (int)(6 - newWeapon.Reload)+(int)(4 - (newWeapon.Firerate * 3)) + 
+                    (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 5)+
+                    (int)(newWeapon.Accuracy * 3));
                 break;
             case 1:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Rifle;
@@ -102,12 +105,17 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.8f, 1.2f) * 10) / 10;
-                newWeapon.Damage = Random.Range(8 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage, 15 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage);
+                newWeapon.Damage = Random.Range(8 + (newWeapon.LevelRestriction * 2) + newWeapon.EnhancedDamage, 15 + (newWeapon.LevelRestriction * 2) + newWeapon.EnhancedDamage);
                 newWeapon.Reload = Mathf.Round(Random.Range(3f, 5f) * 10) / 10;
                 newWeapon.Capacity = Random.Range(3 + newWeapon.ExtendedClip, 5 + newWeapon.ExtendedClip);
                 newWeapon.Accuracy = Mathf.Round(Random.Range(.3f, .5f) *100)/100;
                 newWeapon.CriticalChance = Mathf.Round(Random.Range(.10f + newWeapon.IncreasedCriticalChance, .18f + newWeapon.IncreasedCriticalChance) * 100) / 100;
                 newWeapon.CriticalDamage = Mathf.Round(Random.Range(1.0f, 2.5f) * 100) / 100;
+
+                newWeapon.SellValue = (newWeapon.IgnoreArmor * 2 + (int)(newWeapon.Capacity/8)+ (int)(newWeapon.PoisonDamage/2) +
+      (int)(newWeapon.Damage/4) + (int)(6 - newWeapon.Reload) + (int)(4 - (newWeapon.Firerate * 3)) +
+      (int)(newWeapon.CriticalChance * 10) + (int)(newWeapon.CriticalDamage * 2) +
+      (int)(newWeapon.Accuracy * 3));
                 break;
             case 2:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Shotgun;
@@ -134,12 +142,17 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.8f, 1.2f) * 10) / 10;
-                newWeapon.Damage = Random.Range(30 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage, 50 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage);
+                newWeapon.Damage = Random.Range(30 + (newWeapon.LevelRestriction * 2) + newWeapon.EnhancedDamage, 50 + (newWeapon.LevelRestriction * 2) + newWeapon.EnhancedDamage);
                 newWeapon.Reload = Mathf.Round(Random.Range(3f, 5f) * 10) / 10;
                 newWeapon.Capacity = Random.Range(2 + newWeapon.ExtendedClip, 4 + newWeapon.ExtendedClip);
                 newWeapon.Accuracy = Mathf.Round(Random.Range(2f, 4f) * 100) / 100;
                 newWeapon.CriticalChance = Mathf.Round(Random.Range(.03f + newWeapon.IncreasedCriticalChance, .05f + newWeapon.IncreasedCriticalChance) * 100) / 100;
                 newWeapon.CriticalDamage = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
+
+                newWeapon.SellValue = (newWeapon.IgnoreArmor * 2 + newWeapon.Capacity * 2 + newWeapon.PoisonDamage +
+      (int)(newWeapon.Damage/15) + (int)(6 - newWeapon.Reload) + (int)(8 - (newWeapon.Firerate * 3)) +
+      (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 5) +
+      (int)(newWeapon.Accuracy/2));
                 break;
             case 3:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Machinegun;
@@ -169,10 +182,15 @@ public class CreateNewWeapon : MonoBehaviour {
                 newWeapon.Firerate = Mathf.Round(Random.Range(.08f, .12f) * 10) / 10;
                 newWeapon.Damage = Random.Range(5 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage, 8 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage);
                 newWeapon.Reload = Mathf.Round(Random.Range(3f, 5f) * 10) / 10;
-                newWeapon.Capacity = Random.Range(30 + newWeapon.ExtendedClip, 50 + newWeapon.ExtendedClip);
+                newWeapon.Capacity = Random.Range(30 + newWeapon.ExtendedClip, 60 + newWeapon.ExtendedClip);
                 newWeapon.Accuracy = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
                 newWeapon.CriticalChance = Mathf.Round(Random.Range(.03f + newWeapon.IncreasedCriticalChance, .05f + newWeapon.IncreasedCriticalChance) * 100) / 100;
                 newWeapon.CriticalDamage = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
+
+                newWeapon.SellValue = (newWeapon.IgnoreArmor * 3 + (int)(newWeapon.Capacity/10) + newWeapon.PoisonDamage +
+      (int)(newWeapon.Damage/4) + (int)(8 - newWeapon.Reload) + (int)(8 - (newWeapon.Firerate * 20)) +
+      (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
+      (int)(newWeapon.Accuracy * 3));
                 break;
             case 4:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.AssaultRifle;
@@ -205,6 +223,11 @@ public class CreateNewWeapon : MonoBehaviour {
                 newWeapon.Accuracy = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
                 newWeapon.CriticalChance = Mathf.Round(Random.Range(.03f + newWeapon.IncreasedCriticalChance, .05f + newWeapon.IncreasedCriticalChance) * 100) / 100;
                 newWeapon.CriticalDamage = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
+
+                newWeapon.SellValue = (newWeapon.IgnoreArmor * 3 + (int)(newWeapon.Capacity/8)+ newWeapon.PoisonDamage +
+      (int)(newWeapon.Damage/6) + (int)(8 - newWeapon.Reload) + (int)(8 - (newWeapon.Firerate * 3)) +
+      (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
+      (int)(newWeapon.Accuracy * 3));
                 break;
             case 5:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Magnum;
@@ -231,12 +254,17 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(1.2f, 1.6f) * 10) / 10;
-                newWeapon.Damage = Random.Range(40 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage, 80 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage);
+                newWeapon.Damage = Random.Range(40 + (newWeapon.LevelRestriction * 5) + newWeapon.EnhancedDamage, 80 + (newWeapon.LevelRestriction * 5) + newWeapon.EnhancedDamage);
                 newWeapon.Reload = Mathf.Round(Random.Range(3f, 5f) * 10) / 10;
                 newWeapon.Capacity = Random.Range(8 + newWeapon.ExtendedClip, 15 + newWeapon.ExtendedClip);
                 newWeapon.Accuracy = Mathf.Round(Random.Range(.03f, .05f) * 100) / 100;
                 newWeapon.CriticalChance = Mathf.Round(Random.Range(.03f + newWeapon.IncreasedCriticalChance, .05f + newWeapon.IncreasedCriticalChance) * 100) / 100;
                 newWeapon.CriticalDamage = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
+
+                newWeapon.SellValue = (newWeapon.IgnoreArmor * 3 + (int)(newWeapon.Capacity / 8) + newWeapon.PoisonDamage +
+(int)(newWeapon.Damage / 20) + (int)(8 - newWeapon.Reload) + (int)(3 - (newWeapon.Firerate)) +
+(int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
+(int)(newWeapon.Accuracy * 10));
                 break;
             case 6:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Explosive;
@@ -258,13 +286,18 @@ public class CreateNewWeapon : MonoBehaviour {
                     newWeapon.IgnoreArmor = Random.Range(1, 10);
 
                 //weapon stats
-                newWeapon.Damage = Random.Range(100 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage, 15 + newWeapon.LevelRestriction + newWeapon.EnhancedDamage);
+                newWeapon.Damage = Random.Range(40 + (newWeapon.LevelRestriction * 8) + newWeapon.EnhancedDamage, 150 + (newWeapon.LevelRestriction * 8) + newWeapon.EnhancedDamage);
                 newWeapon.Reload = Mathf.Round(Random.Range(3f, 5f) * 10) / 10;
                 newWeapon.Firerate = newWeapon.Reload;
                 newWeapon.Capacity = 1;
                 newWeapon.Accuracy = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
                 newWeapon.CriticalChance = Mathf.Round(Random.Range(.03f + newWeapon.IncreasedCriticalChance, .05f + newWeapon.IncreasedCriticalChance) * 100) / 100;
                 newWeapon.CriticalDamage = Mathf.Round(Random.Range(.3f, .5f) * 100) / 100;
+
+                newWeapon.SellValue = (newWeapon.IgnoreArmor + (int)(newWeapon.PoisonDamage/10) +
+(int)(newWeapon.Damage / 50) + (int)(8 - newWeapon.Reload) + (int)(3 - (newWeapon.Firerate)) +
+(int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
+(int)(newWeapon.Accuracy * 10));
                 break;
         }
     }

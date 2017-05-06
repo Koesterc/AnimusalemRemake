@@ -27,33 +27,36 @@ public class CreateNewArmor : MonoBehaviour
         newArmor.LevelRestriction = Random.Range(1,10);
         int temp = Random.Range(0, 100);
         if (temp >= 90)//use luck here to increase the chance of magic item
-            newArmor.Constitution += Random.Range(1, 5);
+            newArmor.Constitution = Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newArmor.Strength += Random.Range(1, 5);
+            newArmor.Strength = Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newArmor.Intelligence += Random.Range(1, 5);
+            newArmor.Intelligence = Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
             newArmor.Dexterity += Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newArmor.Fortitude += Random.Range(1, 5);
+            newArmor.Fortitude = Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newArmor.Agility += Random.Range(1, 5);
+            newArmor.Agility = Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
             newArmor.Perception += Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newArmor.Charisma += Random.Range(1, 5);
+            newArmor.Charisma = Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newArmor.Luck += Random.Range(1, 5);
+            newArmor.Luck = Random.Range(1, 5);
  
         ChooseArmor();
+        newArmor.SellValue = (((int)newArmor.Defense/2) + newArmor.Strength * 2 +
+            newArmor.Dexterity * 2 + newArmor.Constitution * 2 + newArmor.Charisma * 2 + newArmor.Luck * 2  
+            + newArmor.Agility * 2 + newArmor.Perception * 2 + newArmor.Intelligence * 2 + newArmor.Fortitude * 2);
     }
     private void ChooseArmor()
     {
@@ -64,7 +67,10 @@ public class CreateNewArmor : MonoBehaviour
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Light;
                 newArmor.ItemName = "Light Armor";
                 newArmor.ItemDesc = "Light Armor, although it doesn't seem to be of much use, it won't have any adverse effects as oppose to other armors.";
-                newArmor.Defense = Random.Range(newArmor.LevelRestriction*5, newArmor.LevelRestriction * 10);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newArmor.EnhancedDefense = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
+                newArmor.Defense = Random.Range(1+(newArmor.LevelRestriction + newArmor.EnhancedDefense), 5 +(newArmor.LevelRestriction + newArmor.EnhancedDefense));
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
                 newArmor.RequiredStrength = Random.Range(0, newArmor.LevelRestriction * 2);
                 break;
@@ -72,7 +78,10 @@ public class CreateNewArmor : MonoBehaviour
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Medium;
                 newArmor.ItemName = "Medium Armor";
                 newArmor.ItemDesc = "Medium armor allows the carrier to get the most out of their defense while keeping the burden to a minimum";
-                newArmor.Defense = Random.Range(newArmor.LevelRestriction * 2, newArmor.LevelRestriction * 3);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newArmor.EnhancedDefense = Random.Range(1 + newArmor.LevelRestriction, 6 + newArmor.LevelRestriction);
+                newArmor.Defense = Random.Range(3 + (newArmor.LevelRestriction + newArmor.EnhancedDefense), 8 + (newArmor.LevelRestriction + newArmor.EnhancedDefense));
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 2, newArmor.LevelRestriction * 3);
                 newArmor.SpeedReduction = -2;
                 break;
@@ -80,7 +89,10 @@ public class CreateNewArmor : MonoBehaviour
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Heavy;
                 newArmor.ItemName = "Heavy Armor";
                 newArmor.ItemDesc = "Heavy Armor, although very effective in combat, reduces the rate at which the carrier walks.";
-                newArmor.Defense = Random.Range(newArmor.LevelRestriction * 15, newArmor.LevelRestriction * 20);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newArmor.EnhancedDefense = Random.Range(1 + newArmor.LevelRestriction, 10 + newArmor.LevelRestriction);
+                newArmor.Defense = Random.Range(8 + (newArmor.LevelRestriction + newArmor.EnhancedDefense), 13 + (newArmor.LevelRestriction + newArmor.EnhancedDefense));
                 newArmor.SpeedReduction = -4;
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
                 newArmor.RequiredStrength = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);

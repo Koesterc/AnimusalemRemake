@@ -14,11 +14,17 @@ public class BaseArmor : BaseItem
 
     private int speedReduction;
     private int defense;
+    private int enhancedDefense;
 
     public ArmorType ArmorTypes
     {
         get { return armorTypes; }
         set { armorTypes = value; }
+    }
+    public int EnhancedDefense
+    {
+        get { return enhancedDefense; }
+        set { enhancedDefense = value; }
     }
     public int SpeedReduction
     {
