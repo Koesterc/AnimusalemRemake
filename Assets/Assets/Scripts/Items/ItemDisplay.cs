@@ -30,8 +30,9 @@ public class ItemDisplay : MonoBehaviour {
             GameManagerScript.stat.gameObject.SetActive(false);
             myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f,1,1);
             Color c = myText.GetComponent<Outline>().effectColor;
+            myText.fontSize = 14;
             Transform canvas = transform.Find("MyCanvas");
-            canvas.GetComponent<Canvas>().sortingOrder = 500;
+            canvas.GetComponent<Canvas>().sortingOrder = 100;
             c.a = .5f;
             myText.GetComponent<Outline>().effectColor = c;
         }
@@ -46,8 +47,9 @@ public class ItemDisplay : MonoBehaviour {
             Color c = myText.GetComponent<Outline>().effectColor;
             c.a = .5f;
             myText.GetComponent<Outline>().effectColor = c;
+            myText.fontSize = 16;
             Transform canvas = transform.Find("MyCanvas");
-            canvas.GetComponent<Canvas>().sortingOrder = 501;
+            canvas.GetComponent<Canvas>().sortingOrder = 101;
             Display();
         }
     }
@@ -83,7 +85,7 @@ public class ItemDisplay : MonoBehaviour {
         {
             DroppedArmor droppedArmor = gameObject.GetComponent<DroppedArmor>();
             int i = 0;
-            GameManagerScript.statDisplay[i].text = droppedArmor.ArmorStats.ItemName;
+            GameManagerScript.statDisplay[i].text = "["+droppedArmor.ArmorStats.ItemName+"]";
             i++;
             GameManagerScript.statDisplay[i].text = "Defense: " + droppedArmor.ArmorStats.Defense.ToString();
             i++;
@@ -115,9 +117,9 @@ public class ItemDisplay : MonoBehaviour {
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                 i++;
             }
-            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString();
+            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString()+" lbs";
             i++;
-            GameManagerScript.statDisplay[i].text = "Value: " + droppedArmor.ArmorStats.SellValue.ToString();
+            GameManagerScript.statDisplay[i].text = "Value: $" + droppedArmor.ArmorStats.SellValue.ToString();
             i++;
             GameManagerScript.statDisplay[i].text = " ";
             i++;
@@ -176,7 +178,7 @@ public class ItemDisplay : MonoBehaviour {
         {
             DroppedWeapon droppedWeapon = gameObject.GetComponent<DroppedWeapon>();
             int i = 0;
-            GameManagerScript.statDisplay[i].text = droppedWeapon.WeaponStats.WeaponTypes.ToString();
+            GameManagerScript.statDisplay[i].text = "["+droppedWeapon.WeaponStats.WeaponTypes.ToString()+"]";
             i++;
             if (droppedWeapon.WeaponStats.LevelRestriction > 0)
             {
@@ -199,29 +201,28 @@ public class ItemDisplay : MonoBehaviour {
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                 i++;
             }
-            GameManagerScript.statDisplay[i].text = "Weight: " + droppedWeapon.WeaponStats.Weight.ToString();
+            GameManagerScript.statDisplay[i].text = "Weight: " + droppedWeapon.WeaponStats.Weight.ToString()+" lbs";
             i++;
-            GameManagerScript.statDisplay[i].text = "Value: " + droppedWeapon.WeaponStats.SellValue.ToString();
+            GameManagerScript.statDisplay[i].text = "Value: $" + droppedWeapon.WeaponStats.SellValue.ToString();
             i++;
             GameManagerScript.statDisplay[i].text = " ";
             i++;
             GameManagerScript.statDisplay[i].text = "Damage: " + droppedWeapon.WeaponStats.Damage.ToString();
             i++;
-            GameManagerScript.statDisplay[i].text = "Firerate: " + droppedWeapon.WeaponStats.Firerate.ToString();
+            GameManagerScript.statDisplay[i].text = "Firerate: " + droppedWeapon.WeaponStats.Firerate.ToString()+" Secs";
             i++;
-            GameManagerScript.statDisplay[i].text = "Reload: " + droppedWeapon.WeaponStats.Reload.ToString();
+            GameManagerScript.statDisplay[i].text = "Reload: " + droppedWeapon.WeaponStats.Reload.ToString()+" Secs";
             i++;
             GameManagerScript.statDisplay[i].text = "Capacity: " + droppedWeapon.WeaponStats.Capacity.ToString();
             i++;
-            GameManagerScript.statDisplay[i].text = "Accuracy: " + droppedWeapon.WeaponStats.Accuracy.ToString();
+            GameManagerScript.statDisplay[i].text = "Accuracy: " + (droppedWeapon.WeaponStats.Accuracy*100).ToString()+"%";
             i++;
-            GameManagerScript.statDisplay[i].text = "Critical Damage: " + (droppedWeapon.WeaponStats.CriticalDamage/100).ToString()+"%";
+            GameManagerScript.statDisplay[i].text = "Critical Damage: " + (droppedWeapon.WeaponStats.CriticalDamage*100).ToString()+"%";
             i++;
-            GameManagerScript.statDisplay[i].text = "Critical Chance: " + (droppedWeapon.WeaponStats.CriticalChance/100).ToString()+"%";
-            i++;
-            GameManagerScript.statDisplay[i].text = " ";
+            GameManagerScript.statDisplay[i].text = "Critical Chance: " + (droppedWeapon.WeaponStats.CriticalChance*100).ToString()+"%";
             i++;
             GameManagerScript.statDisplay[i].text = " ";
+            i++;
             if (droppedWeapon.WeaponStats.EnhancedDamage > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Enhanced Damage: +" + droppedWeapon.WeaponStats.EnhancedDamage.ToString();
@@ -259,12 +260,12 @@ public class ItemDisplay : MonoBehaviour {
             }
             if (droppedWeapon.WeaponStats.AdditionalXP > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*+"+droppedWeapon.WeaponStats.AdditionalXP.ToString()+"% more experience after each kill";
+                GameManagerScript.statDisplay[i].text = "*+"+(droppedWeapon.WeaponStats.AdditionalXP*100).ToString()+"% more experience after each kill";
                 i++;
             }
             if (droppedWeapon.WeaponStats.AdditionalGold > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*+"+droppedWeapon.WeaponStats.AdditionalGold.ToString() + "% more gold after each kill";
+                GameManagerScript.statDisplay[i].text = "*+"+(droppedWeapon.WeaponStats.AdditionalGold*100).ToString() + "% more gold after each kill";
                 i++;
             }
             while (i < (GameManagerScript.statDisplay.Count - 1))

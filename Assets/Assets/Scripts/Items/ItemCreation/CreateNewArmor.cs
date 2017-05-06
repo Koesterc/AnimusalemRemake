@@ -63,7 +63,7 @@ public class CreateNewArmor : MonoBehaviour
             default:
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Light;
                 newArmor.ItemName = "Light Armor";
-                newArmor.ItemDesc = "Light Armor, although it doesn't seem to be of much use, it won't have any adverse effects.";
+                newArmor.ItemDesc = "Light Armor, although it doesn't seem to be of much use, it won't have any adverse effects as oppose to other armors.";
                 newArmor.Defense = Random.Range(newArmor.LevelRestriction*5, newArmor.LevelRestriction * 10);
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
                 newArmor.RequiredStrength = Random.Range(0, newArmor.LevelRestriction * 2);
@@ -78,7 +78,7 @@ public class CreateNewArmor : MonoBehaviour
                 break;
             case 2:
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Heavy;
-                newArmor.ItemName = "Heavy";
+                newArmor.ItemName = "Heavy Armor";
                 newArmor.ItemDesc = "Heavy Armor, although very effective in combat, reduces the rate at which the carrier walks.";
                 newArmor.Defense = Random.Range(newArmor.LevelRestriction * 15, newArmor.LevelRestriction * 20);
                 newArmor.SpeedReduction = -4;

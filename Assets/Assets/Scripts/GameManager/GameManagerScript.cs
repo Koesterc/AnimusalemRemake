@@ -18,6 +18,7 @@ public class GameManagerScript : MonoBehaviour
             ///child.GetComponent<Text>();
             statDisplay.Add(child.GetComponent<Text>());
         }
+        stat.gameObject.SetActive(false);
     }
 	
 
