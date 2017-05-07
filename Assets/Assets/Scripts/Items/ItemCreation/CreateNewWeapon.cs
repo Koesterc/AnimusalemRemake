@@ -5,8 +5,21 @@ using UnityEngine.UI;
 
 public class CreateNewWeapon : MonoBehaviour {
     private BaseWeapon newWeapon;
-    public GameObject droppedWeapon;
-    private string[] handgun = { "Grave Digger", "Day Ender", "The BlackList" };
+    public GameObject droppedWeapon; 
+    private string[] myName = //handgun 0-7
+    { "Custom HG40", "SDK5","9mm Oppressor", "Anacanda", "Blacklist", "Punisher", "SNAL-141", "Trident",
+     //shotguns 8-14
+    "12 Gauge","Cerberus","Orthrus","Grave Digger","Devestater","Reaper","Ravager",
+     //rifles 15-24
+     "P4 Suppressor","PK1","Predator","Raven","Eagle's Eye","Hunter Killer","Crow's Nest","Hawk", "Hecaerge","Oupis",
+     //machineguns 25-34
+     "RP8","Rapidfire lC20","MDK 4","SMG 120","Carbon P40","Diminisher","HR2 Stingray", "Scorpion", "Hailstorm","Hydra",
+     //assault Rifles 35-41
+     "Cobra VP","MK4 Firestorm","M14 Viper","AR-17","G7 Battle Rifle","Warhammer","M1-41 Chineese Assault Rifle",
+     //magnums 42-45
+     "Reaper","Day Ender","Banshee","Zeus",
+     //explosives 46-53
+     "Kamikaze","PK Destroyer","Iradicator","Goliath","Warhammer","Horizon's Nuke", "Bazooka", "Winter's Plow"};
 
     void Start()
     {
@@ -20,7 +33,6 @@ public class CreateNewWeapon : MonoBehaviour {
     public void CreateWeapon()
     {
         newWeapon = new BaseWeapon();
-        newWeapon.ItemDesc = "It's a gun...";
         newWeapon.ItemID = Random.Range(0, 10000);
         int temp = Random.Range(0, 100);
         if (temp >= 90)//use luck here to increase the chance of magic item
@@ -50,8 +62,7 @@ public class CreateNewWeapon : MonoBehaviour {
             default:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Handgun;
                 //assigning the name
-                temp = Random.Range(0, 2);
-                newWeapon.ItemName = handgun[temp];
+                newWeapon.ItemName = myName[Random.Range(0, 7)];
 
                 //adding bonuses
                 //adding bonuses
@@ -70,6 +81,9 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
+                temp = Random.Range(0, 100);
+                if (temp >= 90 || newWeapon.ItemName == "Trident")
+                    newWeapon.ThreeRoundBurst = true;
 
                 //weapon stats
                 newWeapon.Damage = Random.Range(8+newWeapon.LevelRestriction+newWeapon.EnhancedDamage, 15+newWeapon.LevelRestriction + newWeapon.EnhancedDamage);
@@ -84,11 +98,13 @@ public class CreateNewWeapon : MonoBehaviour {
                     (int)(newWeapon.Damage/4) + (int)(6 - newWeapon.Reload)+(int)(4 - (newWeapon.Firerate * 3)) + 
                     (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 5)+
                     (int)(newWeapon.Accuracy * 3));
+                newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is sidearm with a " + newWeapon.Capacity + " round magazine. It uses traditional handgun bullets.";
                 break;
             case 1:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Rifle;
                 temp = Random.Range(0, 2);
-                newWeapon.ItemName = handgun[temp];
+                //assigning the name
+                newWeapon.ItemName = myName[Random.Range(15, 24)];
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
@@ -106,6 +122,9 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newWeapon.ThreeRoundBurst = true;
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.8f, 1.2f) * 10) / 10;
@@ -120,11 +139,13 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Damage/4) + (int)(6 - newWeapon.Reload) + (int)(4 - (newWeapon.Firerate * 3)) +
       (int)(newWeapon.CriticalChance * 10) + (int)(newWeapon.CriticalDamage * 2) +
       (int)(newWeapon.Accuracy * 3));
+                newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a long sturdy rifle. Rifles have a far greater chance to perform critical hits and deal greater damage when achieved.";
                 break;
             case 2:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Shotgun;
                 temp = Random.Range(0, 2);
-                newWeapon.ItemName = handgun[temp];
+                //assigning the name
+                newWeapon.ItemName = myName[Random.Range(8, 14)];
                 newWeapon.CapacityLvl = 5;
 
                 //adding bonuses
@@ -157,11 +178,12 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Damage/15) + (int)(6 - newWeapon.Reload) + (int)(8 - (newWeapon.Firerate * 3)) +
       (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 5) +
       (int)(newWeapon.Accuracy/2));
+                newWeapon.ItemDesc = "The "+newWeapon.ItemName+" shotgun has a wide range of attack allowing the user to strike multiple targets that are grouped.";
                 break;
             case 3:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Machinegun;
-                temp = Random.Range(0, 2);
-                newWeapon.ItemName = handgun[temp];
+                //assigning the name
+                newWeapon.ItemName = myName[Random.Range(25, 34)];
                 newWeapon.FireRateLvl = 5;
 
 
@@ -181,6 +203,9 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.IgnoreArmor = Random.Range(1, 3);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newWeapon.ThreeRoundBurst = true;
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.08f, .12f) * 10) / 10;
@@ -195,11 +220,12 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Damage/4) + (int)(8 - newWeapon.Reload) + (int)(8 - (newWeapon.Firerate * 20)) +
       (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
       (int)(newWeapon.Accuracy * 3));
+                newWeapon.ItemDesc = "The sub machienguns, such as the "+newWeapon.ItemName+"'s, are extremely light and and easy to handle thus they are superior to all other weapons when it comes down to capacity, fire rate and reload speed.";
                 break;
             case 4:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.AssaultRifle;
-                temp = Random.Range(0, 2);
-                newWeapon.ItemName = handgun[temp];
+                //assigning the name
+                newWeapon.ItemName = myName[Random.Range(35, 41)];
                 newWeapon.FireRateLvl = 5;
 
                 //adding bonuses
@@ -218,6 +244,9 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newWeapon.ThreeRoundBurst = true;
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.14f, .18f) * 100) / 10;
@@ -232,11 +261,12 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Damage/6) + (int)(8 - newWeapon.Reload) + (int)(8 - (newWeapon.Firerate * 3)) +
       (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
       (int)(newWeapon.Accuracy * 3));
+                newWeapon.ItemDesc = "The assault rifles pack a much heavier punch than the SMGs, but they are less accurate and not nearly as fast.";
                 break;
             case 5:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Magnum;
-                temp = Random.Range(0, 2);
-                newWeapon.ItemName = handgun[temp];
+                //assigning the name
+                newWeapon.ItemName = myName[Random.Range(42, 45)];
                 newWeapon.CapacityLvl = 5;
 
                 //adding bonuses
@@ -269,11 +299,13 @@ public class CreateNewWeapon : MonoBehaviour {
 (int)(newWeapon.Damage / 20) + (int)(8 - newWeapon.Reload) + (int)(3 - (newWeapon.Firerate)) +
 (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
 (int)(newWeapon.Accuracy * 10));
+                newWeapon.ItemDesc = "Although very powerful, the "+newWeapon.ItemName+" is not so easily handled. Its firerate is far less than your typical handgun and the kickback makes it far more challenging to hit targets.";
                 break;
             case 6:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Explosive;
                 temp = Random.Range(0, 2);
-                newWeapon.ItemName = handgun[temp];
+                //assigning the name
+                newWeapon.ItemName = myName[Random.Range(46, 53)];
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
@@ -302,6 +334,7 @@ public class CreateNewWeapon : MonoBehaviour {
 (int)(newWeapon.Damage / 50) + (int)(8 - newWeapon.Reload) + (int)(3 - (newWeapon.Firerate)) +
 (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
 (int)(newWeapon.Accuracy * 10));
+                newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a powerful, single round explosive. Although it is the most powerful type of weapon available, ammo for it is by far the most scarce.";
                 break;
         }
     }

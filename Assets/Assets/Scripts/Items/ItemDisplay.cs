@@ -194,6 +194,8 @@ public class ItemDisplay : MonoBehaviour {
             int i = 0;
             GameManagerScript.statDisplay[i].text = "["+droppedWeapon.WeaponStats.WeaponTypes.ToString()+"]";
             i++;
+            GameManagerScript.statDisplay[i].text = "\"" + droppedWeapon.WeaponStats.ItemName + "\"";
+            i++;
             if (droppedWeapon.WeaponStats.LevelRestriction > 0)
             {
                 GameManagerScript.statDisplay[i].text = "Level Restriction: Level " + droppedWeapon.WeaponStats.LevelRestriction.ToString();
@@ -255,6 +257,11 @@ public class ItemDisplay : MonoBehaviour {
             if (droppedWeapon.WeaponStats.IgnoreArmor > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Ignore Target's Defense: -" + droppedWeapon.WeaponStats.IgnoreArmor.ToString();
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.ThreeRoundBurst)
+            {
+                GameManagerScript.statDisplay[i].text = "*Three Round Burst";
                 i++;
             }
             if (droppedWeapon.WeaponStats.PoisonDamage > 0)

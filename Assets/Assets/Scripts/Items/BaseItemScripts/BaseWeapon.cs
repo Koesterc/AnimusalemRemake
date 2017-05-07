@@ -53,8 +53,14 @@ public class BaseWeapon : BaseItem
     private float aimAssist; //makes the crossair travel slower when it touches the enemy
     private float additionalXP;
     private float additionalGold;
+    private bool threeRoundBurst;
 
     //getters setters
+    public bool ThreeRoundBurst
+    {
+        get { return threeRoundBurst; }
+        set { threeRoundBurst = value; }
+    }
     public int PoisonDamage
     {
         get { return poisonDamage; }
