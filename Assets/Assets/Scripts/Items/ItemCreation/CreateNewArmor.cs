@@ -52,11 +52,17 @@ public class CreateNewArmor : MonoBehaviour
         temp = Random.Range(0, 100);
         if (temp >= 90)
             newArmor.Luck = Random.Range(1, 5);
- 
+        temp = Random.Range(0, 100);
+        if (temp >= 90)
+            newArmor.ReducedWeight = Mathf.Round(Random.Range(.1f, .5f) * 100) / 100;
+
+
+
         ChooseArmor();
         newArmor.SellValue = (((int)newArmor.Defense/2) + newArmor.Strength * 2 +
             newArmor.Dexterity * 2 + newArmor.Constitution * 2 + newArmor.Charisma * 2 + newArmor.Luck * 2  
             + newArmor.Agility * 2 + newArmor.Perception * 2 + newArmor.Intelligence * 2 + newArmor.Fortitude * 2);
+        newArmor.Weight = newArmor.Weight - (newArmor.Weight * newArmor.ReducedWeight)+ (int)(newArmor.ReducedWeight * 10);
     }
     private void ChooseArmor()
     {

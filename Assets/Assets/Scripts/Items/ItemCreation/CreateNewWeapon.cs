@@ -31,10 +31,14 @@ public class CreateNewWeapon : MonoBehaviour {
         temp = Random.Range(0, 100);
         if (temp >= 90)
             newWeapon.AdditionalGold = Mathf.Round(Random.Range(.25f, .5f) * 100) / 100;
+        temp = Random.Range(0, 100);
+        if (temp >= 90)
+            newWeapon.ReducedWeight = Mathf.Round(Random.Range(.1f, .5f) * 100) / 100;
 
         ChooseWeaponType();
         newWeapon.SellValue += ((int)(newWeapon.AdditionalGold * 8) + ((int)newWeapon.AdditionalXP * 8) +
-            newWeapon.Leech * 2);
+            newWeapon.Leech * 2 + (int)(newWeapon.ReducedWeight*10));
+        newWeapon.Weight = newWeapon.Weight - (newWeapon.Weight*newWeapon.ReducedWeight);
     }
 
     private void ChooseWeaponType()

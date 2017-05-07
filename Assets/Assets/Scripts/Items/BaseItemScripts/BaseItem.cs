@@ -29,11 +29,18 @@ public class BaseItem
     int charisma;
     int perception;
     int agility;
+    float reducedWeight;
 
     public Sprite Icon
     {
         get { return icon; }
         set { icon = value; }
+    }
+
+    public float ReducedWeight
+    {
+        get { return reducedWeight; }
+        set { reducedWeight = value; }
     }
 
     public int Constitution

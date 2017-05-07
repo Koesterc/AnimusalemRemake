@@ -129,7 +129,7 @@ public class ItemDisplay : MonoBehaviour {
             i++;
             if (droppedArmor.ArmorStats.EnhancedDefense > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*Enhanced Defense: +" + droppedArmor.ArmorStats.EnhancedDefense.ToString();
+                GameManagerScript.statDisplay[i].text = "*Reinforced Defense: +" + droppedArmor.ArmorStats.EnhancedDefense.ToString();
                 i++;
             }
             if (droppedArmor.ArmorStats.Constitution > 0)
@@ -175,6 +175,11 @@ public class ItemDisplay : MonoBehaviour {
             if (droppedArmor.ArmorStats.Luck > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Luck: +" + droppedArmor.ArmorStats.Luck.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.ReducedWeight> 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Item's weight reduced by " + (droppedArmor.ArmorStats.ReducedWeight*100).ToString()+"%";
                 i++;
             }
             while (i < (GameManagerScript.statDisplay.Count - 1))
@@ -275,6 +280,11 @@ public class ItemDisplay : MonoBehaviour {
             if (droppedWeapon.WeaponStats.AdditionalGold > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*+"+(droppedWeapon.WeaponStats.AdditionalGold*100).ToString() + "% more gold after each kill";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.ReducedWeight > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Item's weight reduced by " + (droppedWeapon.WeaponStats.ReducedWeight * 100).ToString() + "%";
                 i++;
             }
             while (i < (GameManagerScript.statDisplay.Count - 1))
