@@ -142,9 +142,9 @@ public class CreateNewWeapon : MonoBehaviour {
                 newWeapon.CriticalDamage = Mathf.Round(Random.Range(1.0f, 2.5f) * 100) / 100;
 
                 newWeapon.SellValue = (newWeapon.IgnoreArmor * 2 + (int)(newWeapon.Capacity/8)+ (int)(newWeapon.PoisonDamage/2) +
-      (int)(newWeapon.Damage/4) + (int)(6 - newWeapon.Reload) + (int)(4 - (newWeapon.Firerate * 3)) +
-      (int)(newWeapon.CriticalChance * 10) + (int)(newWeapon.CriticalDamage * 2) +
-      (int)(newWeapon.Accuracy * 3));
+                (int)(newWeapon.Damage/4) + (int)(6 - newWeapon.Reload) + (int)(4 - (newWeapon.Firerate * 3)) +
+                 (int)(newWeapon.CriticalChance * 10) + (int)(newWeapon.CriticalDamage * 2) +
+                 (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a long sturdy rifle. Rifles have a far greater chance to perform critical hits and deal greater damage than other firearms when achieved.";
                 break;
             case 2:
