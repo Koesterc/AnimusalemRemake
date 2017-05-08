@@ -341,10 +341,13 @@ public class CreateNewWeapon : MonoBehaviour {
 
     public void DroppedWeapon()
     {
-        GameObject clone;
-        clone = Instantiate(droppedWeapon, Controls._Player.transform.position, transform.rotation) as GameObject;
-        clone.AddComponent<DroppedWeapon>().DropWeapon(newWeapon);
-        Destroy(gameObject);
+        if (Input.GetKeyDown("return"))
+        {
+            GameObject clone;
+            clone = Instantiate(droppedWeapon, Controls._Player.transform.position, transform.rotation) as GameObject;
+            clone.AddComponent<DroppedWeapon>().DropWeapon(newWeapon);
+            Destroy(gameObject);
+        }
     }
 
     public void UpdateSelection()

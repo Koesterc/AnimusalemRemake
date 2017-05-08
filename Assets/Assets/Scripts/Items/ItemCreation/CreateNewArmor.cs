@@ -14,11 +14,6 @@ public class CreateNewArmor : MonoBehaviour
         Transform _name = gameObject.transform.Find("Type");
         _weight.GetComponent<Text>().text = newArmor.Weight.ToString() + " lbs";
         _name.GetComponent<Text>().text = newArmor.ItemName;
-        //print(newArmor.ItemName);
-        //print(newArmor.ArmorTypes);
-        //print(newArmor.Defense);
-        //print(newArmor.LevelRestriction);
-        //print(newArmor.SpeedReduction);
     }
     private void CreateArmor()
     {
@@ -55,8 +50,6 @@ public class CreateNewArmor : MonoBehaviour
         temp = Random.Range(0, 100);
         if (temp >= 90)
             newArmor.ReducedWeight = Mathf.Round(Random.Range(.1f, .5f) * 100) / 100;
-
-
 
         ChooseArmor();
         newArmor.SellValue = (((int)newArmor.Defense/2) + newArmor.Strength * 2 +
@@ -108,10 +101,21 @@ public class CreateNewArmor : MonoBehaviour
 
     public void DroppedArmor()
     {
-        GameObject clone;
-        clone = Instantiate(droppedArmor, Controls._Player.transform.position, transform.rotation) as GameObject;
-        clone.AddComponent<DroppedArmor>().DropArmor(newArmor);
-        Destroy(gameObject);
+        if (Input.GetKeyDown("return"))
+        {
+            GameObject clone;
+            clone = Instantiate(droppedArmor, Controls._Player.transform.position, transform.rotation) as GameObject;
+            clone.GetComponent<DroppedArmor>().DropArmor(newArmor);
+            Destroy(gameObject);
+        }
+    }
+    public void pickedUpArmor(BaseArmor myArmor)
+    {
+        newArmor = myArmor;
+        Transform _weight = gameObject.transform.Find("Weight");
+        Transform _name = gameObject.transform.Find("Type");
+        _weight.GetComponent<Text>().text = newArmor.Weight.ToString() + " lbs";
+        _name.GetComponent<Text>().text = newArmor.ItemName;
     }
 
     public void UpdateSelection()

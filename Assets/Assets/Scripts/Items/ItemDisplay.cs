@@ -7,6 +7,7 @@ public class ItemDisplay : MonoBehaviour {
 
     public Text myText;
     static bool isActive = false;
+    bool pickUp = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -20,13 +21,14 @@ public class ItemDisplay : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            isActive = false;
+           // isActive = false;
             StopAllCoroutines();
             StartCoroutine(Disable());
         }
         if (other.tag == "Interact")
         {
             isActive = false;
+            pickUp = false;
             GameManagerScript.stat.gameObject.SetActive(false);
             myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f,1,1);
             Color c = myText.GetComponent<Outline>().effectColor;
@@ -42,6 +44,7 @@ public class ItemDisplay : MonoBehaviour {
         if (other.tag == "Interact" && !isActive)
         {
             isActive = true;
+            pickUp = true;
             GameManagerScript.stat.gameObject.SetActive(true);
             myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.8f, 1, 1);
             Color c = myText.GetComponent<Outline>().effectColor;
@@ -51,6 +54,14 @@ public class ItemDisplay : MonoBehaviour {
             Transform canvas = transform.Find("MyCanvas");
             canvas.GetComponent<Canvas>().sortingOrder = 101;
             Display();
+        }
+        else if (other.tag == "Interact" && pickUp && Input.GetKey("a"))
+        {
+            //check weight
+            //add weight
+            //play sound
+            gameObject.GetComponent<DroppedArmor>().PickedUp();
+            Destroy(gameObject);
         }
     }
 
@@ -87,7 +98,7 @@ public class ItemDisplay : MonoBehaviour {
         {
             DroppedArmor droppedArmor = gameObject.GetComponent<DroppedArmor>();
             int i = 0;
-            GameManagerScript.statDisplay[i].text = "["+droppedArmor.ArmorStats.ItemName+"]";
+            GameManagerScript.statDisplay[i].text = "[" + droppedArmor.ArmorStats.ItemName + "]";
             i++;
             GameManagerScript.statDisplay[i].text = "Defense: " + droppedArmor.ArmorStats.Defense.ToString();
             i++;
@@ -121,7 +132,7 @@ public class ItemDisplay : MonoBehaviour {
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.blue;
                 i++;
             }
-            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString()+" lbs";
+            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString() + " lbs";
             i++;
             GameManagerScript.statDisplay[i].text = "Value: $" + droppedArmor.ArmorStats.SellValue.ToString();
             i++;
@@ -177,9 +188,9 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].text = "*Luck: +" + droppedArmor.ArmorStats.Luck.ToString();
                 i++;
             }
-            if (droppedArmor.ArmorStats.ReducedWeight> 0)
+            if (droppedArmor.ArmorStats.ReducedWeight > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*Item's weight reduced by " + (droppedArmor.ArmorStats.ReducedWeight*100).ToString()+"%";
+                GameManagerScript.statDisplay[i].text = "*Item's weight reduced by " + (droppedArmor.ArmorStats.ReducedWeight * 100).ToString() + "%";
                 i++;
             }
             while (i < (GameManagerScript.statDisplay.Count - 1))
@@ -192,7 +203,7 @@ public class ItemDisplay : MonoBehaviour {
         {
             DroppedWeapon droppedWeapon = gameObject.GetComponent<DroppedWeapon>();
             int i = 0;
-            GameManagerScript.statDisplay[i].text = "["+droppedWeapon.WeaponStats.WeaponTypes.ToString()+"]";
+            GameManagerScript.statDisplay[i].text = "[" + droppedWeapon.WeaponStats.WeaponTypes.ToString() + "]";
             i++;
             GameManagerScript.statDisplay[i].text = "\"" + droppedWeapon.WeaponStats.ItemName + "\"";
             i++;
@@ -217,7 +228,7 @@ public class ItemDisplay : MonoBehaviour {
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                 i++;
             }
-            GameManagerScript.statDisplay[i].text = "Weight: " + droppedWeapon.WeaponStats.Weight.ToString()+" lbs";
+            GameManagerScript.statDisplay[i].text = "Weight: " + droppedWeapon.WeaponStats.Weight.ToString() + " lbs";
             i++;
             GameManagerScript.statDisplay[i].text = "Value: $" + droppedWeapon.WeaponStats.SellValue.ToString();
             i++;
@@ -225,17 +236,17 @@ public class ItemDisplay : MonoBehaviour {
             i++;
             GameManagerScript.statDisplay[i].text = "Damage: " + droppedWeapon.WeaponStats.Damage.ToString();
             i++;
-            GameManagerScript.statDisplay[i].text = "Firerate: " + droppedWeapon.WeaponStats.Firerate.ToString()+" Secs";
+            GameManagerScript.statDisplay[i].text = "Firerate: " + droppedWeapon.WeaponStats.Firerate.ToString() + " Secs";
             i++;
-            GameManagerScript.statDisplay[i].text = "Reload: " + droppedWeapon.WeaponStats.Reload.ToString()+" Secs";
+            GameManagerScript.statDisplay[i].text = "Reload: " + droppedWeapon.WeaponStats.Reload.ToString() + " Secs";
             i++;
             GameManagerScript.statDisplay[i].text = "Capacity: " + droppedWeapon.WeaponStats.Capacity.ToString();
             i++;
-            GameManagerScript.statDisplay[i].text = "Accuracy: " + (droppedWeapon.WeaponStats.Accuracy*100).ToString()+"%";
+            GameManagerScript.statDisplay[i].text = "Accuracy: " + (droppedWeapon.WeaponStats.Accuracy * 100).ToString() + "%";
             i++;
-            GameManagerScript.statDisplay[i].text = "Critical Damage: " + (droppedWeapon.WeaponStats.CriticalDamage*100).ToString()+"%";
+            GameManagerScript.statDisplay[i].text = "Critical Damage: " + (droppedWeapon.WeaponStats.CriticalDamage * 100).ToString() + "%";
             i++;
-            GameManagerScript.statDisplay[i].text = "Critical Chance: " + (droppedWeapon.WeaponStats.CriticalChance*100).ToString()+"%";
+            GameManagerScript.statDisplay[i].text = "Critical Chance: " + (droppedWeapon.WeaponStats.CriticalChance * 100).ToString() + "%";
             i++;
             GameManagerScript.statDisplay[i].text = " ";
             i++;
@@ -251,12 +262,12 @@ public class ItemDisplay : MonoBehaviour {
             }
             if (droppedWeapon.WeaponStats.IncreasedCriticalChance > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*Increased Critical Chance: +" + (droppedWeapon.WeaponStats.IncreasedCriticalChance*100).ToString()+"%";
+                GameManagerScript.statDisplay[i].text = "*Increased Critical Chance: +" + (droppedWeapon.WeaponStats.IncreasedCriticalChance * 100).ToString() + "%";
                 i++;
             }
             if (droppedWeapon.WeaponStats.IgnoreArmor > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*Ignore Target's Defense: -" + droppedWeapon.WeaponStats.IgnoreArmor.ToString();
+                GameManagerScript.statDisplay[i].text = "*Armor Piercing: +" + droppedWeapon.WeaponStats.IgnoreArmor.ToString();
                 i++;
             }
             if (droppedWeapon.WeaponStats.ThreeRoundBurst)
@@ -271,22 +282,22 @@ public class ItemDisplay : MonoBehaviour {
             }
             if (droppedWeapon.WeaponStats.AimAssist > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*Assisted Aim: +" + droppedWeapon.WeaponStats.AimAssist.ToString()+"%";
+                GameManagerScript.statDisplay[i].text = "*Assisted Aim: +" + droppedWeapon.WeaponStats.AimAssist.ToString() + "%";
                 i++;
             }
             if (droppedWeapon.WeaponStats.Leech > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*Leeches "+droppedWeapon.WeaponStats.Leech.ToString()+" health per each kill";
+                GameManagerScript.statDisplay[i].text = "*Leeches " + droppedWeapon.WeaponStats.Leech.ToString() + " health per each kill";
                 i++;
             }
             if (droppedWeapon.WeaponStats.AdditionalXP > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*+"+(droppedWeapon.WeaponStats.AdditionalXP*100).ToString()+"% more experience after each kill";
+                GameManagerScript.statDisplay[i].text = "*+" + (droppedWeapon.WeaponStats.AdditionalXP * 100).ToString() + "% more experience after each kill";
                 i++;
             }
             if (droppedWeapon.WeaponStats.AdditionalGold > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*+"+(droppedWeapon.WeaponStats.AdditionalGold*100).ToString() + "% more gold after each kill";
+                GameManagerScript.statDisplay[i].text = "*+" + (droppedWeapon.WeaponStats.AdditionalGold * 100).ToString() + "% more gold after each kill";
                 i++;
             }
             if (droppedWeapon.WeaponStats.ReducedWeight > 0)
@@ -299,6 +310,18 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].gameObject.SetActive(false);
                 i++;
             }
-        }//end of display function
-    }//end of else if
+        }//end of else if
+        else if (gameObject.GetComponent<DroppedMisc>())//checking the misc
+        {
+            DroppedMisc droppedMisc = gameObject.GetComponent<DroppedMisc>();
+            int i = 0;
+            GameManagerScript.statDisplay[i].text = "[" + droppedMisc.MiscStats.MiscTypes.ToString() + "]";
+            i++;
+            while (i < (GameManagerScript.statDisplay.Count - 1))
+            {
+                GameManagerScript.statDisplay[i].gameObject.SetActive(false);
+                i++;
+            }
+        }//end of else if
+   }//end of display function
 }//end of class

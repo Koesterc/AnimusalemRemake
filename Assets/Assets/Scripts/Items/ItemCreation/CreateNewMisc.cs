@@ -11,14 +11,13 @@ public class CreateNewMisc : MonoBehaviour
 
     void Start()
     {
-        CreateMisc();
-        Transform _weight = gameObject.transform.Find("Weight");
-        Transform _name = gameObject.transform.Find("Type");
-        _weight.GetComponent<Text>().text = newMisc.Weight.ToString() + " lbs";
-        _name.GetComponent<Text>().text = newMisc.ItemName;
-        //print(newMisc.ItemID);
-        //print(newMisc.ItemName);
-        //print(newMisc.ItemDesc);
+      
+            CreateMisc();
+            Transform _weight = gameObject.transform.Find("Weight");
+            Transform _name = gameObject.transform.Find("Type");
+            _weight.GetComponent<Text>().text = newMisc.Weight.ToString() + " lbs";
+            _name.GetComponent<Text>().text = newMisc.ItemName;
+       
     }
 
     private void CreateMisc()
@@ -88,17 +87,18 @@ public class CreateNewMisc : MonoBehaviour
     }
     public void DroppedMisc()
     {
-        GameObject clone;
-        clone = Instantiate(droppedMisc, Controls._Player.transform.position, transform.rotation) as GameObject;
-        clone.AddComponent<DroppedMisc>().DropMisc(newMisc);
-        Destroy(gameObject);
+        if (Input.GetKeyDown("return"))
+        {
+            GameObject clone;
+            clone = Instantiate(droppedMisc, Controls._Player.transform.position, transform.rotation) as GameObject;
+            clone.AddComponent<DroppedMisc>().DropMisc(newMisc);
+            Destroy(gameObject);
+        }
     }
     public void UpdateSelection()
     {
         Inventory._desc.text = newMisc.ItemDesc;
         Inventory._name.text = newMisc.ItemName;
         Inventory._image = newMisc.Icon;
-
-        //weapon bars
     }
 }

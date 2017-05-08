@@ -17,10 +17,12 @@ public class Inventory : MonoBehaviour
     public static Image cdBar;
     public static GameObject inventory;
     public static CanvasGroup fade;
+    public static GameObject inventoryContent;
 
     void Awake()
     {
         inventory = gameObject;
+        inventoryContent = transform.Find("ScrollRect/Content").gameObject;
         fade = gameObject.GetComponent<CanvasGroup>();
         _desc = GameObject.Find("Canvas/Inventory/Desc/ItemDesc").GetComponent<Text>();
         _name = GameObject.Find("Canvas/Inventory/Desc/ItemName").GetComponent<Text>();
