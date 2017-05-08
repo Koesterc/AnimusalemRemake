@@ -8,16 +8,19 @@ public class CreateNewMisc : MonoBehaviour
     private BaseMisc newMisc;
     public bool isItem;
     public GameObject droppedMisc;
+    static bool refresh;
 
     void Start()
     {
-      
+        if (!refresh)
+        {
+            refresh = true;
             CreateMisc();
             Transform _weight = gameObject.transform.Find("Weight");
             Transform _name = gameObject.transform.Find("Type");
             _weight.GetComponent<Text>().text = newMisc.Weight.ToString() + " lbs";
             _name.GetComponent<Text>().text = newMisc.ItemName;
-       
+        }
     }
 
     private void CreateMisc()
@@ -30,7 +33,7 @@ public class CreateNewMisc : MonoBehaviour
 
     private void ChooseMiscType()
     {
-        int temp = Random.Range(0, 7);
+        int temp = Random.Range(0, 13);
 
         switch (temp)
         {
@@ -77,6 +80,62 @@ public class CreateNewMisc : MonoBehaviour
                 newMisc.Weight = 1f;
                 break;
             case 6:
+                newMisc.MiscTypes = BaseMisc.MiscType.HandgunAmmo;
+                //assigning the name
+                newMisc.ItemName = "Handgun Bullets";
+                newMisc.ItemDesc = "9mm handgun bullets.";
+                newMisc.Quanntity = Random.Range(5, 15);
+                newMisc.Weight = 1f;
+                break;
+            case 7:
+                newMisc.MiscTypes = BaseMisc.MiscType.ShotgunShells;
+                //assigning the name
+                newMisc.ItemName = "12 gauge shells";
+                newMisc.ItemDesc = "It seems as though its purpose serves to unlock old chests, of which many contain items.";
+                newMisc.Quanntity = Random.Range(1, 3);
+                newMisc.Weight = 1f;
+                break;
+            case 8:
+                newMisc.MiscTypes = BaseMisc.MiscType.RifleAmmo;
+                //assigning the name
+                newMisc.ItemName = "Rifle Rounds";
+                newMisc.ItemDesc = "30 caliber rounds.";
+                newMisc.Quanntity = Random.Range(1, 5);
+                newMisc.Weight = 1f;
+                break;
+            case 9:
+                newMisc.MiscTypes = BaseMisc.MiscType.MachinegunAmmo;
+                //assigning the name
+                newMisc.ItemName = "Machinegun Bullets";
+                newMisc.ItemDesc = ".40 carbine bullets.";
+                newMisc.Quanntity = Random.Range(5, 20);
+                newMisc.Weight = 1f;
+                break;
+            case 10:
+                newMisc.MiscTypes = BaseMisc.MiscType.AssaultRifleAmmo;
+                //assigning the name
+                newMisc.ItemName = "Assault Rifle Ammunition";
+                newMisc.ItemDesc = "5.56 NATO rounds.";
+                newMisc.Quanntity = Random.Range(5, 15);
+                newMisc.Weight = 1f;
+                break;
+            case 11:
+                newMisc.MiscTypes = BaseMisc.MiscType.MagnumAmmo;
+                //assigning the name
+                newMisc.ItemName = "Magnum Rounds";
+                newMisc.ItemDesc = ".357 magnum rounds.";
+                newMisc.Quanntity = Random.Range(1, 2);
+                newMisc.Weight = 1f;
+                break;
+            case 12:
+                newMisc.MiscTypes = BaseMisc.MiscType.ExplosiveRounds;
+                //assigning the name
+                newMisc.ItemName = "Explosive Rounds";
+                newMisc.ItemDesc = "It seems as though its purpose serves to unlock old chests, of which many contain items.";
+                newMisc.Quanntity = 1;
+                newMisc.Weight = 1f;
+                break;
+            case 13:
                 newMisc.MiscTypes = BaseMisc.MiscType.OldKey;
                 //assigning the name
                 newMisc.ItemName = "Old Key";
@@ -91,10 +150,19 @@ public class CreateNewMisc : MonoBehaviour
         {
             GameObject clone;
             clone = Instantiate(droppedMisc, Controls._Player.transform.position, transform.rotation) as GameObject;
-            clone.AddComponent<DroppedMisc>().DropMisc(newMisc);
+            clone.GetComponent<DroppedMisc>().DropMisc(newMisc);
             Destroy(gameObject);
         }
     }
+    public void pickedUpMisc(BaseMisc myMisc)
+    {
+        newMisc = myMisc;
+        Transform _weight = gameObject.transform.Find("Weight");
+        Transform _name = gameObject.transform.Find("Type");
+        _weight.GetComponent<Text>().text = newMisc.Weight.ToString() + " lbs";
+        _name.GetComponent<Text>().text = newMisc.ItemName;
+    }
+
     public void UpdateSelection()
     {
         Inventory._desc.text = newMisc.ItemDesc;

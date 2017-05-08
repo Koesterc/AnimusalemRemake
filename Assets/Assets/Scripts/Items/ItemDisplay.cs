@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemDisplay : MonoBehaviour {
-
     public Text myText;
     static bool isActive = false;
     bool pickUp = false;
@@ -60,8 +59,25 @@ public class ItemDisplay : MonoBehaviour {
             //check weight
             //add weight
             //play sound
-            gameObject.GetComponent<DroppedArmor>().PickedUp();
-            Destroy(gameObject);
+            isActive = false;
+            pickUp = false;
+            GameManagerScript.stat.gameObject.SetActive(false);
+            if (gameObject.GetComponent<DroppedArmor>())
+            {
+                gameObject.GetComponent<DroppedArmor>().PickedUp();
+                Destroy(gameObject);
+            }
+            else if(gameObject.GetComponent<DroppedWeapon>())
+            {
+                gameObject.GetComponent<DroppedWeapon>().PickedUp();
+                Destroy(gameObject);
+            }
+            else if (gameObject.GetComponent<DroppedMisc>())
+            {
+                gameObject.GetComponent<DroppedMisc>().PickedUp();
+                Destroy(gameObject);
+            }
+
         }
     }
 
@@ -315,7 +331,11 @@ public class ItemDisplay : MonoBehaviour {
         {
             DroppedMisc droppedMisc = gameObject.GetComponent<DroppedMisc>();
             int i = 0;
-            GameManagerScript.statDisplay[i].text = "[" + droppedMisc.MiscStats.MiscTypes.ToString() + "]";
+            GameManagerScript.statDisplay[i].text = "[" + droppedMisc.MiscStats.ItemName + "]";
+            i++;
+            GameManagerScript.statDisplay[i].text = " ";
+            i++;
+            GameManagerScript.statDisplay[i].text = "Quantity: " + droppedMisc.MiscStats.Quanntity;
             i++;
             while (i < (GameManagerScript.statDisplay.Count - 1))
             {

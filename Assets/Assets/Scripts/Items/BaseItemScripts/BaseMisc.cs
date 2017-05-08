@@ -12,9 +12,24 @@ public class BaseMisc : BaseItem {
         PainKiller,
         HolyWater,
         DreamCatcher,
-        Ammo,
+        HandgunAmmo,
+        ShotgunShells,
+        RifleAmmo,
+        MachinegunAmmo,
+        AssaultRifleAmmo,
+        MagnumAmmo,
+        ExplosiveRounds,
         OldKey
     }
+    int quantity;
+
+    public int Quanntity
+    {
+        get { return quantity; }
+        set { quantity = value; }
+    }
+
+
     private MiscType miscTypes;
 
     public MiscType MiscTypes

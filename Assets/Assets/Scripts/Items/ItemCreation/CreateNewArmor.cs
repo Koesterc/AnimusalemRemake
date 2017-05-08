@@ -7,13 +7,18 @@ public class CreateNewArmor : MonoBehaviour
 {
     private BaseArmor newArmor;
     public GameObject droppedArmor;
+    static bool refresh;
     void Start()
     {
-        CreateArmor();
-        Transform _weight = gameObject.transform.Find("Weight");
-        Transform _name = gameObject.transform.Find("Type");
-        _weight.GetComponent<Text>().text = newArmor.Weight.ToString() + " lbs";
-        _name.GetComponent<Text>().text = newArmor.ItemName;
+        if (!refresh)
+        {
+            refresh = true;
+            CreateArmor();
+            Transform _weight = gameObject.transform.Find("Weight");
+            Transform _name = gameObject.transform.Find("Type");
+            _weight.GetComponent<Text>().text = newArmor.Weight.ToString() + " lbs";
+            _name.GetComponent<Text>().text = newArmor.ItemName;
+        }
     }
     private void CreateArmor()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DroppedArmor : MonoBehaviour
 {
-    public GameObject itemPrefab;
+    public GameObject inventoryArmorPrefab;
     BaseArmor dropArmor = new BaseArmor();
     public void DropArmor(BaseArmor myArmor)
     {
@@ -16,10 +16,10 @@ public class DroppedArmor : MonoBehaviour
     public void PickedUp()
     {
         GameObject clone;
-        clone = Instantiate(itemPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
+        clone = Instantiate(inventoryArmorPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
         clone.transform.localScale = new Vector3 (1,1,1);
-        clone.AddComponent<CreateNewArmor>().pickedUpArmor(dropArmor);
+        clone.GetComponent<CreateNewArmor>().pickedUpArmor(dropArmor);
         Destroy(gameObject);
     }
 

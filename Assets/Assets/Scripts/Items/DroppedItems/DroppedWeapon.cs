@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DroppedWeapon : MonoBehaviour
 {
+    public GameObject inventoryWeaponPrefab;
     BaseWeapon dropWeapon = new BaseWeapon();
     public void DropWeapon(BaseWeapon myWeapon)
     {
@@ -14,5 +15,15 @@ public class DroppedWeapon : MonoBehaviour
     public BaseWeapon WeaponStats
     {
         get { return dropWeapon; }
+    }
+
+    public void PickedUp()
+    {
+        GameObject clone;
+        clone = Instantiate(inventoryWeaponPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
+        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+        clone.transform.localScale = new Vector3(1, 1, 1);
+        clone.GetComponent<CreateNewWeapon>().pickedUpWeapon(dropWeapon);
+        Destroy(gameObject);
     }
 }

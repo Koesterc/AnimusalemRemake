@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class CreateNewWeapon : MonoBehaviour {
     private BaseWeapon newWeapon;
-    public GameObject droppedWeapon; 
+    public GameObject droppedWeapon;
+    static bool refresh;
     private string[] myName = //handgun 0-7
     { "Custom HG40", "SDK5","9mm Oppressor", "Anacanda", "Blacklist", "Punisher", "SNAL-141", "Trident",
      //shotguns 8-14
@@ -23,15 +24,20 @@ public class CreateNewWeapon : MonoBehaviour {
 
     void Start()
     {
-        CreateWeapon();
-        Transform _weight = gameObject.transform.Find("Weight");
-        Transform _name = gameObject.transform.Find("Type");
-        _weight.GetComponent<Text>().text = newWeapon.Weight.ToString() + " lbs";
-        _name.GetComponent<Text>().text = newWeapon.ItemName;
+        if (!refresh)
+        {
+            refresh = true;
+            CreateWeapon();
+            Transform _weight = gameObject.transform.Find("Weight");
+            Transform _name = gameObject.transform.Find("Type");
+            _weight.GetComponent<Text>().text = newWeapon.Weight.ToString() + " lbs";
+            _name.GetComponent<Text>().text = newWeapon.ItemName;
+        }
     }
 
     public void CreateWeapon()
     {
+
         newWeapon = new BaseWeapon();
         newWeapon.ItemID = Random.Range(0, 10000);
         int temp = Random.Range(0, 100);
@@ -139,7 +145,7 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Damage/4) + (int)(6 - newWeapon.Reload) + (int)(4 - (newWeapon.Firerate * 3)) +
       (int)(newWeapon.CriticalChance * 10) + (int)(newWeapon.CriticalDamage * 2) +
       (int)(newWeapon.Accuracy * 3));
-                newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a long sturdy rifle. Rifles have a far greater chance to perform critical hits and deal greater damage when achieved.";
+                newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a long sturdy rifle. Rifles have a far greater chance to perform critical hits and deal greater damage than other firearms when achieved.";
                 break;
             case 2:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Shotgun;
@@ -220,7 +226,7 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Damage/4) + (int)(8 - newWeapon.Reload) + (int)(8 - (newWeapon.Firerate * 20)) +
       (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
       (int)(newWeapon.Accuracy * 3));
-                newWeapon.ItemDesc = "The sub machienguns, such as the "+newWeapon.ItemName+"'s, are extremely light and and easy to handle thus they are superior to all other weapons when it comes down to capacity, fire rate and reload speed.";
+                newWeapon.ItemDesc = "The sub machineguns, such as the "+newWeapon.ItemName+", are extremely light and and easy to handle thus they are superior to all other weapons when it comes down to capacity, fire rate, and reload.";
                 break;
             case 4:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.AssaultRifle;
@@ -345,9 +351,17 @@ public class CreateNewWeapon : MonoBehaviour {
         {
             GameObject clone;
             clone = Instantiate(droppedWeapon, Controls._Player.transform.position, transform.rotation) as GameObject;
-            clone.AddComponent<DroppedWeapon>().DropWeapon(newWeapon);
+            clone.GetComponent<DroppedWeapon>().DropWeapon(newWeapon);
             Destroy(gameObject);
         }
+    }
+    public void pickedUpWeapon(BaseWeapon myWeapon)
+    {
+        newWeapon = myWeapon;
+        Transform _weight = gameObject.transform.Find("Weight");
+        Transform _name = gameObject.transform.Find("Type");
+        _weight.GetComponent<Text>().text = newWeapon.Weight.ToString() + " lbs";
+        _name.GetComponent<Text>().text = newWeapon.ItemName;
     }
 
     public void UpdateSelection()
