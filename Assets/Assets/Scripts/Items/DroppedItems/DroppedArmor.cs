@@ -19,7 +19,8 @@ public class DroppedArmor : MonoBehaviour
         clone = Instantiate(inventoryArmorPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
         clone.transform.localScale = new Vector3 (1,1,1);
-        clone.GetComponent<CreateNewArmor>().pickedUpArmor(dropArmor);
+        clone.GetComponent<InventoryArmor>().pickedUpArmor(dropArmor);
+        InventoryList.itemList.Add(clone.gameObject);
         Destroy(gameObject);
     }
 

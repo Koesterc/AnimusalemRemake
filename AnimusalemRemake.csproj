@@ -93,7 +93,11 @@
     <Compile Include="Assets\Assets\Scripts\Items\DroppedItems\DroppedMisc.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\DroppedItems\DroppedWeapon.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Gun.cs" />
-    <Compile Include="Assets\Assets\Scripts\Items\Inentory\Inventory.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\Inventory\InventoryList.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\InventoryItems\InventoryArmor.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\InventoryItems\InventoryMisc.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\InventoryItems\InventoryWeapon.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\ItemCreation\CreateNewArmor.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\ItemCreation\CreateNewBoots.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\ItemCreation\CreateNewGloves.cs" />

@@ -1,26 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CreateNewArmor : MonoBehaviour
 {
     private BaseArmor newArmor;
-    public GameObject droppedArmor;
-    static bool refresh;
     void Start()
     {
-        if (!refresh)
-        {
-            refresh = true;
-            CreateArmor();
-            Transform _weight = gameObject.transform.Find("Weight");
-            Transform _name = gameObject.transform.Find("Type");
-            _weight.GetComponent<Text>().text = newArmor.Weight.ToString() + " lbs";
-            _name.GetComponent<Text>().text = newArmor.ItemName;
-        }
     }
-    private void CreateArmor()
+    public void CreateArmor()
     {
         newArmor = new BaseArmor();
         newArmor.ItemID = Random.Range(0,10000);
@@ -103,30 +91,9 @@ public class CreateNewArmor : MonoBehaviour
                 break;
         }
     }
-
-    public void DroppedArmor()
+    public BaseArmor NewArmor
     {
-        if (Input.GetKeyDown("return"))
-        {
-            GameObject clone;
-            clone = Instantiate(droppedArmor, Controls._Player.transform.position, transform.rotation) as GameObject;
-            clone.GetComponent<DroppedArmor>().DropArmor(newArmor);
-            Destroy(gameObject);
-        }
-    }
-    public void pickedUpArmor(BaseArmor myArmor)
-    {
-        newArmor = myArmor;
-        Transform _weight = gameObject.transform.Find("Weight");
-        Transform _name = gameObject.transform.Find("Type");
-        _weight.GetComponent<Text>().text = newArmor.Weight.ToString() + " lbs";
-        _name.GetComponent<Text>().text = newArmor.ItemName;
-    }
-
-    public void UpdateSelection()
-    {
-        Inventory._desc.text = newArmor.ItemDesc;
-        Inventory._name.text = newArmor.ItemName;
-        Inventory._image = newArmor.Icon;
+        get { return newArmor; }
+        set { newArmor = value; }
     }
 }

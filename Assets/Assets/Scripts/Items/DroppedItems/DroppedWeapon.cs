@@ -23,7 +23,8 @@ public class DroppedWeapon : MonoBehaviour
         clone = Instantiate(inventoryWeaponPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
         clone.transform.localScale = new Vector3(1, 1, 1);
-        clone.GetComponent<CreateNewWeapon>().pickedUpWeapon(dropWeapon);
+        clone.GetComponent<InventoryWeapon>().pickedUpWeapon(dropWeapon);
+        InventoryList.itemList.Add(clone);
         Destroy(gameObject);
     }
 }

@@ -47,7 +47,7 @@ public class DroppedMisc : MonoBehaviour
         clone = Instantiate(inventoryMiscPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
         clone.transform.localScale = new Vector3(1, 1, 1);
-        clone.GetComponent<CreateNewMisc>().pickedUpMisc(dropMisc);
+        clone.GetComponent<InventoryMisc>().pickedUpMisc(dropMisc);
         switch (dropMisc.MiscTypes)
         {
             case BaseMisc.MiscType.HandgunAmmo:
@@ -72,6 +72,7 @@ public class DroppedMisc : MonoBehaviour
                 PlayerStats.explosiveAmmo += dropMisc.Quanntity;
                 break;
         }
+        InventoryList.itemList.Add(clone.gameObject);
         Destroy(gameObject);
     }
 

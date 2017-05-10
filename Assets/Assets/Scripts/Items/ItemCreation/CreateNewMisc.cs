@@ -1,29 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CreateNewMisc : MonoBehaviour
 {
     private BaseMisc newMisc;
-    public bool isItem;
-    public GameObject droppedMisc;
-    static bool refresh;
 
-    void Start()
-    {
-        if (!refresh)
-        {
-            refresh = true;
-            CreateMisc();
-            Transform _weight = gameObject.transform.Find("Weight");
-            Transform _name = gameObject.transform.Find("Type");
-            _weight.GetComponent<Text>().text = newMisc.Weight.ToString() + " lbs";
-            _name.GetComponent<Text>().text = newMisc.ItemName;
-        }
-    }
 
-    private void CreateMisc()
+
+
+    public void CreateMisc()
     {
         newMisc = new BaseMisc();
         newMisc.ItemID = Random.Range(0, 10000);
@@ -144,29 +130,10 @@ public class CreateNewMisc : MonoBehaviour
                 break;
         }
     }
-    public void DroppedMisc()
-    {
-        if (Input.GetKeyDown("return"))
-        {
-            GameObject clone;
-            clone = Instantiate(droppedMisc, Controls._Player.transform.position, transform.rotation) as GameObject;
-            clone.GetComponent<DroppedMisc>().DropMisc(newMisc);
-            Destroy(gameObject);
-        }
-    }
-    public void pickedUpMisc(BaseMisc myMisc)
-    {
-        newMisc = myMisc;
-        Transform _weight = gameObject.transform.Find("Weight");
-        Transform _name = gameObject.transform.Find("Type");
-        _weight.GetComponent<Text>().text = newMisc.Weight.ToString() + " lbs";
-        _name.GetComponent<Text>().text = newMisc.ItemName;
-    }
 
-    public void UpdateSelection()
+    public BaseMisc NewMisc
     {
-        Inventory._desc.text = newMisc.ItemDesc;
-        Inventory._name.text = newMisc.ItemName;
-        Inventory._image = newMisc.Icon;
+        get { return newMisc; }
+        set { newMisc = value; }
     }
 }

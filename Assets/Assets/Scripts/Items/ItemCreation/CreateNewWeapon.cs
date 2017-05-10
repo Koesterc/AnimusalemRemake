@@ -1,12 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CreateNewWeapon : MonoBehaviour {
     private BaseWeapon newWeapon;
-    public GameObject droppedWeapon;
-    static bool refresh;
     private string[] myName = //handgun 0-7
     { "Custom HG40", "SDK5","9mm Oppressor", "Anacanda", "Blacklist", "Punisher", "SNAL-141", "Trident",
      //shotguns 8-14
@@ -24,15 +21,8 @@ public class CreateNewWeapon : MonoBehaviour {
 
     void Start()
     {
-        if (!refresh)
-        {
-            refresh = true;
-            CreateWeapon();
-            Transform _weight = gameObject.transform.Find("Weight");
-            Transform _name = gameObject.transform.Find("Type");
-            _weight.GetComponent<Text>().text = newWeapon.Weight.ToString() + " lbs";
-            _name.GetComponent<Text>().text = newWeapon.ItemName;
-        }
+
+  
     }
 
     public void CreateWeapon()
@@ -59,7 +49,7 @@ public class CreateNewWeapon : MonoBehaviour {
         newWeapon.Weight = newWeapon.Weight - (newWeapon.Weight*newWeapon.ReducedWeight);
     }
 
-    private void ChooseWeaponType()
+    public void ChooseWeaponType()
     {
         int temp = Random.Range(0, 7);
 
@@ -344,38 +334,9 @@ public class CreateNewWeapon : MonoBehaviour {
                 break;
         }
     }
-
-    public void DroppedWeapon()
+    public BaseWeapon NewWeapon
     {
-        if (Input.GetKeyDown("return"))
-        {
-            GameObject clone;
-            clone = Instantiate(droppedWeapon, Controls._Player.transform.position, transform.rotation) as GameObject;
-            clone.GetComponent<DroppedWeapon>().DropWeapon(newWeapon);
-            Destroy(gameObject);
-        }
-    }
-    public void pickedUpWeapon(BaseWeapon myWeapon)
-    {
-        newWeapon = myWeapon;
-        Transform _weight = gameObject.transform.Find("Weight");
-        Transform _name = gameObject.transform.Find("Type");
-        _weight.GetComponent<Text>().text = newWeapon.Weight.ToString() + " lbs";
-        _name.GetComponent<Text>().text = newWeapon.ItemName;
-    }
-
-    public void UpdateSelection()
-    {
-        Inventory._desc.text = newWeapon.ItemDesc;
-        Inventory._name.text = newWeapon.ItemName;
-        Inventory._image = newWeapon.Icon;
-
-        Inventory.rlBar.transform.localScale = new Vector3(newWeapon.ReloadLvl/5,1,1);
-        Inventory.frBar.transform.localScale = new Vector3(newWeapon.ReloadLvl / 5, 1, 1);
-        Inventory.dmgBar.transform.localScale = new Vector3(newWeapon.FireRateLvl / 5,1,1);
-        Inventory.ccBar.transform.localScale = new Vector3(newWeapon.DamageLvl / 5, 1, 1);
-        Inventory.cdBar.transform.localScale = new Vector3(newWeapon.CapacityLvl / 5, 1, 1);
-        Inventory.accBar.transform.localScale = new Vector3(newWeapon.CriticalChanceLvl / 5, 1, 1);
-        Inventory.capBar.transform.localScale = new Vector3(newWeapon.CriticalDamageLvl / 5,1,1);
+        get { return newWeapon; }
+        set { newWeapon = value; }
     }
 }
