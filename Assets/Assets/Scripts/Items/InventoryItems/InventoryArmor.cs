@@ -25,13 +25,25 @@ public class InventoryArmor : MonoBehaviour
         if (Input.GetKeyDown("return"))
         {
             GameObject clone;
-            clone = Instantiate(droppedArmor, Controls._Player.transform.position, transform.rotation) as GameObject;
+            Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
+            clone = Instantiate(droppedArmor, pos, transform.rotation) as GameObject;
             clone.GetComponent<DroppedArmor>().DropArmor(itemArmor);
-            InventoryList.itemList.Remove(gameObject);
-            //  print(InventoryList.itemList.gameObject);
-            //     InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList.NextOf(gameObject));
-
-            Destroy(gameObject);
+            for (int i = 0; i < InventoryList.itemList.Count; i++)
+            {
+                if (InventoryList.itemList[i] == gameObject)
+                {
+                    InventoryList.itemList.Remove(gameObject);
+                    Destroy(gameObject);
+                    if (InventoryList.itemList.Count > 0)
+                    {
+                        if (i != InventoryList.itemList.Count)
+                            InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+                        else
+                            InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+                        i = InventoryList.itemList.Count;
+                    }
+                }//end of if
+            }//end of forloop
         }
     }
     public void pickedUpArmor(BaseArmor myArmor)

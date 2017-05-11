@@ -9,6 +9,7 @@ public class InventoryList : MonoBehaviour
     //public static Dictionary<string,GameObject> itemList = new Dictionary<string,GameObject>();
     public static List<GameObject> itemList = new List<GameObject>();
     public static Scrollbar scrollBar;
+    public static int index;
 
     void Awake()
     {
@@ -35,12 +36,14 @@ public class InventoryList : MonoBehaviour
                 CreateNewMisc cm = r.GetComponent<CreateNewMisc>();
                 cm.CreateMisc();
             }
+            index = 0;
             StartCoroutine (Wait());
         }
     }
 
     void OnEnable()
     {
+        index = 0;
         StartCoroutine(Wait());
     }
 
