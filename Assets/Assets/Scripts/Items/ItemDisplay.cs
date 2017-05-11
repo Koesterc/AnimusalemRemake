@@ -159,6 +159,26 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].text = "*Reinforced Defense: +" + droppedArmor.ArmorStats.EnhancedDefense.ToString();
                 i++;
             }
+            if (droppedArmor.ArmorStats.PoisonRes > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Poison Tolerance: +" + droppedArmor.ArmorStats.PoisonRes.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.FireRes > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Fire Resistance: +" + droppedArmor.ArmorStats.FireRes.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.ColdRes > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Cold Protection: +" + droppedArmor.ArmorStats.ColdRes.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.LightRes> 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Light Asborption: +" + droppedArmor.ArmorStats.LightRes.ToString();
+                i++;
+            }
             if (droppedArmor.ArmorStats.Constitution > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Constitution: +" + droppedArmor.ArmorStats.Constitution.ToString();
@@ -274,6 +294,11 @@ public class ItemDisplay : MonoBehaviour {
             if (droppedWeapon.WeaponStats.ExtendedClip > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Extended Magazine: +" + droppedWeapon.WeaponStats.ExtendedClip.ToString();
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.ModifiedAccuracy > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Modified Accuracy: +" + (droppedWeapon.WeaponStats.ModifiedAccuracy * 100).ToString() + "%";
                 i++;
             }
             if (droppedWeapon.WeaponStats.IncreasedCriticalChance > 0)

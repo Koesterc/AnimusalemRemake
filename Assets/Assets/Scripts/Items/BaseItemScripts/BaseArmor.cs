@@ -13,6 +13,10 @@ public class BaseArmor : BaseItem
     private ArmorType armorTypes;
 
     private int speedReduction;
+    private int fireRes;
+    private int lightRes;
+    private int coldRes;
+    private int poisonRes;
     private int defense;
     private int enhancedDefense;
 
@@ -25,6 +29,26 @@ public class BaseArmor : BaseItem
     {
         get { return enhancedDefense; }
         set { enhancedDefense = value; }
+    }
+    public int ColdRes
+    {
+        get { return coldRes; }
+        set { coldRes = value; }
+    }
+    public int FireRes
+    {
+        get { return fireRes; }
+        set { fireRes = value; }
+    }
+    public int PoisonRes
+    {
+        get { return poisonRes; }
+        set { poisonRes = value; }
+    }
+    public int LightRes
+    {
+        get { return lightRes; }
+        set { lightRes = value; }
     }
     public int SpeedReduction
     {

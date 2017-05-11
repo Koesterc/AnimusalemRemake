@@ -42,6 +42,9 @@ public class CreateNewWeapon : MonoBehaviour {
         temp = Random.Range(0, 100);
         if (temp >= 90)
             newWeapon.ReducedWeight = Mathf.Round(Random.Range(.1f, .5f) * 100) / 100;
+        newWeapon.LevelRestriction = Random.Range(PlayerStats.curLevel-5, PlayerStats.curLevel + 5);
+        if (newWeapon.LevelRestriction < 1)
+            newWeapon.LevelRestriction = 1;
 
         ChooseWeaponType();
         newWeapon.SellValue += ((int)(newWeapon.AdditionalGold * 8) + ((int)newWeapon.AdditionalXP * 8) +
@@ -61,7 +64,6 @@ public class CreateNewWeapon : MonoBehaviour {
                 newWeapon.ItemName = myName[Random.Range(0, 7)];
 
                 //adding bonuses
-                //adding bonuses
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.EnhancedDamage += Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
@@ -73,13 +75,15 @@ public class CreateNewWeapon : MonoBehaviour {
                     newWeapon.PoisonDamage = Random.Range(1, 5);
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
-                    newWeapon.IncreasedCriticalChance = Random.Range(.03f, .05f);
+                    newWeapon.IncreasedCriticalChance = Mathf.Round(Random.Range(.3f, .05f) * 100) / 100;
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
                 temp = Random.Range(0, 100);
                 if (temp >= 90 || newWeapon.ItemName == "Trident")
                     newWeapon.ThreeRoundBurst = true;
+
+                newWeapon.Weight = Random.Range(3, 5);
 
                 //weapon stats
                 newWeapon.Damage = Random.Range(8+newWeapon.LevelRestriction+newWeapon.EnhancedDamage, 15+newWeapon.LevelRestriction + newWeapon.EnhancedDamage);
@@ -121,6 +125,11 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.ThreeRoundBurst = true;
+                newWeapon.Weight = Random.Range(4, 7);
+
+                newWeapon.RequiredDexterity = Random.Range(0, 6 * newWeapon.LevelRestriction);
+                newWeapon.RequiredIntelligence = Random.Range(0, 4 * newWeapon.LevelRestriction);
+                newWeapon.RequiredStrength = Random.Range(0, 2 * newWeapon.LevelRestriction);
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.8f, 1.2f) * 10) / 10;
@@ -160,6 +169,10 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
+                newWeapon.Weight = Random.Range(7, 10);
+
+                newWeapon.RequiredDexterity = Random.Range(0, 2 * newWeapon.LevelRestriction);
+                newWeapon.RequiredStrength = Random.Range(0, 6 * newWeapon.LevelRestriction);
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.8f, 1.2f) * 10) / 10;
@@ -202,6 +215,11 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.ThreeRoundBurst = true;
+                newWeapon.Weight = Random.Range(3, 5);
+
+
+                newWeapon.RequiredDexterity = Random.Range(0, 6 * newWeapon.LevelRestriction);
+                newWeapon.RequiredIntelligence = Random.Range(0, 2 * newWeapon.LevelRestriction);
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.08f, .12f) * 10) / 10;
@@ -243,6 +261,12 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.ThreeRoundBurst = true;
+                newWeapon.Weight = Random.Range(7, 10);
+
+                newWeapon.RequiredDexterity = Random.Range(0, 3 * newWeapon.LevelRestriction);
+                newWeapon.RequiredIntelligence = Random.Range(0, 2 * newWeapon.LevelRestriction);
+                newWeapon.RequiredStrength = Random.Range(0, 4 * newWeapon.LevelRestriction);
+
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(.14f, .18f) * 100) / 10;
@@ -281,6 +305,11 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.IgnoreArmor = Random.Range(1, 10);
+                newWeapon.Weight = Random.Range(4, 7);
+
+                newWeapon.RequiredDexterity = Random.Range(0, 4 * newWeapon.LevelRestriction);
+                newWeapon.RequiredIntelligence = Random.Range(0, 3 * newWeapon.LevelRestriction);
+                newWeapon.RequiredStrength = Random.Range(0, 5 * newWeapon.LevelRestriction);
 
                 //weapon stats
                 newWeapon.Firerate = Mathf.Round(Random.Range(1.2f, 1.6f) * 10) / 10;
@@ -316,6 +345,11 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newWeapon.IgnoreArmor = Random.Range(1, 10);
+                newWeapon.Weight = Random.Range(15, 20);
+
+                newWeapon.RequiredDexterity = Random.Range(0, 6 * newWeapon.LevelRestriction);
+                newWeapon.RequiredIntelligence = Random.Range(0, 3 * newWeapon.LevelRestriction);
+                newWeapon.RequiredStrength = Random.Range(0, 8 * newWeapon.LevelRestriction);
 
                 //weapon stats
                 newWeapon.Damage = Random.Range(40 + (newWeapon.LevelRestriction * 8) + newWeapon.EnhancedDamage, 150 + (newWeapon.LevelRestriction * 8) + newWeapon.EnhancedDamage);

@@ -45,6 +45,8 @@ public class BaseWeapon : BaseItem
     //exclusives
     private int poisonDamage;
     private int enhancedDamage;
+    private float expeditiveReload;
+    private float acceleratedFire;
     private int extendedClip;
     private float increasedCriticalChance;
     private int ignoreArmor;
@@ -53,6 +55,7 @@ public class BaseWeapon : BaseItem
     private float aimAssist; //makes the crossair travel slower when it touches the enemy
     private float additionalXP;
     private float additionalGold;
+    private float modifiedAccuracy;
     private bool threeRoundBurst;
 
     //getters setters
@@ -60,6 +63,16 @@ public class BaseWeapon : BaseItem
     {
         get { return threeRoundBurst; }
         set { threeRoundBurst = value; }
+    }
+    public float ExpeditiveReload
+    {
+        get { return expeditiveReload; }
+        set { expeditiveReload = value; }
+    }
+    public float AcceleratedFire
+    {
+        get { return acceleratedFire; }
+        set { acceleratedFire = value; }
     }
     public int PoisonDamage
     {
@@ -70,6 +83,11 @@ public class BaseWeapon : BaseItem
     {
         get { return enhancedDamage; }
         set { enhancedDamage = value; }
+    }
+    public float ModifiedAccuracy
+    {
+        get { return modifiedAccuracy; }
+        set { modifiedAccuracy = value; }
     }
     public int ExtendedClip
     {

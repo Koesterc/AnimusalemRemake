@@ -12,7 +12,9 @@ public class CreateNewArmor : MonoBehaviour
     {
         newArmor = new BaseArmor();
         newArmor.ItemID = Random.Range(0,10000);
-        newArmor.LevelRestriction = Random.Range(1,10);
+        newArmor.LevelRestriction = Random.Range(PlayerStats.curLevel - 5, PlayerStats.curLevel + 5);
+        if (newArmor.LevelRestriction < 1)
+            newArmor.LevelRestriction = 1;
         int temp = Random.Range(0, 100);
         if (temp >= 90)//use luck here to increase the chance of magic item
             newArmor.Constitution = Random.Range(1, 5);
@@ -65,6 +67,16 @@ public class CreateNewArmor : MonoBehaviour
                 newArmor.Defense = Random.Range(1+(newArmor.LevelRestriction + newArmor.EnhancedDefense), 5 +(newArmor.LevelRestriction + newArmor.EnhancedDefense));
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
                 newArmor.RequiredStrength = Random.Range(0, newArmor.LevelRestriction * 2);
+
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newArmor.LightRes = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.ColdRes = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.FireRes = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.PoisonRes = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
                 break;
             case 1:
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Medium;
@@ -76,6 +88,14 @@ public class CreateNewArmor : MonoBehaviour
                 newArmor.Defense = Random.Range(3 + (newArmor.LevelRestriction + newArmor.EnhancedDefense), 8 + (newArmor.LevelRestriction + newArmor.EnhancedDefense));
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 2, newArmor.LevelRestriction * 3);
                 newArmor.SpeedReduction = -2;
+                if (temp >= 90)
+                    newArmor.LightRes = Random.Range(1 + newArmor.LevelRestriction, 5 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.ColdRes = Random.Range(1 + newArmor.LevelRestriction, 5 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.FireRes = Random.Range(1 + newArmor.LevelRestriction, 5 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.PoisonRes = Random.Range(1 + newArmor.LevelRestriction, 5 + newArmor.LevelRestriction);
                 break;
             case 2:
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Heavy;
@@ -88,6 +108,14 @@ public class CreateNewArmor : MonoBehaviour
                 newArmor.SpeedReduction = -4;
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
                 newArmor.RequiredStrength = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
+                if (temp >= 90)
+                    newArmor.LightRes = Random.Range(1 + newArmor.LevelRestriction, 8 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.ColdRes = Random.Range(1 + newArmor.LevelRestriction, 8 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.FireRes = Random.Range(1 + newArmor.LevelRestriction, 8 + newArmor.LevelRestriction);
+                if (temp >= 90)
+                    newArmor.PoisonRes = Random.Range(1 + newArmor.LevelRestriction, 8 + newArmor.LevelRestriction);
                 break;
         }
     }
