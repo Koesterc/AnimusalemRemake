@@ -318,11 +318,6 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].text = "*Tripple Barrel";
                 i++;
             }
-            if (droppedWeapon.WeaponStats.ThreeRoundBurst)
-            {
-                GameManagerScript.statDisplay[i].text = "*Three Round Burst";
-                i++;
-            }
             if (droppedWeapon.WeaponStats.EnhancedDamage > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Enhanced Damage: +" + droppedWeapon.WeaponStats.EnhancedDamage.ToString();

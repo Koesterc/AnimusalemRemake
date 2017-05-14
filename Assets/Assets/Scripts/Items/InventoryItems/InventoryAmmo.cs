@@ -18,29 +18,35 @@ public class InventoryAmmo : MonoBehaviour
         }
         Transform _weight = gameObject.transform.Find("Weight");
         Transform _name = gameObject.transform.Find("Type");
-        _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
         switch (itemAmmo.AmmoTypes)
         {
             case BaseAmmo.AmmoType.HandgunAmmo:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.hgAmmo + ")";
+                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.hgAmmoWeight * PlayerStats.hgAmmo) * 100) / 100).ToString() + " lbs";
                 break;
             case BaseAmmo.AmmoType.ShotgunShells:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.sgAmmo + ")";
+                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.sgAmmoWeight * PlayerStats.sgAmmo) * 100) / 100).ToString() + " lbs";
                 break;
             case BaseAmmo.AmmoType.RifleAmmo:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.rifleAmmo + ")";
+                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.rifleAmmoWeight * PlayerStats.rifleAmmo) * 100) / 100).ToString() + " lbs";
                 break;
             case BaseAmmo.AmmoType.AssaultRifleAmmo:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.arAmmo + ")";
+                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.arAmmoWeight * PlayerStats.arAmmo) * 100) / 100).ToString() + " lbs";
                 break;
             case BaseAmmo.AmmoType.MachinegunAmmo:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.mgAmmo + ")";
+                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.mgAmmoWeight * PlayerStats.mgAmmo) * 100) / 100).ToString() + " lbs";
                 break;
             case BaseAmmo.AmmoType.MagnumAmmo:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.magnumAmmo + ")";
+                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.magnumAmmoWeight * PlayerStats.magnumAmmo) * 100) / 010).ToString() + " lbs";
                 break;
             case BaseAmmo.AmmoType.ExplosiveRounds:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.explosiveAmmo + ")";
+                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.explosiveAmmoWeight * PlayerStats.explosiveAmmo) * 100) / 100).ToString() + " lbs";
                 break;
         }
     }
@@ -56,13 +62,15 @@ public class InventoryAmmo : MonoBehaviour
                     {
                         PlayerStats.hgAmmo -= 5;
                         itemAmmo.Quantity += 5;
+                        PlayerStats.curWeight -= (5*PlayerStats.hgAmmoWeight);
                         Transform _weight = gameObject.transform.Find("Weight");
                         Transform _name = gameObject.transform.Find("Type");
-                        _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
+                        _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.hgAmmoWeight * PlayerStats.hgAmmo) * 100) / 100).ToString() + " lbs";
                         _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.hgAmmo + ")";
                     }
                     else
                     {
+                        PlayerStats.curWeight -= (PlayerStats.hgAmmo * PlayerStats.hgAmmoWeight);
                         itemAmmo.Quantity += PlayerStats.hgAmmo;
                         PlayerStats.hgAmmo -= PlayerStats.hgAmmo;
                         GameObject clone;
@@ -91,15 +99,17 @@ public class InventoryAmmo : MonoBehaviour
                 case BaseAmmo.AmmoType.ShotgunShells:
                     if (PlayerStats.sgAmmo > 2)
                     {
+                        PlayerStats.curWeight -= (2 * PlayerStats.sgAmmoWeight);
                         PlayerStats.sgAmmo -= 2;
                         itemAmmo.Quantity += 2;
                         Transform _weight = gameObject.transform.Find("Weight");
                         Transform _name = gameObject.transform.Find("Type");
-                        _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
+                        _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.sgAmmoWeight * PlayerStats.sgAmmo) * 100) / 100).ToString() + " lbs";
                         _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.sgAmmo + ")";
                     }
                     else
                     {
+                        PlayerStats.curWeight -= (PlayerStats.sgAmmo * PlayerStats.sgAmmoWeight);
                         itemAmmo.Quantity += PlayerStats.sgAmmo;
                         PlayerStats.sgAmmo -= PlayerStats.sgAmmo;
                         GameObject clone;
@@ -128,15 +138,17 @@ public class InventoryAmmo : MonoBehaviour
                 case BaseAmmo.AmmoType.RifleAmmo:
                     if (PlayerStats.rifleAmmo > 2)
                     {
+                        PlayerStats.curWeight -= (2 * PlayerStats.rifleAmmoWeight);
                         PlayerStats.rifleAmmo -= 2;
                         itemAmmo.Quantity += 2;
                         Transform _weight = gameObject.transform.Find("Weight");
                         Transform _name = gameObject.transform.Find("Type");
-                        _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
+                        _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.rifleAmmoWeight * PlayerStats.rifleAmmo) * 100) / 100).ToString() + " lbs";
                         _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.rifleAmmo + ")";
                     }
                     else
                     {
+                        PlayerStats.curWeight -= (PlayerStats.rifleAmmo * PlayerStats.rifleAmmoWeight);
                         itemAmmo.Quantity += PlayerStats.rifleAmmo;
                         PlayerStats.rifleAmmo -= PlayerStats.rifleAmmo;
                         GameObject clone;
@@ -165,15 +177,17 @@ public class InventoryAmmo : MonoBehaviour
                 case BaseAmmo.AmmoType.MachinegunAmmo:
                     if (PlayerStats.mgAmmo > 10)
                     {
+                        PlayerStats.curWeight -= (10 * PlayerStats.mgAmmoWeight);
                         PlayerStats.mgAmmo -= 10;
                         itemAmmo.Quantity += 10;
                         Transform _weight = gameObject.transform.Find("Weight");
                         Transform _name = gameObject.transform.Find("Type");
-                        _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
+                        _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.mgAmmoWeight * PlayerStats.mgAmmo) * 100) / 100).ToString() + " lbs";
                         _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.mgAmmo + ")";
                     }
                     else
                     {
+                        PlayerStats.curWeight -= (PlayerStats.mgAmmo * PlayerStats.mgAmmoWeight);
                         itemAmmo.Quantity += PlayerStats.mgAmmo;
                         PlayerStats.mgAmmo -= PlayerStats.mgAmmo;
                         GameObject clone;
@@ -202,15 +216,17 @@ public class InventoryAmmo : MonoBehaviour
                 case BaseAmmo.AmmoType.AssaultRifleAmmo:
                     if (PlayerStats.arAmmo > 5)
                     {
+                        PlayerStats.curWeight -= (5 * PlayerStats.arAmmoWeight);
                         PlayerStats.arAmmo -= 5;
                         itemAmmo.Quantity += 5;
                         Transform _weight = gameObject.transform.Find("Weight");
                         Transform _name = gameObject.transform.Find("Type");
-                        _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
+                        _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.arAmmoWeight * PlayerStats.arAmmo) * 100) / 100).ToString() + " lbs";
                         _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.arAmmo + ")";
                     }
                     else
                     {
+                        PlayerStats.curWeight -= (PlayerStats.arAmmo * PlayerStats.arAmmoWeight);
                         itemAmmo.Quantity += PlayerStats.arAmmo;
                         PlayerStats.arAmmo -= PlayerStats.arAmmo;
                         GameObject clone;
@@ -239,15 +255,17 @@ public class InventoryAmmo : MonoBehaviour
                 case BaseAmmo.AmmoType.MagnumAmmo:
                     if (PlayerStats.magnumAmmo > 1)
                     {
+                        PlayerStats.curWeight -= (1 * PlayerStats.magnumAmmoWeight);
                         PlayerStats.magnumAmmo -= 2;
                         itemAmmo.Quantity += 2;
                         Transform _weight = gameObject.transform.Find("Weight");
                         Transform _name = gameObject.transform.Find("Type");
-                        _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
+                        _weight.GetComponent<Text>().text = Mathf.Round((PlayerStats.magnumAmmoWeight * PlayerStats.magnumAmmo) * 100 / 100).ToString() + " lbs";
                         _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.magnumAmmo + ")";
                     }
                     else
                     {
+                        PlayerStats.curWeight -= (1 * PlayerStats.magnumAmmoWeight);
                         itemAmmo.Quantity += PlayerStats.magnumAmmo;
                         PlayerStats.magnumAmmo -= PlayerStats.magnumAmmo;
                         GameObject clone;
@@ -276,15 +294,17 @@ public class InventoryAmmo : MonoBehaviour
                 case BaseAmmo.AmmoType.ExplosiveRounds:
                     if (PlayerStats.explosiveAmmo > 1)
                     {
+                        PlayerStats.curWeight -= (1 * PlayerStats.explosiveAmmoWeight);
                         PlayerStats.explosiveAmmo -= 1;
                         itemAmmo.Quantity += 1;
                         Transform _weight = gameObject.transform.Find("Weight");
                         Transform _name = gameObject.transform.Find("Type");
-                        _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
+                        _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.explosiveAmmoWeight * PlayerStats.explosiveAmmo) * 100) / 100).ToString() + " lbs";
                         _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.explosiveAmmo + ")";
                     }
                     else
                     {
+                        PlayerStats.curWeight -= (1 * PlayerStats.explosiveAmmoWeight);
                         itemAmmo.Quantity += PlayerStats.explosiveAmmo;
                         PlayerStats.explosiveAmmo -= PlayerStats.explosiveAmmo;
                         GameObject clone;
@@ -321,8 +341,6 @@ public class InventoryAmmo : MonoBehaviour
         Transform _weight = gameObject.transform.Find("Weight");
         Transform _name = gameObject.transform.Find("Type");
         _weight.GetComponent<Text>().text = itemAmmo.Weight.ToString() + " lbs";
-        if (itemAmmo.AmmoTypes == BaseAmmo.AmmoType.AssaultRifleAmmo || itemAmmo.AmmoTypes == BaseAmmo.AmmoType.MachinegunAmmo || itemAmmo.AmmoTypes == BaseAmmo.AmmoType.HandgunAmmo || itemAmmo.AmmoTypes == BaseAmmo.AmmoType.ShotgunShells || itemAmmo.AmmoTypes == BaseAmmo.AmmoType.MagnumAmmo || itemAmmo.AmmoTypes == BaseAmmo.AmmoType.ExplosiveRounds || itemAmmo.AmmoTypes == BaseAmmo.AmmoType.RifleAmmo)
-        {
             switch (itemAmmo.AmmoTypes)
             {
                 case BaseAmmo.AmmoType.HandgunAmmo:
@@ -347,10 +365,6 @@ public class InventoryAmmo : MonoBehaviour
                     _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.explosiveAmmo + ")";
                     break;
             }
-            // itemAmmo.Quantity = 0;
-        }
-        else
-            _name.GetComponent<Text>().text = itemAmmo.ItemName;
         itemAmmo.Quantity = 0;
     }
 

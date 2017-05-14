@@ -45,9 +45,7 @@ public class PlayerStats : ScriptableObject
     public static float speed;
     public static float lightRadius;
     public static float curWeight = 0f;
-    public static float maxWeight = 01f;
-
-
+    public static float maxWeight = 6f;
 
     //player Stats
     [Header("Player Stats")]
