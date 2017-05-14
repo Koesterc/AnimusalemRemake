@@ -28,7 +28,6 @@ public class ItemDisplay : MonoBehaviour {
         {
             isActive = false;
             pickUp = false;
-            GameManagerScript.stat.gameObject.SetActive(false);
             myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f,1,1);
             Color c = myText.GetComponent<Outline>().effectColor;
             myText.fontSize = 14;
@@ -36,6 +35,13 @@ public class ItemDisplay : MonoBehaviour {
             canvas.GetComponent<Canvas>().sortingOrder = 100;
             c.a = .5f;
             myText.GetComponent<Outline>().effectColor = c;
+            for (int i = 0; i < GameManagerScript.statDisplay.Count; i++)
+            {
+                GameManagerScript.statDisplay[i].gameObject.SetActive(false);
+                GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f, 1, 1);
+
+            }
+            GameManagerScript.stat.gameObject.SetActive(false);
         }
     }
     void OnTriggerStay(Collider other)
@@ -77,6 +83,10 @@ public class ItemDisplay : MonoBehaviour {
                 gameObject.GetComponent<DroppedMisc>().PickedUp();
                 Destroy(gameObject);
             }
+            else if (gameObject.GetComponent<DroppedAmmo>())
+            {
+                gameObject.GetComponent<DroppedAmmo>().PickedUp();
+            }
 
         }
     }
@@ -104,7 +114,7 @@ public class ItemDisplay : MonoBehaviour {
 
     public void Display()
     {
-        for (int i = 0; i < GameManagerScript.statDisplay.Count - 1; i++)
+        for (int i = 0; i < GameManagerScript.statDisplay.Count; i++)
         {
             GameManagerScript.statDisplay[i].gameObject.SetActive(true);
             GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f, 1, 1);
@@ -144,11 +154,11 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].text = "Required Intelligence: " + droppedArmor.ArmorStats.RequiredIntelligence.ToString();
                 if (droppedArmor.ArmorStats.RequiredIntelligence > PlayerStats.intelligence)
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
-                else
-                    GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.blue;
                 i++;
             }
             GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString() + " lbs";
+            if (droppedArmor.ArmorStats.Weight + PlayerStats.curWeight > PlayerStats.maxWeight)
+                GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
             i++;
             GameManagerScript.statDisplay[i].text = "Value: $" + droppedArmor.ArmorStats.SellValue.ToString();
             i++;
@@ -157,6 +167,11 @@ public class ItemDisplay : MonoBehaviour {
             if (droppedArmor.ArmorStats.EnhancedDefense > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Reinforced Defense: +" + droppedArmor.ArmorStats.EnhancedDefense.ToString();
+                i++;
+            }
+            if (droppedArmor.ArmorStats.MaxHealth > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Increased Maximum Health: +"+ (droppedArmor.ArmorStats.MaxHealth*100).ToString()+"%";
                 i++;
             }
             if (droppedArmor.ArmorStats.PoisonRes > 0)
@@ -229,7 +244,7 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].text = "*Item's weight reduced by " + (droppedArmor.ArmorStats.ReducedWeight * 100).ToString() + "%";
                 i++;
             }
-            while (i < (GameManagerScript.statDisplay.Count - 1))
+            while (i < (GameManagerScript.statDisplay.Count))
             {
                 GameManagerScript.statDisplay[i].gameObject.SetActive(false);
                 i++;
@@ -265,6 +280,8 @@ public class ItemDisplay : MonoBehaviour {
                 i++;
             }
             GameManagerScript.statDisplay[i].text = "Weight: " + droppedWeapon.WeaponStats.Weight.ToString() + " lbs";
+            if (droppedWeapon.WeaponStats.Weight + PlayerStats.curWeight > PlayerStats.maxWeight)
+             GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
             i++;
             GameManagerScript.statDisplay[i].text = "Value: $" + droppedWeapon.WeaponStats.SellValue.ToString();
             i++;
@@ -286,6 +303,26 @@ public class ItemDisplay : MonoBehaviour {
             i++;
             GameManagerScript.statDisplay[i].text = " ";
             i++;
+            if (droppedWeapon.WeaponStats.ThreeRoundBurst)
+            {
+                GameManagerScript.statDisplay[i].text = "*Three Round Burst";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.DoubleBarrel)
+            {
+                GameManagerScript.statDisplay[i].text = "*Double Barrel";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.TrippleBarrel)
+            {
+                GameManagerScript.statDisplay[i].text = "*Tripple Barrel";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.ThreeRoundBurst)
+            {
+                GameManagerScript.statDisplay[i].text = "*Three Round Burst";
+                i++;
+            }
             if (droppedWeapon.WeaponStats.EnhancedDamage > 0)
             {
                 GameManagerScript.statDisplay[i].text = "*Enhanced Damage: +" + droppedWeapon.WeaponStats.EnhancedDamage.ToString();
@@ -311,14 +348,24 @@ public class ItemDisplay : MonoBehaviour {
                 GameManagerScript.statDisplay[i].text = "*Armor Piercing: +" + droppedWeapon.WeaponStats.IgnoreArmor.ToString();
                 i++;
             }
-            if (droppedWeapon.WeaponStats.ThreeRoundBurst)
-            {
-                GameManagerScript.statDisplay[i].text = "*Three Round Burst";
-                i++;
-            }
             if (droppedWeapon.WeaponStats.PoisonDamage > 0)
             {
-                GameManagerScript.statDisplay[i].text = "*Poison Damage: +" + droppedWeapon.WeaponStats.PoisonDamage.ToString();
+                GameManagerScript.statDisplay[i].text = "*Toxicant: +" + droppedWeapon.WeaponStats.PoisonDamage.ToString() + " Poison Damage";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.FireDamage > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Incinerate: +" + droppedWeapon.WeaponStats.FireDamage.ToString() + " Fire Damage";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.ColdDamage > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Frost Bite: +" + droppedWeapon.WeaponStats.ColdDamage.ToString() + " Cold Damage";
+                i++;
+            }
+            if (droppedWeapon.WeaponStats.LightDamage > 0)
+            {
+                GameManagerScript.statDisplay[i].text = "*Electricute: +" + droppedWeapon.WeaponStats.LightDamage.ToString()+" Shock Damage";
                 i++;
             }
             if (droppedWeapon.WeaponStats.AimAssist > 0)
@@ -360,7 +407,58 @@ public class ItemDisplay : MonoBehaviour {
             i++;
             GameManagerScript.statDisplay[i].text = " ";
             i++;
-            GameManagerScript.statDisplay[i].text = "Quantity: " + droppedMisc.MiscStats.Quanntity;
+            while (i < (GameManagerScript.statDisplay.Count - 1))
+            {
+                GameManagerScript.statDisplay[i].gameObject.SetActive(false);
+                i++;
+            }
+        }//end of else if
+        else if (gameObject.GetComponent<DroppedAmmo>())//checking the ammo
+        {
+            DroppedAmmo droppedAmmo = gameObject.GetComponent<DroppedAmmo>();
+            int i = 0;
+            GameManagerScript.statDisplay[i].text = "[" + droppedAmmo.AmmoStats.ItemName+ "]";
+            i++;
+            GameManagerScript.statDisplay[i].text = "Quantity: " + droppedAmmo.AmmoStats.Quantity;
+            i++;
+            switch (droppedAmmo.AmmoStats.AmmoTypes)
+            {
+                case BaseAmmo.AmmoType.HandgunAmmo:
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.hgAmmoWeight).ToString()+" lbs";
+                    if ((droppedAmmo.AmmoStats.Quantity * PlayerStats.hgAmmoWeight) > PlayerStats.maxWeight)
+                        GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                    break;
+                case BaseAmmo.AmmoType.ShotgunShells:
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.sgAmmoWeight).ToString() + " lbs";
+                    if ((droppedAmmo.AmmoStats.Quantity * PlayerStats.sgAmmoWeight) > PlayerStats.maxWeight)
+                        GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                    break;
+                case BaseAmmo.AmmoType.MachinegunAmmo:
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.mgAmmoWeight).ToString() + " lbs";
+                    if ((droppedAmmo.AmmoStats.Quantity * PlayerStats.mgAmmoWeight) > PlayerStats.maxWeight)
+                        GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                    break;
+                case BaseAmmo.AmmoType.RifleAmmo:
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.rifleAmmoWeight).ToString() + " lbs";
+                    if ((droppedAmmo.AmmoStats.Quantity * PlayerStats.rifleAmmoWeight) > PlayerStats.maxWeight)
+                        GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                    break;
+                case BaseAmmo.AmmoType.AssaultRifleAmmo:
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.arAmmoWeight).ToString() + " lbs";
+                    if ((droppedAmmo.AmmoStats.Quantity * PlayerStats.arAmmoWeight) > PlayerStats.maxWeight)
+                        GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                    break;
+                case BaseAmmo.AmmoType.MagnumAmmo:
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.magnumAmmoWeight).ToString() + " lbs";
+                    if ((droppedAmmo.AmmoStats.Quantity * PlayerStats.magnumAmmoWeight) > PlayerStats.maxWeight)
+                        GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                    break;
+                case BaseAmmo.AmmoType.ExplosiveRounds:
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.explosiveAmmoWeight).ToString() + " lbs";
+                    if ((droppedAmmo.AmmoStats.Quantity * PlayerStats.explosiveAmmoWeight) > PlayerStats.maxWeight)
+                        GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
+                    break;
+            }
             i++;
             while (i < (GameManagerScript.statDisplay.Count - 1))
             {
@@ -368,5 +466,5 @@ public class ItemDisplay : MonoBehaviour {
                 i++;
             }
         }//end of else if
-   }//end of display function
+    }//end of display function
 }//end of class

@@ -6,6 +6,15 @@ public class DroppedWeapon : MonoBehaviour
 {
     public GameObject inventoryWeaponPrefab;
     BaseWeapon dropWeapon = new BaseWeapon();
+    void Start()
+    {
+        if (gameObject.GetComponent<CreateNewWeapon>())
+        {
+            CreateNewWeapon w = gameObject.GetComponent<CreateNewWeapon>();
+            dropWeapon = w.NewWeapon;
+            Destroy(w);
+        }
+    }
     public void DropWeapon(BaseWeapon myWeapon)
     {
         dropWeapon = myWeapon;

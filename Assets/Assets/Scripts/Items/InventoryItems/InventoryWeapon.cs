@@ -13,7 +13,7 @@ public class InventoryWeapon : MonoBehaviour
         if (gameObject.GetComponent<CreateNewWeapon>())
         {
             CreateNewWeapon c = gameObject.GetComponent<CreateNewWeapon>();
-            itemWeapon = gameObject.GetComponent<CreateNewWeapon>().NewWeapon;
+            itemWeapon = c.NewWeapon;
             Destroy(c);
         }
         Transform _weight = gameObject.transform.Find("Weight");
@@ -30,6 +30,7 @@ public class InventoryWeapon : MonoBehaviour
             Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
             clone = Instantiate(droppedWeapon, pos, transform.rotation) as GameObject;
             clone.GetComponent<DroppedWeapon>().DropWeapon(itemWeapon);
+            clone.SetActive(true);
             for (int i = 0; i < InventoryList.itemList.Count; i++)
             {
                 if (InventoryList.itemList[i] == gameObject)

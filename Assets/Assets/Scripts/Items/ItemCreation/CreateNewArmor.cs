@@ -50,7 +50,7 @@ public class CreateNewArmor : MonoBehaviour
         newArmor.SellValue = (((int)newArmor.Defense/2) + newArmor.Strength * 2 +
             newArmor.Dexterity * 2 + newArmor.Constitution * 2 + newArmor.Charisma * 2 + newArmor.Luck * 2  
             + newArmor.Agility * 2 + newArmor.Perception * 2 + newArmor.Intelligence * 2 + newArmor.Fortitude * 2);
-        newArmor.Weight = newArmor.Weight - (newArmor.Weight * newArmor.ReducedWeight)+ (int)(newArmor.ReducedWeight * 10);
+        newArmor.Weight = newArmor.Weight - (newArmor.Weight * newArmor.ReducedWeight)+ (int)(newArmor.ReducedWeight * 10 + (int)(newArmor.MaxHealth * 100));
     }
     private void ChooseArmor()
     {
@@ -71,12 +71,18 @@ public class CreateNewArmor : MonoBehaviour
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.LightRes = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.ColdRes = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.FireRes = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.PoisonRes = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newArmor.MaxHealth = Mathf.Round(Random.Range(.03f, .05f) * 100) / 100;
                 break;
             case 1:
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Medium;
@@ -88,14 +94,22 @@ public class CreateNewArmor : MonoBehaviour
                 newArmor.Defense = Random.Range(3 + (newArmor.LevelRestriction + newArmor.EnhancedDefense), 8 + (newArmor.LevelRestriction + newArmor.EnhancedDefense));
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 2, newArmor.LevelRestriction * 3);
                 newArmor.SpeedReduction = -2;
+
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.LightRes = Random.Range(1 + newArmor.LevelRestriction, 5 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.ColdRes = Random.Range(1 + newArmor.LevelRestriction, 5 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.FireRes = Random.Range(1 + newArmor.LevelRestriction, 5 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.PoisonRes = Random.Range(1 + newArmor.LevelRestriction, 5 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newArmor.MaxHealth = Mathf.Round(Random.Range(.03f, .08f) * 100) / 100;
                 break;
             case 2:
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Heavy;
@@ -108,14 +122,21 @@ public class CreateNewArmor : MonoBehaviour
                 newArmor.SpeedReduction = -4;
                 newArmor.Weight = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
                 newArmor.RequiredStrength = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.LightRes = Random.Range(1 + newArmor.LevelRestriction, 8 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.ColdRes = Random.Range(1 + newArmor.LevelRestriction, 8 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.FireRes = Random.Range(1 + newArmor.LevelRestriction, 8 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.PoisonRes = Random.Range(1 + newArmor.LevelRestriction, 8 + newArmor.LevelRestriction);
+                temp = Random.Range(0, 100);
+                if (temp >= 90)
+                    newArmor.MaxHealth = Mathf.Round(Random.Range(.03f, .12f) * 100) / 100;
                 break;
         }
     }

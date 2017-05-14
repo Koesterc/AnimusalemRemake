@@ -9,7 +9,6 @@ public class InventoryList : MonoBehaviour
     //public static Dictionary<string,GameObject> itemList = new Dictionary<string,GameObject>();
     public static List<GameObject> itemList = new List<GameObject>();
     public static Scrollbar scrollBar;
-    public static int index;
 
     void Awake()
     {
@@ -23,27 +22,35 @@ public class InventoryList : MonoBehaviour
                 r.gameObject.AddComponent<CreateNewWeapon>();
                 CreateNewWeapon cw = r.GetComponent<CreateNewWeapon>();
                 cw.CreateWeapon();
+                r.gameObject.SetActive(true);
             }
-            if (r.GetComponent<InventoryArmor>())
+            else if (r.GetComponent<InventoryArmor>())
             {
                 r.gameObject.AddComponent<CreateNewArmor>();
                 CreateNewArmor ca = r.GetComponent<CreateNewArmor>();
                 ca.CreateArmor();
+                r.gameObject.SetActive(true);
             }
-            if (r.GetComponent<InventoryMisc>())
+            else if (r.GetComponent<InventoryMisc>())
             {
                 r.gameObject.AddComponent<CreateNewMisc>();
                 CreateNewMisc cm = r.GetComponent<CreateNewMisc>();
                 cm.CreateMisc();
+                r.gameObject.SetActive(true);
             }
-            index = 0;
+            else if (r.GetComponent<InventoryAmmo>())
+            {
+                r.gameObject.AddComponent<CreateNewAmmo>();
+                CreateNewAmmo a = r.GetComponent<CreateNewAmmo>();
+                a.CreateAmmo();
+                r.gameObject.SetActive(true);
+            }
             StartCoroutine (Wait());
         }
     }
 
     void OnEnable()
     {
-        index = 0;
         StartCoroutine(Wait());
     }
 
@@ -51,7 +58,14 @@ public class InventoryList : MonoBehaviour
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(.06f);
-        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[0]);
+        try
+        {
+            eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(itemList[0]);
+        }
+        catch
+        {
+
+        }
         scrollBar.value = 1;
     }
 }

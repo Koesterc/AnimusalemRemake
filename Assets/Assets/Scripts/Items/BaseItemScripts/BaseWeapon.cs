@@ -44,6 +44,9 @@ public class BaseWeapon : BaseItem
 
     //exclusives
     private int poisonDamage;
+    private int fireDamage;
+    private int coldDamage;
+    private int lightDamage;
     private int enhancedDamage;
     private float expeditiveReload;
     private float acceleratedFire;
@@ -57,12 +60,24 @@ public class BaseWeapon : BaseItem
     private float additionalGold;
     private float modifiedAccuracy;
     private bool threeRoundBurst;
+    private bool doubleBarrel;
+    private bool trippleBarrel;
 
     //getters setters
     public bool ThreeRoundBurst
     {
         get { return threeRoundBurst; }
         set { threeRoundBurst = value; }
+    }
+    public bool DoubleBarrel
+    {
+        get { return doubleBarrel; }
+        set { doubleBarrel = value; }
+    }
+    public bool TrippleBarrel
+    {
+        get { return trippleBarrel; }
+        set { trippleBarrel = value; }
     }
     public float ExpeditiveReload
     {
@@ -78,6 +93,21 @@ public class BaseWeapon : BaseItem
     {
         get { return poisonDamage; }
         set { poisonDamage = value; }
+    }
+    public int FireDamage
+    {
+        get { return fireDamage; }
+        set { fireDamage = value; }
+    }
+    public int ColdDamage
+    {
+        get { return coldDamage; }
+        set { coldDamage = value; }
+    }
+    public int LightDamage
+    {
+        get { return lightDamage; }
+        set { lightDamage = value; }
     }
     public int EnhancedDamage
     {

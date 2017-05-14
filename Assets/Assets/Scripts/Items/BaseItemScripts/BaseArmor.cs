@@ -19,6 +19,7 @@ public class BaseArmor : BaseItem
     private int poisonRes;
     private int defense;
     private int enhancedDefense;
+    private float maxHealth;
 
     public ArmorType ArmorTypes
     {
@@ -29,6 +30,11 @@ public class BaseArmor : BaseItem
     {
         get { return enhancedDefense; }
         set { enhancedDefense = value; }
+    }
+    public float MaxHealth
+    {
+        get { return maxHealth; }
+        set { maxHealth = value; }
     }
     public int ColdRes
     {

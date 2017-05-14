@@ -11,9 +11,9 @@ public class InventoryArmor : MonoBehaviour
     {
         if (gameObject.GetComponent<CreateNewArmor>())
         {
-            CreateNewArmor c = gameObject.GetComponent<CreateNewArmor>();
-            itemArmor= gameObject.GetComponent<CreateNewArmor>().NewArmor;
-            Destroy(c);
+            CreateNewArmor a = gameObject.GetComponent<CreateNewArmor>();
+            itemArmor= a.NewArmor;
+            Destroy(a);
         }
         Transform _weight = gameObject.transform.Find("Weight");
         Transform _name = gameObject.transform.Find("Type");
@@ -28,6 +28,7 @@ public class InventoryArmor : MonoBehaviour
             Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
             clone = Instantiate(droppedArmor, pos, transform.rotation) as GameObject;
             clone.GetComponent<DroppedArmor>().DropArmor(itemArmor);
+            clone.SetActive(true);
             for (int i = 0; i < InventoryList.itemList.Count; i++)
             {
                 if (InventoryList.itemList[i] == gameObject)

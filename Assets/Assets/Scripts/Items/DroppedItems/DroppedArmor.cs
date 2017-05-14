@@ -6,6 +6,16 @@ public class DroppedArmor : MonoBehaviour
 {
     public GameObject inventoryArmorPrefab;
     BaseArmor dropArmor = new BaseArmor();
+
+    void Start()
+    {
+        if (gameObject.GetComponent<CreateNewArmor>())
+        {
+            CreateNewArmor a = gameObject.GetComponent<CreateNewArmor>();
+            dropArmor = a.NewArmor;
+            Destroy(a);
+        }
+    }
     public void DropArmor(BaseArmor myArmor)
     {
         dropArmor = myArmor;
