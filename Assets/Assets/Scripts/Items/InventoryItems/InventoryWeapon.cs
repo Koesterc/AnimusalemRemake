@@ -62,7 +62,7 @@ public class InventoryWeapon : MonoBehaviour
     {
         Inventory._desc.text = itemWeapon.ItemDesc;
         Inventory._name.text = itemWeapon.ItemName;
-        Inventory._image = itemWeapon.Icon;
+        Inventory._image.sprite = itemWeapon.Icon;
 
         Inventory.rlBar.transform.localScale = new Vector3(itemWeapon.ReloadLvl / 5, 1, 1);
         Inventory.frBar.transform.localScale = new Vector3(itemWeapon.ReloadLvl / 5, 1, 1);

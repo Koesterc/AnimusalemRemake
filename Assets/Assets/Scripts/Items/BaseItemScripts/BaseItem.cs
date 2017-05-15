@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.UI;
 [System.Serializable]
 public class BaseItem
 {

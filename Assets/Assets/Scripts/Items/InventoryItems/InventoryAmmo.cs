@@ -42,7 +42,7 @@ public class InventoryAmmo : MonoBehaviour
                 break;
             case BaseAmmo.AmmoType.MagnumAmmo:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.magnumAmmo + ")";
-                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.magnumAmmoWeight * PlayerStats.magnumAmmo) * 100) / 010).ToString() + " lbs";
+                _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.magnumAmmoWeight * PlayerStats.magnumAmmo) * 100) / 100).ToString() + " lbs";
                 break;
             case BaseAmmo.AmmoType.ExplosiveRounds:
                 _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.explosiveAmmo + ")";
@@ -55,6 +55,7 @@ public class InventoryAmmo : MonoBehaviour
     {
         if (Input.GetKeyDown("return"))
         {
+            Inventory._drop.Play();//playing the sound
             switch (itemAmmo.AmmoTypes)
             {//handgun ammo
                 case BaseAmmo.AmmoType.HandgunAmmo:
@@ -260,7 +261,7 @@ public class InventoryAmmo : MonoBehaviour
                         itemAmmo.Quantity += 2;
                         Transform _weight = gameObject.transform.Find("Weight");
                         Transform _name = gameObject.transform.Find("Type");
-                        _weight.GetComponent<Text>().text = Mathf.Round((PlayerStats.magnumAmmoWeight * PlayerStats.magnumAmmo) * 100 / 100).ToString() + " lbs";
+                        _weight.GetComponent<Text>().text = (Mathf.Round((PlayerStats.magnumAmmoWeight * PlayerStats.magnumAmmo) * 100) / 100).ToString() + " lbs";
                         _name.GetComponent<Text>().text = itemAmmo.ItemName + "(" + PlayerStats.magnumAmmo + ")";
                     }
                     else
@@ -373,7 +374,8 @@ public class InventoryAmmo : MonoBehaviour
     {
         Inventory._desc.text = itemAmmo.ItemDesc;
         Inventory._name.text = itemAmmo.ItemName;
-        Inventory._image = itemAmmo.Icon;
+        Inventory._image.sprite = itemAmmo.Icon;
         Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
+        Inventory._select.Play();
     }
 }

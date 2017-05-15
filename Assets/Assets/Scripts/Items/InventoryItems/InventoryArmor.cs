@@ -60,7 +60,7 @@ public class InventoryArmor : MonoBehaviour
     {
         Inventory._desc.text = itemArmor.ItemDesc;
         Inventory._name.text = itemArmor.ItemName;
-        Inventory._image = itemArmor.Icon;
+        Inventory._image.sprite = itemArmor.Icon;
         Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
     }
 }

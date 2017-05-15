@@ -64,7 +64,7 @@ public class InventoryMisc : MonoBehaviour
     {
         Inventory._desc.text = itemMisc.ItemDesc;
         Inventory._name.text = itemMisc.ItemName;
-        Inventory._image = itemMisc.Icon;
+        Inventory._image.sprite = itemMisc.Icon;
         Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
     }
 }

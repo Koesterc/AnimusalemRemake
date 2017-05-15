@@ -232,8 +232,10 @@ public class DroppedAmmo : MonoBehaviour
     IEnumerator ItemObtained(int ammoCount)
     {
         yield return new WaitForSeconds(.016f);
+        GameManagerScript.itemInfoImage.sprite = dropAmmo.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You've obtained the "+ ammoCount +" "+dropAmmo.ItemName+".";
+        GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropAmmo.ItemName.ToString(), "<color=#FFFFFFFF>" + dropAmmo.ItemName.ToString() + "</color>");
         GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
         Destroy(gameObject);
@@ -242,8 +244,10 @@ public class DroppedAmmo : MonoBehaviour
     IEnumerator NoStrength()
     {
         yield return new WaitForSeconds(.016f);
+        GameManagerScript.itemInfoImage.sprite = dropAmmo.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
+        GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 }

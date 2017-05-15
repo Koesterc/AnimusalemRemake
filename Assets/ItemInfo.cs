@@ -16,7 +16,6 @@ public class ItemInfo : MonoBehaviour {
     {
         if (Input.anyKeyDown)
         {
-            print("true");
             Time.timeScale = GameManagerScript.gameSpeed;
             gameObject.SetActive(false);
         }

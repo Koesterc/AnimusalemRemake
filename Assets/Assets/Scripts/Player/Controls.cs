@@ -65,6 +65,8 @@ public class Controls : MonoBehaviour
             {
                 speed = 0;
                 Inventory.inventory.SetActive(true);
+                Inventory.weightText.text = "Weight: " +PlayerStats.curWeight.ToString() + "/" + PlayerStats.maxWeight.ToString() + "(" + ((PlayerStats.curWeight / PlayerStats.maxWeight)*100).ToString() + "%" + ")";
+                Inventory.healthText.text = "Health: " + PlayerStats.health.ToString() + "/" + PlayerStats.maxHealth.ToString() + "(" + ((PlayerStats.health / PlayerStats.maxHealth)*100).ToString() + "%" + ")";
                 StartCoroutine(FadeIn());
             }
         }

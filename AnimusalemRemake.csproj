@@ -84,6 +84,7 @@
     <Compile Include="Assets\Assets\Scripts\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\GameInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\GameManagerScript.cs" />
+    <Compile Include="Assets\Assets\Scripts\GameManager\MusicScript.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\WeaponSelection.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\BaseItemScripts\BaseAmmo.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\BaseItemScripts\BaseArmor.cs" />
