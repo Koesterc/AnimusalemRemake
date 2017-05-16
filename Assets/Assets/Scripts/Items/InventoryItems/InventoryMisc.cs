@@ -26,7 +26,9 @@ public class InventoryMisc : MonoBehaviour
     {
         if (Input.GetKeyDown("return"))
         {
-                GameObject clone;
+            PlayerStats.curWeight -= itemMisc.Weight;
+            Inventory._drop.Play();//playing the sound
+            GameObject clone;
                 Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
                 clone = Instantiate(droppedMisc, pos, transform.rotation) as GameObject;
                 clone.GetComponent<DroppedMisc>().DropMisc(itemMisc);
@@ -47,7 +49,6 @@ public class InventoryMisc : MonoBehaviour
                         }
                     }//end of if
                 }//end of forloop
-                 //   print(InventoryList.itemList.Count);
         }//end of input
     }//end of function
     public void pickedUpMisc(BaseMisc myMisc)
@@ -57,7 +58,6 @@ public class InventoryMisc : MonoBehaviour
         Transform _name = gameObject.transform.Find("Type");
         _weight.GetComponent<Text>().text = itemMisc.Weight.ToString() + " lbs";
         _name.GetComponent<Text>().text = itemMisc.ItemName.ToString();
-        // itemMisc.Quantity = 0;
     }
 
     public void UpdateSelection()
@@ -66,5 +66,7 @@ public class InventoryMisc : MonoBehaviour
         Inventory._name.text = itemMisc.ItemName;
         Inventory._image.sprite = itemMisc.Icon;
         Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
+
+        Inventory._select.Play();
     }
 }

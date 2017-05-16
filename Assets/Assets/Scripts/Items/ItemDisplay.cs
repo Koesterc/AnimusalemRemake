@@ -71,17 +71,14 @@ public class ItemDisplay : MonoBehaviour {
             if (gameObject.GetComponent<DroppedArmor>())
             {
                 gameObject.GetComponent<DroppedArmor>().PickedUp();
-                Destroy(gameObject);
             }
             else if(gameObject.GetComponent<DroppedWeapon>())
             {
                 gameObject.GetComponent<DroppedWeapon>().PickedUp();
-                Destroy(gameObject);
             }
             else if (gameObject.GetComponent<DroppedMisc>())
             {
                 gameObject.GetComponent<DroppedMisc>().PickedUp();
-                Destroy(gameObject);
             }
             else if (gameObject.GetComponent<DroppedAmmo>())
             {

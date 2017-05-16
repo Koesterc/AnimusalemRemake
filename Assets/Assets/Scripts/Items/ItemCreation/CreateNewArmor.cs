@@ -83,6 +83,7 @@ public class CreateNewArmor : MonoBehaviour
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.MaxHealth = Mathf.Round(Random.Range(.03f, .05f) * 100) / 100;
+                newArmor.Icon = Resources.Load<Sprite>("Icons/Armors/Light/LightArmor");
                 break;
             case 1:
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Medium;
@@ -110,6 +111,7 @@ public class CreateNewArmor : MonoBehaviour
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.MaxHealth = Mathf.Round(Random.Range(.03f, .08f) * 100) / 100;
+                newArmor.Icon = Resources.Load<Sprite>("Icons/Armors/Medium/MediumArmor");
                 break;
             case 2:
                 newArmor.ArmorTypes = BaseArmor.ArmorType.Heavy;
@@ -137,6 +139,7 @@ public class CreateNewArmor : MonoBehaviour
                 temp = Random.Range(0, 100);
                 if (temp >= 90)
                     newArmor.MaxHealth = Mathf.Round(Random.Range(.03f, .12f) * 100) / 100;
+                newArmor.Icon = Resources.Load<Sprite>("Icons/Armors/Heavy/HeavyArmor");
                 break;
         }
     }

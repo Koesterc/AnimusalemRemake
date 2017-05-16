@@ -28,6 +28,7 @@ public class CreateNewMisc : MonoBehaviour
                 newMisc.ItemName = "Small Aid";
                 newMisc.ItemDesc = "A small bottle of medical ointment. There's just enough to treat a minor wound.";
                 newMisc.Weight = .2f;
+                newMisc.Icon = Resources.Load<Sprite>("Icons/Miscs/SmallAid");
                 break;
             case 1:
                 newMisc.MiscTypes = BaseMisc.MiscType.MediumAid;
@@ -35,6 +36,7 @@ public class CreateNewMisc : MonoBehaviour
                 newMisc.ItemName = "Medium Aid";
                 newMisc.ItemDesc = "A well supplied kit with various items essential to treat moderate injuries.";
                 newMisc.Weight = .4f;
+                newMisc.Icon = Resources.Load<Sprite>("Icons/Miscs/MedAid");
                 break;
             case 2:
                 newMisc.MiscTypes = BaseMisc.MiscType.LargeAid;
@@ -42,6 +44,7 @@ public class CreateNewMisc : MonoBehaviour
                 newMisc.ItemName = "Large Aid";
                 newMisc.ItemDesc = "An imeasurable supply of medical equipment used to treat serious lacerations.";
                 newMisc.Weight = .6f;
+                newMisc.Icon = Resources.Load<Sprite>("Icons/Miscs/LargeAid");
                 break;
             case 3:
                 newMisc.MiscTypes = BaseMisc.MiscType.PainKiller;
@@ -49,6 +52,7 @@ public class CreateNewMisc : MonoBehaviour
                 newMisc.ItemName = "Pain Killer";
                 newMisc.ItemDesc = "Reduces the amount of injury one takes while in battle. The effects last only for a short duration.";
                 newMisc.Weight = .2f;
+                newMisc.Icon = Resources.Load<Sprite>("Icons/Miscs/PainKillers");
                 break;
             case 4:
                 newMisc.MiscTypes = BaseMisc.MiscType.HolyWater;
@@ -56,6 +60,7 @@ public class CreateNewMisc : MonoBehaviour
                 newMisc.ItemName = "Holy Water";
                 newMisc.ItemDesc = "A small portion of blessed water. Mainly, it can be used to avoid unwanted attention.";
                 newMisc.Weight = .55f;
+                newMisc.Icon = Resources.Load<Sprite>("Icons/Miscs/HolyWater");
                 break;
             case 5:
                 newMisc.MiscTypes = BaseMisc.MiscType.DreamCatcher;
@@ -63,6 +68,7 @@ public class CreateNewMisc : MonoBehaviour
                 newMisc.ItemName = "Dream Catcher";
                 newMisc.ItemDesc = "Although it is typically used to avoid bad dreams, this item can be used in battle to avoid a bad situation.";
                 newMisc.Weight = .55f;
+                newMisc.Icon = Resources.Load<Sprite>("Icons/Miscs/DreamCatcher");
                 break;
             case 6:
                 newMisc.MiscTypes = BaseMisc.MiscType.OldKey;
@@ -70,6 +76,7 @@ public class CreateNewMisc : MonoBehaviour
                 newMisc.ItemName = "Old Key";
                 newMisc.ItemDesc = "It seems as though its purpose serves to unlock old chests, of which many contain items.";
                 newMisc.Weight = .1f;
+                newMisc.Icon = Resources.Load<Sprite>("Icons/Miscs/OldKey");
                 break;
         }
     }

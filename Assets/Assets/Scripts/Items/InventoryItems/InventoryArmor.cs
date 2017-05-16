@@ -24,11 +24,13 @@ public class InventoryArmor : MonoBehaviour
     {
         if (Input.GetKeyDown("return"))
         {
+            Inventory._drop.Play();
             GameObject clone;
             Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
             clone = Instantiate(droppedArmor, pos, transform.rotation) as GameObject;
             clone.GetComponent<DroppedArmor>().DropArmor(itemArmor);
             clone.SetActive(true);
+            PlayerStats.curWeight -= itemArmor.Weight;
             for (int i = 0; i < InventoryList.itemList.Count; i++)
             {
                 if (InventoryList.itemList[i] == gameObject)
@@ -62,5 +64,7 @@ public class InventoryArmor : MonoBehaviour
         Inventory._name.text = itemArmor.ItemName;
         Inventory._image.sprite = itemArmor.Icon;
         Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
+
+        Inventory._select.Play();
     }
 }

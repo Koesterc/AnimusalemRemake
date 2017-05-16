@@ -26,11 +26,13 @@ public class InventoryWeapon : MonoBehaviour
     {
         if (Input.GetKeyDown("return"))
         {
+            Inventory._drop.Play();//playing the sound
             GameObject clone;
             Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
             clone = Instantiate(droppedWeapon, pos, transform.rotation) as GameObject;
             clone.GetComponent<DroppedWeapon>().DropWeapon(itemWeapon);
             clone.SetActive(true);
+            PlayerStats.curWeight -= itemWeapon.Weight;
             for (int i = 0; i < InventoryList.itemList.Count; i++)
             {
                 if (InventoryList.itemList[i] == gameObject)
@@ -72,5 +74,7 @@ public class InventoryWeapon : MonoBehaviour
         Inventory.accBar.transform.localScale = new Vector3(itemWeapon.CriticalChanceLvl / 5, 1, 1);
         Inventory.capBar.transform.localScale = new Vector3(itemWeapon.CriticalDamageLvl / 5, 1, 1);
         Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
+
+        Inventory._select.Play();
     }
 }

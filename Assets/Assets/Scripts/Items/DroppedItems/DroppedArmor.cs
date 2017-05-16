@@ -25,18 +25,46 @@ public class DroppedArmor : MonoBehaviour
 
     public void PickedUp()
     {
-        GameObject clone;
-        clone = Instantiate(inventoryArmorPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
-        clone.transform.localScale = new Vector3 (1,1,1);
-        clone.GetComponent<InventoryArmor>().pickedUpArmor(dropArmor);
-        InventoryList.itemList.Add(clone.gameObject);
-        Destroy(gameObject);
+        if ((PlayerStats.curWeight + dropArmor.Weight) <= PlayerStats.maxWeight)
+        {
+            GameObject clone;
+            clone = Instantiate(inventoryArmorPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
+            clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+            clone.transform.localScale = new Vector3(1, 1, 1);
+            clone.GetComponent<InventoryArmor>().pickedUpArmor(dropArmor);
+            InventoryList.itemList.Add(clone.gameObject);
+            PlayerStats.curWeight += dropArmor.Weight;
+            StartCoroutine(ItemObtained());
+        }
+        else
+           StartCoroutine (NoStrength());
     }
 
     public BaseArmor ArmorStats
     {
         get { return dropArmor; }
+    }
+
+    IEnumerator ItemObtained()
+    {
+        yield return new WaitForSeconds(.016f);
+        GameManagerScript.itemInfoImage.sprite = dropArmor.Icon;
+        GameManagerScript.itemInfo.SetActive(true);
+        GameManagerScript.itemInfoText.text = "You've obtained the " + "\"" + dropArmor.ItemName + "\"" + " " + dropArmor.ArmorTypes + ".";
+        GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropArmor.ArmorTypes.ToString(), "<color=#FFFFFFFF>" + dropArmor.ArmorTypes.ToString() + "</color>");
+        GameManagerScript.stat.gameObject.SetActive(false);
+        Time.timeScale = 0;
+        Destroy(gameObject);
+    }
+
+    IEnumerator NoStrength()
+    {
+        yield return new WaitForSeconds(.016f);
+        GameManagerScript.itemInfoImage.sprite = dropArmor.Icon;
+        GameManagerScript.itemInfo.SetActive(true);
+        GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
+        GameManagerScript.stat.gameObject.SetActive(false);
+        Time.timeScale = 0;
     }
 
 }

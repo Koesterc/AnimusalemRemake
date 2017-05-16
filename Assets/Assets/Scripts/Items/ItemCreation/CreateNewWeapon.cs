@@ -7,7 +7,7 @@ public class CreateNewWeapon : MonoBehaviour {
     private string[] myName = //handgun 0-7
     { "Custom HG40", "SDK5","9mm Oppressor", "Anacanda", "Blacklist", "Punisher", "SNAL-141", "Trident",
      //shotguns 8-14
-    "12 Gauge","Cerberus","Orthrus","Grave Digger","Devestater","Reaper","Ravager",
+    "12 Gauge","Cerberus","Orthrus","Grave Digger","Devestater","BlunderBuss","Ravager",
      //rifles 15-24
      "P4 Suppressor","PK1","Predator","Raven","Eagle's Eye","Hunter Killer","Crow's Nest","Hawk", "Hecaerge","Oupis",
      //machineguns 25-34
@@ -108,6 +108,7 @@ public class CreateNewWeapon : MonoBehaviour {
                     (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 5)+
                     (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is sidearm with a " + newWeapon.Capacity + " round magazine. It uses traditional handgun bullets.";
+                newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Handguns/Handgun");
                 break;
             case 1:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Rifle;
@@ -163,6 +164,7 @@ public class CreateNewWeapon : MonoBehaviour {
                  (int)(newWeapon.CriticalChance * 10) + (int)(newWeapon.CriticalDamage * 2) +
                  (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a long sturdy rifle. Rifles have a far greater chance to perform critical hits and deal greater damage than other firearms when achieved.";
+                newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Rifles/Rifle");
                 break;
             case 2:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Shotgun;
@@ -230,6 +232,7 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 5) +
       (int)(newWeapon.Accuracy/2));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" shotgun has a wide range of attack allowing the user to strike multiple targets that are grouped.";
+                newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Shotguns/Shotgun");
                 break;
             case 3:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Machinegun;
@@ -286,6 +289,7 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
       (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The sub machineguns, such as the "+newWeapon.ItemName+", are extremely light and and easy to handle thus they are superior to all other weapons when it comes down to capacity, fire rate, and reload.";
+                newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Machineguns/Machinegun");
                 break;
             case 4:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.AssaultRifle;
@@ -342,6 +346,7 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
       (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The assault rifles pack a much heavier punch than the SMGs, but they are less accurate and not nearly as fast.";
+                newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/AssaultRifles/AssaultRifle");
                 break;
             case 5:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Magnum;
@@ -394,6 +399,7 @@ public class CreateNewWeapon : MonoBehaviour {
 (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
 (int)(newWeapon.Accuracy * 10));
                 newWeapon.ItemDesc = "Although very powerful, the "+newWeapon.ItemName+" is not so easily handled. Its firerate is far less than your typical handgun and the kickback makes it far more challenging to hit targets.";
+                newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Magnums/Magnum");
                 break;
             case 6:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Explosive;
@@ -443,6 +449,7 @@ public class CreateNewWeapon : MonoBehaviour {
 (int)(newWeapon.CriticalChance * 50) + (int)(newWeapon.CriticalDamage * 3) +
 (int)(newWeapon.Accuracy * 10));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a powerful, single round explosive. Although it is the most powerful type of weapon available, ammo for it is by far the most scarce.";
+                newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Explosives/Explosive");
                 break;
         }
     }
