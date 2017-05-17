@@ -33,6 +33,9 @@ public class InventoryWeapon : MonoBehaviour
             clone.GetComponent<DroppedWeapon>().DropWeapon(itemWeapon);
             clone.SetActive(true);
             PlayerStats.curWeight -= itemWeapon.Weight;
+            Inventory._desc.text = " ";
+            Inventory._name.text = " ";
+            Inventory._image.sprite = null;
             for (int i = 0; i < InventoryList.itemList.Count; i++)
             {
                 if (InventoryList.itemList[i] == gameObject)

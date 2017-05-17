@@ -38,7 +38,7 @@ public class DroppedMisc : MonoBehaviour
             clone.transform.localScale = new Vector3(1, 1, 1);
             clone.GetComponent<InventoryMisc>().pickedUpMisc(dropMisc);
             clone.SetActive(true);
-            InventoryList.itemList.Add(clone.gameObject);
+            InventoryList.itemList.Add(clone);
             PlayerStats.curWeight += dropMisc.Weight;
             StartCoroutine(ItemObtained());
         }

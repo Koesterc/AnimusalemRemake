@@ -79,6 +79,9 @@ public class InventoryAmmo : MonoBehaviour
                         clone = Instantiate(droppedAmmo, pos, transform.rotation) as GameObject;
                         clone.GetComponent<DroppedAmmo>().DropAmmo(itemAmmo);
                         clone.SetActive(true);
+                        Inventory._desc.text = null;
+                        Inventory._name.text = null;
+                        Inventory._image.sprite = null;
                         for (int i = 0; i < InventoryList.itemList.Count; i++)
                         {
                             if (InventoryList.itemList[i] == gameObject)
@@ -118,6 +121,9 @@ public class InventoryAmmo : MonoBehaviour
                         clone = Instantiate(droppedAmmo, pos, transform.rotation) as GameObject;
                         clone.GetComponent<DroppedAmmo>().DropAmmo(itemAmmo);
                         clone.SetActive(true);
+                        Inventory._desc.text = " ";
+                        Inventory._name.text = " ";
+                        Inventory._image.sprite = null;
                         for (int i = 0; i < InventoryList.itemList.Count; i++)
                         {
                             if (InventoryList.itemList[i] == gameObject)
@@ -157,6 +163,9 @@ public class InventoryAmmo : MonoBehaviour
                         clone = Instantiate(droppedAmmo, pos, transform.rotation) as GameObject;
                         clone.GetComponent<DroppedAmmo>().DropAmmo(itemAmmo);
                         clone.SetActive(true);
+                        Inventory._desc.text = " ";
+                        Inventory._name.text = " ";
+                        Inventory._image.sprite = null;
                         for (int i = 0; i < InventoryList.itemList.Count; i++)
                         {
                             if (InventoryList.itemList[i] == gameObject)
@@ -196,6 +205,9 @@ public class InventoryAmmo : MonoBehaviour
                         clone = Instantiate(droppedAmmo, pos, transform.rotation) as GameObject;
                         clone.GetComponent<DroppedAmmo>().DropAmmo(itemAmmo);
                         clone.SetActive(true);
+                        Inventory._desc.text = " ";
+                        Inventory._name.text = " ";
+                        Inventory._image.sprite = null;
                         for (int i = 0; i < InventoryList.itemList.Count; i++)
                         {
                             if (InventoryList.itemList[i] == gameObject)
@@ -235,6 +247,9 @@ public class InventoryAmmo : MonoBehaviour
                         clone = Instantiate(droppedAmmo, pos, transform.rotation) as GameObject;
                         clone.GetComponent<DroppedAmmo>().DropAmmo(itemAmmo);
                         clone.SetActive(true);
+                        Inventory._desc.text = " ";
+                        Inventory._name.text = " ";
+                        Inventory._image.sprite = null;
                         for (int i = 0; i < InventoryList.itemList.Count; i++)
                         {
                             if (InventoryList.itemList[i] == gameObject)
@@ -274,6 +289,9 @@ public class InventoryAmmo : MonoBehaviour
                         clone = Instantiate(droppedAmmo, pos, transform.rotation) as GameObject;
                         clone.GetComponent<DroppedAmmo>().DropAmmo(itemAmmo);
                         clone.SetActive(true);
+                        Inventory._desc.text = " ";
+                        Inventory._name.text = " ";
+                        Inventory._image.sprite = null;
                         for (int i = 0; i < InventoryList.itemList.Count; i++)
                         {
                             if (InventoryList.itemList[i] == gameObject)
@@ -313,6 +331,9 @@ public class InventoryAmmo : MonoBehaviour
                         clone = Instantiate(droppedAmmo, pos, transform.rotation) as GameObject;
                         clone.GetComponent<DroppedAmmo>().DropAmmo(itemAmmo);
                         clone.SetActive(true);
+                        Inventory._desc.text = " ";
+                        Inventory._name.text = " ";
+                        Inventory._image.sprite = null;
                         for (int i = 0; i < InventoryList.itemList.Count; i++)
                         {
                             if (InventoryList.itemList[i] == gameObject)
@@ -335,8 +356,7 @@ public class InventoryAmmo : MonoBehaviour
         }//end of input
     }//end of function
 
-
-    public void pickedUpMisc(BaseAmmo myAmmo)
+    public void PickedUpAmmo(BaseAmmo myAmmo)
     {
         itemAmmo = myAmmo;
         Transform _weight = gameObject.transform.Find("Weight");

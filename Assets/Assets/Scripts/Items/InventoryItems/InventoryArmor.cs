@@ -31,6 +31,9 @@ public class InventoryArmor : MonoBehaviour
             clone.GetComponent<DroppedArmor>().DropArmor(itemArmor);
             clone.SetActive(true);
             PlayerStats.curWeight -= itemArmor.Weight;
+            Inventory._desc.text = " ";
+            Inventory._name.text = " ";
+            Inventory._image.sprite = null;
             for (int i = 0; i < InventoryList.itemList.Count; i++)
             {
                 if (InventoryList.itemList[i] == gameObject)

@@ -35,6 +35,7 @@ public class DroppedWeapon : MonoBehaviour
             clone.transform.SetParent(Inventory.inventoryContent.transform, true);
             clone.transform.localScale = new Vector3(1, 1, 1);
             clone.GetComponent<InventoryWeapon>().pickedUpWeapon(dropWeapon);
+            clone.SetActive(true);
             InventoryList.itemList.Add(clone);
             PlayerStats.curWeight += dropWeapon.Weight;
             StartCoroutine(ItemObtained());

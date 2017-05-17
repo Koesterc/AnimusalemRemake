@@ -35,9 +35,9 @@ public class DroppedAmmo : MonoBehaviour
                         clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
                         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
-                        clone.GetComponent<InventoryAmmo>().pickedUpMisc(dropAmmo);
+                        clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
-                        InventoryList.itemList.Add(clone.gameObject);
+                        InventoryList.itemList.Add(clone);
                         dropAmmo.Quantity = 0;
                     }
                 }
@@ -64,9 +64,9 @@ public class DroppedAmmo : MonoBehaviour
                         clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
                         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
-                        clone.GetComponent<InventoryAmmo>().pickedUpMisc(dropAmmo);
+                        clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
-                        InventoryList.itemList.Add(clone.gameObject);
+                        InventoryList.itemList.Add(clone);
                         dropAmmo.Quantity = 0;
                     }
                 }
@@ -93,9 +93,9 @@ public class DroppedAmmo : MonoBehaviour
                         clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
                         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
-                        clone.GetComponent<InventoryAmmo>().pickedUpMisc(dropAmmo);
+                        clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
-                        InventoryList.itemList.Add(clone.gameObject);
+                        InventoryList.itemList.Add(clone);
                         dropAmmo.Quantity = 0;
                     }
                 }
@@ -122,9 +122,9 @@ public class DroppedAmmo : MonoBehaviour
                         clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
                         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
-                        clone.GetComponent<InventoryAmmo>().pickedUpMisc(dropAmmo);
+                        clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
-                        InventoryList.itemList.Add(clone.gameObject);
+                        InventoryList.itemList.Add(clone);
                         dropAmmo.Quantity = 0;
                     }
                 }
@@ -151,9 +151,9 @@ public class DroppedAmmo : MonoBehaviour
                         clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
                         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
-                        clone.GetComponent<InventoryAmmo>().pickedUpMisc(dropAmmo);
+                        clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
-                        InventoryList.itemList.Add(clone.gameObject);
+                        InventoryList.itemList.Add(clone);
                         dropAmmo.Quantity = 0;
                     }
                 }
@@ -180,9 +180,9 @@ public class DroppedAmmo : MonoBehaviour
                         clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
                         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
-                        clone.GetComponent<InventoryAmmo>().pickedUpMisc(dropAmmo);
+                        clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
-                        InventoryList.itemList.Add(clone.gameObject);
+                        InventoryList.itemList.Add(clone);
                         dropAmmo.Quantity = 0;
                     }
                 }
@@ -209,9 +209,9 @@ public class DroppedAmmo : MonoBehaviour
                         clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
                         clone.transform.SetParent(Inventory.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
-                        clone.GetComponent<InventoryAmmo>().pickedUpMisc(dropAmmo);
+                        clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
-                        InventoryList.itemList.Add(clone.gameObject);
+                        InventoryList.itemList.Add(clone);
                         dropAmmo.Quantity = 0;
                     }
                 }

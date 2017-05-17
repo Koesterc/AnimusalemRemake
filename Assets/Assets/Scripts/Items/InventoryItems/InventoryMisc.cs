@@ -29,11 +29,14 @@ public class InventoryMisc : MonoBehaviour
             PlayerStats.curWeight -= itemMisc.Weight;
             Inventory._drop.Play();//playing the sound
             GameObject clone;
-                Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
-                clone = Instantiate(droppedMisc, pos, transform.rotation) as GameObject;
-                clone.GetComponent<DroppedMisc>().DropMisc(itemMisc);
-                clone.SetActive(true);
-                for (int i = 0; i < InventoryList.itemList.Count; i++)
+            Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
+            clone = Instantiate(droppedMisc, pos, transform.rotation) as GameObject;
+            clone.GetComponent<DroppedMisc>().DropMisc(itemMisc);
+            clone.SetActive(true);
+            Inventory._desc.text = " ";
+            Inventory._name.text = " ";
+            Inventory._image.sprite = null;
+            for (int i = 0; i < InventoryList.itemList.Count; i++)
                 {
                     if (InventoryList.itemList[i] == gameObject)
                     {
