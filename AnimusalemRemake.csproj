@@ -79,6 +79,7 @@
     <Compile Include="Assets\Assets\Scripts\GameManager\GameInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\GameManagerScript.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\MusicScript.cs" />
+    <Compile Include="Assets\Assets\Scripts\GameManager\UI.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\WeaponSelection.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\BaseItemScripts\BaseAmmo.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\BaseItemScripts\BaseArmor.cs" />
@@ -110,6 +111,8 @@
     <Compile Include="Assets\Assets\Scripts\Player\Controls.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\PlayerShadow.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\PlayerStats.cs" />
+    <Compile Include="Assets\Assets\Scripts\Player\Skills\Base\BaseSkills.cs" />
+    <Compile Include="Assets\Assets\Scripts\Player\Skills\Combat\BaseCombat.cs" />
     <Compile Include="Assets\ItemInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

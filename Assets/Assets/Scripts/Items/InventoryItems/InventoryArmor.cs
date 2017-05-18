@@ -43,9 +43,9 @@ public class InventoryArmor : MonoBehaviour
                     if (InventoryList.itemList.Count > 0)
                     {
                         if (i != InventoryList.itemList.Count)
-                            InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                         else
-                            InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
                         i = InventoryList.itemList.Count;
                     }
                 }//end of if
@@ -66,7 +66,7 @@ public class InventoryArmor : MonoBehaviour
         Inventory._desc.text = itemArmor.ItemDesc;
         Inventory._name.text = itemArmor.ItemName;
         Inventory._image.sprite = itemArmor.Icon;
-        Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
+        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
 
         Inventory._select.Play();
     }

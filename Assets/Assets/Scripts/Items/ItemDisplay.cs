@@ -60,7 +60,7 @@ public class ItemDisplay : MonoBehaviour {
             canvas.GetComponent<Canvas>().sortingOrder = 101;
             Display();
         }
-        else if (other.tag == "Interact" && pickUp && Input.GetKeyDown("return") && !Inventory.inventory.gameObject.activeSelf)
+        else if (other.tag == "Interact" && pickUp && Input.GetKeyDown("return") && !UI.inventory.gameObject.activeSelf)
         {
             //check weight
             //add weight

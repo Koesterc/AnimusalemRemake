@@ -7,23 +7,33 @@ public class GameManagerScript : MonoBehaviour
 {
     //stats
     public static Transform stat;
+    //stats
+    [SerializeField]
+    Transform _itemStats;
     //inventory
     public static List <Text> statDisplay = new List<Text>();
     //item pickup information
     public static GameObject itemInfo;
     public static Text itemInfoText;
     public static Image itemInfoImage;
+    [SerializeField]
+    GameObject _itemInfo;
+    [SerializeField]
+    Text _itemInfoText;
+    [SerializeField]
+    Image _itemInfoImage;
     //gamespeed
     public static float gameSpeed = 1f;
 
     // Use this for initialization
     void Start ()
     {
-        stat = GameObject.Find("Canvas/ItemStats").GetComponent<Transform>();
-        itemInfo= GameObject.Find("Canvas/ItemInformation");
-        itemInfoText = GameObject.Find("Canvas/ItemInformation/TextFrame/Text").GetComponent<Text>();
-        itemInfoImage = GameObject.Find("Canvas/ItemInformation/Image").GetComponent<Image>();
+        stat = _itemStats;
+        itemInfo = _itemInfo;
+        itemInfoText = _itemInfoText;
+        itemInfoImage = _itemInfoImage;
         itemInfo.SetActive(false);
+
         foreach (Transform child in stat)
         {
             ///child.GetComponent<Text>();

@@ -31,8 +31,8 @@ public class DroppedWeapon : MonoBehaviour
         if ((PlayerStats.curWeight + dropWeapon.Weight) <= PlayerStats.maxWeight)
         {
             GameObject clone;
-            clone = Instantiate(inventoryWeaponPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-            clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+            clone = Instantiate(inventoryWeaponPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+            clone.transform.SetParent(UI.inventoryContent.transform, true);
             clone.transform.localScale = new Vector3(1, 1, 1);
             clone.GetComponent<InventoryWeapon>().pickedUpWeapon(dropWeapon);
             clone.SetActive(true);

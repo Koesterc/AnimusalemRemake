@@ -33,8 +33,8 @@ public class DroppedMisc : MonoBehaviour
         if ((PlayerStats.curWeight + dropMisc.Weight) <= PlayerStats.maxWeight)
         {
             GameObject clone;
-            clone = Instantiate(inventoryMiscPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-            clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+            clone = Instantiate(inventoryMiscPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+            clone.transform.SetParent(UI.inventoryContent.transform, true);
             clone.transform.localScale = new Vector3(1, 1, 1);
             clone.GetComponent<InventoryMisc>().pickedUpMisc(dropMisc);
             clone.SetActive(true);

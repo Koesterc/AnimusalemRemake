@@ -58,5 +58,7 @@ public class PlayerStats : ScriptableObject
     public static int agility;
     public static int luck;
     public static float perception;
+    //remaining stat point
+    public static float statPoint;
 
 }

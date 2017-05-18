@@ -45,9 +45,9 @@ public class InventoryWeapon : MonoBehaviour
                     if (InventoryList.itemList.Count > 0)
                     {
                         if (i != InventoryList.itemList.Count)
-                            InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                         else
-                            InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i-1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i-1]);
                         i = InventoryList.itemList.Count;
                     }//end of if
                 }//end of if
@@ -76,7 +76,7 @@ public class InventoryWeapon : MonoBehaviour
         Inventory.cdBar.transform.localScale = new Vector3(itemWeapon.CapacityLvl / 5, 1, 1);
         Inventory.accBar.transform.localScale = new Vector3(itemWeapon.CriticalChanceLvl / 5, 1, 1);
         Inventory.capBar.transform.localScale = new Vector3(itemWeapon.CriticalDamageLvl / 5, 1, 1);
-        Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
+        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
 
         Inventory._select.Play();
     }

@@ -91,9 +91,9 @@ public class InventoryAmmo : MonoBehaviour
                                 if (InventoryList.itemList.Count > 0)
                                 {
                                     if (i != InventoryList.itemList.Count)
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -133,9 +133,9 @@ public class InventoryAmmo : MonoBehaviour
                                 if (InventoryList.itemList.Count > 0)
                                 {
                                     if (i != InventoryList.itemList.Count)
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -175,9 +175,9 @@ public class InventoryAmmo : MonoBehaviour
                                 if (InventoryList.itemList.Count > 0)
                                 {
                                     if (i != InventoryList.itemList.Count)
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -217,9 +217,9 @@ public class InventoryAmmo : MonoBehaviour
                                 if (InventoryList.itemList.Count > 0)
                                 {
                                     if (i != InventoryList.itemList.Count)
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -259,9 +259,9 @@ public class InventoryAmmo : MonoBehaviour
                                 if (InventoryList.itemList.Count > 0)
                                 {
                                     if (i != InventoryList.itemList.Count)
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -301,9 +301,9 @@ public class InventoryAmmo : MonoBehaviour
                                 if (InventoryList.itemList.Count > 0)
                                 {
                                     if (i != InventoryList.itemList.Count)
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -343,9 +343,9 @@ public class InventoryAmmo : MonoBehaviour
                                 if (InventoryList.itemList.Count > 0)
                                 {
                                     if (i != InventoryList.itemList.Count)
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
-                                        InventoryList.eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(InventoryList.itemList[i - 1]);
+UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -395,7 +395,7 @@ public class InventoryAmmo : MonoBehaviour
         Inventory._desc.text = itemAmmo.ItemDesc;
         Inventory._name.text = itemAmmo.ItemName;
         Inventory._image.sprite = itemAmmo.Icon;
-        Inventory.inventoryContent.transform.localPosition = new Vector3(Inventory.inventoryContent.transform.localPosition.x, -transform.localPosition.y, Inventory.inventoryContent.transform.localPosition.z);
+        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
         Inventory._select.Play();
     }
 }

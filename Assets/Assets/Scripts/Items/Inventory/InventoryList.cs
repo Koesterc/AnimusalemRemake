@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class InventoryList : MonoBehaviour
 {
-    public static GameObject eventSystem;
     //public static Dictionary<string,GameObject> itemList = new Dictionary<string,GameObject>();
     public static List<GameObject> itemList = new List<GameObject>();
     public static Scrollbar scrollBar;
 
     void Awake()
     {
-        eventSystem = GameObject.Find("Canvas/EventSystem");
         scrollBar = GameObject.Find("Canvas/Inventory/Scrollbar").GetComponent<Scrollbar>();
-        foreach (Transform r in Inventory.inventoryContent.transform)
+        foreach (Transform r in UI.inventoryContent.transform)
         {
             itemList.Add(r.gameObject);
             if (r.GetComponent<InventoryWeapon>())
@@ -45,7 +43,7 @@ public class InventoryList : MonoBehaviour
                 a.CreateAmmo();
                 r.gameObject.SetActive(true);
             }
-            StartCoroutine (Wait());
+
         }
     }
 
@@ -57,15 +55,15 @@ public class InventoryList : MonoBehaviour
 
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(.06f);
-        try
-        {
-            eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(itemList[0]);
-        }
-        catch
-        {
-
-        }
         scrollBar.value = 1;
+        UI.UIevent.SetSelectedGameObject(null);
+        yield return new WaitForSeconds(.06f);
+       if (UI.UIevent.currentSelectedGameObject == null)
+            UI.UIevent.SetSelectedGameObject(itemList[0]);
+        else
+        {
+            yield return new WaitForSeconds(.06f);
+            UI.UIevent.SetSelectedGameObject(itemList[0]);
+        }
     }
 }

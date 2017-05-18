@@ -32,8 +32,8 @@ public class DroppedAmmo : MonoBehaviour
                         PlayerStats.hgAmmo += dropAmmo.Quantity;
                         PlayerStats.curWeight += dropAmmo.Quantity * PlayerStats.hgAmmoWeight;
                         GameObject clone;
-                        clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-                        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+                        clone = Instantiate(inventoryAmmoPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+                        clone.transform.SetParent(UI.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
@@ -61,8 +61,8 @@ public class DroppedAmmo : MonoBehaviour
                         PlayerStats.sgAmmo += dropAmmo.Quantity;
                         PlayerStats.curWeight += dropAmmo.Quantity * PlayerStats.sgAmmoWeight;
                         GameObject clone;
-                        clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-                        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+                        clone = Instantiate(inventoryAmmoPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+                        clone.transform.SetParent(UI.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
@@ -90,8 +90,8 @@ public class DroppedAmmo : MonoBehaviour
                         PlayerStats.rifleAmmo += dropAmmo.Quantity;
                         PlayerStats.curWeight += dropAmmo.Quantity * PlayerStats.rifleAmmoWeight;
                         GameObject clone;
-                        clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-                        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+                        clone = Instantiate(inventoryAmmoPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+                        clone.transform.SetParent(UI.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
@@ -119,8 +119,8 @@ public class DroppedAmmo : MonoBehaviour
                         PlayerStats.arAmmo += dropAmmo.Quantity;
                         PlayerStats.curWeight += dropAmmo.Quantity * PlayerStats.arAmmoWeight;
                         GameObject clone;
-                        clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-                        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+                        clone = Instantiate(inventoryAmmoPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+                        clone.transform.SetParent(UI.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
@@ -148,8 +148,8 @@ public class DroppedAmmo : MonoBehaviour
                         PlayerStats.mgAmmo += dropAmmo.Quantity;
                         PlayerStats.curWeight += dropAmmo.Quantity * PlayerStats.mgAmmoWeight;
                         GameObject clone;
-                        clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-                        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+                        clone = Instantiate(inventoryAmmoPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+                        clone.transform.SetParent(UI.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
@@ -177,8 +177,8 @@ public class DroppedAmmo : MonoBehaviour
                         PlayerStats.magnumAmmo += dropAmmo.Quantity;
                         PlayerStats.curWeight += dropAmmo.Quantity * PlayerStats.magnumAmmoWeight;
                         GameObject clone;
-                        clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-                        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+                        clone = Instantiate(inventoryAmmoPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+                        clone.transform.SetParent(UI.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);
@@ -206,8 +206,8 @@ public class DroppedAmmo : MonoBehaviour
                         PlayerStats.explosiveAmmo += dropAmmo.Quantity;
                         PlayerStats.curWeight += dropAmmo.Quantity * PlayerStats.explosiveAmmoWeight;
                         GameObject clone;
-                        clone = Instantiate(inventoryAmmoPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-                        clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+                        clone = Instantiate(inventoryAmmoPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+                        clone.transform.SetParent(UI.inventoryContent.transform, true);
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         clone.GetComponent<InventoryAmmo>().PickedUpAmmo(dropAmmo);
                         clone.SetActive(true);

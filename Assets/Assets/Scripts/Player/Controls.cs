@@ -53,18 +53,31 @@ public class Controls : MonoBehaviour
         //    anim.SetBool("isWalking", false);
         //    reflectionAnim.SetBool("isWalking", false);
         //}
-        //accessing the inventory
-        if (Input.GetKeyDown("i") && canDo)
+        //accessing character stats
+        if (Input.GetKeyDown("c") && canDo)
         {
             canDo = false;
-            if (Inventory.inventory.activeSelf)
+            if (UI.playerStats.activeSelf)
+            {
+                StartCoroutine(StatsIn());
+            }
+            else
+            {
+                StartCoroutine(StatsOut());
+            }
+        }
+            //accessing the inventory
+            if (Input.GetKeyDown("i") && canDo)
+        {
+            canDo = false;
+            if (UI.inventory.activeSelf)
             {
                 StartCoroutine(FadeOut());
             }
             else
             {
                 speed = 0;
-                Inventory.inventory.SetActive(true);
+                UI.inventory.SetActive(true);
                 Inventory.weightText.text = "Weight: " +PlayerStats.curWeight.ToString() + "/" + PlayerStats.maxWeight.ToString() + "(" + ((PlayerStats.curWeight / PlayerStats.maxWeight)*100).ToString() + "%" + ")";
                 Inventory.healthText.text = "Health: " + PlayerStats.health.ToString() + "/" + PlayerStats.maxHealth.ToString() + "(" + ((PlayerStats.health / PlayerStats.maxHealth)*100).ToString() + "%" + ")";
                 StartCoroutine(FadeIn());
@@ -82,14 +95,19 @@ public class Controls : MonoBehaviour
     //    reflectionAnim.SetFloat("vertical", -vertical);
     //}
 
+
+
+
+//the functions associated with the inventory
     IEnumerator FadeOut()
     {
+        UI.UIevent.SetSelectedGameObject(null);
         while (Inventory.fade.alpha > 0)
         {
             yield return new WaitForSeconds(.01f);
             Inventory.fade.alpha -= .01f;
         }
-        Inventory.inventory.SetActive(false);
+        UI.inventory.SetActive(false);
         speed = 3;
         canDo = true;
     }
@@ -100,6 +118,24 @@ public class Controls : MonoBehaviour
             yield return new WaitForSeconds(.01f);
             Inventory.fade.alpha += .01f;
         }
+        canDo = true;
+    }
+    //the functions associated with the player stats
+    IEnumerator StatsIn()
+    {
+        UI.playerStats.SetActive(true);
+        UI.playerStats.GetComponent<Animator>().Play("TurnOnStats");
+        print("on");
+        yield return new WaitForSeconds(2f);
+        canDo = true;
+
+    }
+    IEnumerator StatsOut()
+    {
+        UI.playerStats.GetComponent<Animator>().Play("TurnOffStats");
+        print("on");
+        yield return new WaitForSeconds(2f);
+        UI.playerStats.SetActive(false);
         canDo = true;
     }
 

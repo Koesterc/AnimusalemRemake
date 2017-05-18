@@ -15,9 +15,7 @@ public class Inventory : MonoBehaviour
     public static Image accBar;
     public static Image ccBar;
     public static Image cdBar;
-    public static GameObject inventory;
     public static CanvasGroup fade;
-    public static GameObject inventoryContent;
     public static Text healthText;
     public static Text weightText;
 
@@ -27,9 +25,6 @@ public class Inventory : MonoBehaviour
 
     void Awake()
     {
-        inventory = gameObject;
-        inventoryContent = transform.Find("ScrollRect/Content").gameObject;
-        fade = gameObject.GetComponent<CanvasGroup>();
         _desc = GameObject.Find("Canvas/Inventory/Desc/ItemDesc").GetComponent<Text>();
         _name = GameObject.Find("Canvas/Inventory/Desc/ItemName").GetComponent<Text>();
         _image = GameObject.Find("Canvas/Inventory/Desc/ItemImage").GetComponent<Image>();

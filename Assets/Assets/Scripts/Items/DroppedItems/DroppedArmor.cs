@@ -28,8 +28,8 @@ public class DroppedArmor : MonoBehaviour
         if ((PlayerStats.curWeight + dropArmor.Weight) <= PlayerStats.maxWeight)
         {
             GameObject clone;
-            clone = Instantiate(inventoryArmorPrefab, Inventory.inventoryContent.transform.position, transform.rotation) as GameObject;
-            clone.transform.SetParent(Inventory.inventoryContent.transform, true);
+            clone = Instantiate(inventoryArmorPrefab, UI.inventoryContent.transform.position, transform.rotation) as GameObject;
+            clone.transform.SetParent(UI.inventoryContent.transform, true);
             clone.transform.localScale = new Vector3(1, 1, 1);
             clone.SetActive(true);
             clone.GetComponent<InventoryArmor>().pickedUpArmor(dropArmor);
