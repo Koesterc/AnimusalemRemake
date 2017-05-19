@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BaseItem
 {
     Sprite icon;
+    Sprite mapIcon;
     int itemID;
     string itemName;
    // public string[] HGNames = { "Glock", "beretta", "P10" };
@@ -36,7 +37,11 @@ public class BaseItem
         get { return icon; }
         set { icon = value; }
     }
-
+    public Sprite MapIcon
+    {
+        get { return mapIcon; }
+        set { mapIcon = value; }
+    }
     public float ReducedWeight
     {
         get { return reducedWeight; }

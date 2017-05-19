@@ -32,6 +32,9 @@ public class InventoryWeapon : MonoBehaviour
             clone = Instantiate(droppedWeapon, pos, transform.rotation) as GameObject;
             clone.GetComponent<DroppedWeapon>().DropWeapon(itemWeapon);
             clone.SetActive(true);
+            //assigning the proper map icon to the gam object that dropped
+            SpriteRenderer mapIcon = clone.transform.Find("MapIcon").gameObject.GetComponent<SpriteRenderer>();
+            mapIcon.sprite = itemWeapon.MapIcon;
             PlayerStats.curWeight -= itemWeapon.Weight;
             Inventory._desc.text = " ";
             Inventory._name.text = " ";
@@ -45,9 +48,9 @@ public class InventoryWeapon : MonoBehaviour
                     if (InventoryList.itemList.Count > 0)
                     {
                         if (i != InventoryList.itemList.Count)
-UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
+                            UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                         else
-UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i-1]);
+                            UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i-1]);
                         i = InventoryList.itemList.Count;
                     }//end of if
                 }//end of if

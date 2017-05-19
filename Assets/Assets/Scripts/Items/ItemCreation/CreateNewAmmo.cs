@@ -13,6 +13,7 @@ public class CreateNewAmmo : MonoBehaviour
         newAmmo = new BaseAmmo();
         newAmmo.ItemID = Random.Range(0, 10000);
         int temp = Random.Range(0, 7);
+        newAmmo.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/Ammo");
         switch (temp)
         {
             default:

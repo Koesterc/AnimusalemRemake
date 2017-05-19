@@ -90,12 +90,10 @@ public class Controls : MonoBehaviour
             }
         }
         //altering the mini map
-        if (Input.GetKeyDown("m") && canDo)
+        if (Input.GetKeyDown("m") && canDo && !GameManagerScript.isActive)
         {
-            canDo = false;
             StopAllCoroutines();
             StartCoroutine(MiniMap());
-
         }
     }//end of update
 
@@ -123,10 +121,20 @@ public class Controls : MonoBehaviour
         }
         UI.inventory.SetActive(false);
         speed = PlayerStats.speed;
+        switch (miniMapSelect)
+        {
+            case 0:
+                yield return null;
+                break;
+            default:
+                miniMapCamera.gameObject.SetActive(true);
+                break;
+        }
         canDo = true;
     }
     IEnumerator FadeIn()
     {
+        miniMapCamera.gameObject.SetActive(false);
         while (Inventory.fade.alpha < 1)
         {
             yield return new WaitForSeconds(.01f);
@@ -137,6 +145,7 @@ public class Controls : MonoBehaviour
     //the functions associated with the player stats
     IEnumerator StatsIn()
     {
+        miniMapCamera.gameObject.SetActive(false);
         Animator anim = UI.playerStats.GetComponent<Animator>();
         UI.playerStats.SetActive(true);
         //playing the animations for the animator, but starting the animator where it last left off
@@ -153,6 +162,15 @@ public class Controls : MonoBehaviour
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         UI.playerStats.SetActive(false);
         speed = PlayerStats.speed;
+        switch (miniMapSelect)
+        {
+            case 0:
+                yield return null;
+                break;
+            default:
+                miniMapCamera.gameObject.SetActive(true);
+                break;
+        }
         canDo = true;
     }
 
@@ -164,22 +182,27 @@ public class Controls : MonoBehaviour
             default:
                 miniMapCamera.gameObject.SetActive(true);
                 miniMapSelect++;
+                canDo = true;
+                yield return null;
                 break;
             case 1:
                 miniMapCamera.Play("FullScreen", 0, 0);
                 miniMapSelect++;
+                yield return new WaitForSeconds(.5f);
+                canDo = true;
                 break;
             case 2:
                 miniMapCamera.Play("SmallScreen", 0, 0);
                 miniMapSelect++;
+                yield return new WaitForSeconds(.5f);
+                canDo = true;
                 break;
             case 3:
                 miniMapCamera.gameObject.SetActive(false);
                 miniMapSelect = 0;
+                canDo = true;
+                yield return null;
                 break;
         }
-        yield return new WaitForSeconds(.5f);
-        canDo = true;
     }
-
 }//end of class

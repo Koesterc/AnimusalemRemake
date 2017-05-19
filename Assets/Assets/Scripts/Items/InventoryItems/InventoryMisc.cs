@@ -33,6 +33,9 @@ public class InventoryMisc : MonoBehaviour
             clone = Instantiate(droppedMisc, pos, transform.rotation) as GameObject;
             clone.GetComponent<DroppedMisc>().DropMisc(itemMisc);
             clone.SetActive(true);
+            //assigning the proper map icon to the gam object that dropped
+            SpriteRenderer mapIcon = clone.transform.Find("MapIcon").gameObject.GetComponent<SpriteRenderer>();
+            mapIcon.sprite = itemMisc.MapIcon;
             Inventory._desc.text = " ";
             Inventory._name.text = " ";
             Inventory._image.sprite = null;

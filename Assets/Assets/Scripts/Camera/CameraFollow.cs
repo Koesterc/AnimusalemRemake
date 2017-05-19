@@ -31,7 +31,7 @@ public class CameraFollow : MonoBehaviour
         //moving to the goal, the target position x and z
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref dir, smoothness);
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && canZoom == true && GetComponent<Camera>().orthographicSize >= maxZoom)
+        if (Input.GetKeyDown(KeyCode.LeftControl) && canZoom == true && GetComponent<Camera>().orthographicSize >= maxZoom && !GameManagerScript.isActive)
         {
             //zoom in
             //zoomIn.Stop();
@@ -40,7 +40,7 @@ public class CameraFollow : MonoBehaviour
             StopCoroutine("ZoomOut");
             StartCoroutine(ZoomIn(.01f));
         }
-        else if (Input.GetKeyDown(KeyCode.LeftControl) && canZoom == false && GetComponent<Camera>().orthographicSize <= minZoom)
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && canZoom == false && GetComponent<Camera>().orthographicSize <= minZoom && !GameManagerScript.isActive)
         {
             //zoom out
             //zoomIn.Stop();

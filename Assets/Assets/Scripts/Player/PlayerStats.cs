@@ -40,12 +40,16 @@ public class PlayerStats : ScriptableObject
     public static int maxXP = 250;
     public static int damage;
     public static int defense;
-    public static int curLevel;
+    public static int curLevel =1;
     public static int statPoints;
     public static float speed = 3f;
     public static float lightRadius;
     public static float curWeight = 0f;
     public static float maxWeight = 6f;
+    //referringthe the melee/knife attack
+    public static int attackSpeed;
+    public static int attackRange;
+    public static int meleeDamage;
 
     //player Stats
     [Header("Player Stats")]

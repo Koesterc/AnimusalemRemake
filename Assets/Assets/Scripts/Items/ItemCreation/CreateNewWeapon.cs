@@ -109,6 +109,7 @@ public class CreateNewWeapon : MonoBehaviour {
                     (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is sidearm with a " + newWeapon.Capacity + " round magazine. It uses traditional handgun bullets.";
                 newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Handguns/Handgun");
+                newWeapon.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/Handgun");
                 break;
             case 1:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Rifle;
@@ -165,6 +166,7 @@ public class CreateNewWeapon : MonoBehaviour {
                  (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a long sturdy rifle. Rifles have a far greater chance to perform critical hits and deal greater damage than other firearms when achieved.";
                 newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Rifles/Rifle");
+                newWeapon.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/Rifle");
                 break;
             case 2:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Shotgun;
@@ -233,6 +235,7 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Accuracy/2));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" shotgun has a wide range of attack allowing the user to strike multiple targets that are grouped.";
                 newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Shotguns/Shotgun");
+                newWeapon.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/Shotgun");
                 break;
             case 3:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Machinegun;
@@ -290,6 +293,7 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The sub machineguns, such as the "+newWeapon.ItemName+", are extremely light and and easy to handle thus they are superior to all other weapons when it comes down to capacity, fire rate, and reload.";
                 newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Machineguns/Machinegun");
+                newWeapon.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/Machinegun");
                 break;
             case 4:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.AssaultRifle;
@@ -347,6 +351,7 @@ public class CreateNewWeapon : MonoBehaviour {
       (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The assault rifles pack a much heavier punch than the SMGs, but they are less accurate and not nearly as fast.";
                 newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/AssaultRifles/AssaultRifle");
+                newWeapon.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/AssaultRifle");
                 break;
             case 5:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Magnum;
@@ -400,6 +405,7 @@ public class CreateNewWeapon : MonoBehaviour {
 (int)(newWeapon.Accuracy * 10));
                 newWeapon.ItemDesc = "Although very powerful, the "+newWeapon.ItemName+" is not so easily handled. Its firerate is far less than your typical handgun and the kickback makes it far more challenging to hit targets.";
                 newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Magnums/Magnum");
+                newWeapon.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/Magnum");
                 break;
             case 6:
                 newWeapon.WeaponTypes = BaseWeapon.WeaponType.Explosive;
@@ -450,6 +456,7 @@ public class CreateNewWeapon : MonoBehaviour {
 (int)(newWeapon.Accuracy * 10));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a powerful, single round explosive. Although it is the most powerful type of weapon available, ammo for it is by far the most scarce.";
                 newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Explosives/Explosive");
+                newWeapon.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/Explosive");
                 break;
         }
     }
