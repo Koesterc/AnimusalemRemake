@@ -12,6 +12,8 @@ public class InventoryList : MonoBehaviour
     void Awake()
     {
         scrollBar = GameObject.Find("Canvas/Inventory/Scrollbar").GetComponent<Scrollbar>();
+      //  Inventory.weightText.text = "Weight: " +PlayerStats.curWeight.ToString() + "/" + PlayerStats.maxWeight.ToString() + "(" + ((PlayerStats.curWeight / PlayerStats.maxWeight)*100).ToString() + "%" + ")";
+      //  Inventory.healthText.text = "Health: " + PlayerStats.health.ToString() + "/" + PlayerStats.maxHealth.ToString() + "(" + ((PlayerStats.health / PlayerStats.maxHealth)*100).ToString() + "%" + ")";
         foreach (Transform r in UI.inventoryContent.transform)
         {
             itemList.Add(r.gameObject);

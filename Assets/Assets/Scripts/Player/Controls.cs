@@ -20,8 +20,10 @@ public class Controls : MonoBehaviour
     public Animator reflectionAnim;
     float horizontal;
     float vertical;
-    bool canDo = true;
     public static Transform _Player;
+    static bool canDo = true;
+    public Animator miniMapCamera;
+    int miniMapSelect = 0;
 
 
 
@@ -57,31 +59,43 @@ public class Controls : MonoBehaviour
         if (Input.GetKeyDown("c") && canDo)
         {
             canDo = false;
-            if (UI.playerStats.activeSelf)
+            if (!GameManagerScript.isActive)
             {
+                StopAllCoroutines();
+                speed = 0;
+                PlayerStatSounds.on.Play();
                 StartCoroutine(StatsIn());
             }
             else
             {
+                PlayerStatSounds.off.Play();
                 StartCoroutine(StatsOut());
             }
         }
-            //accessing the inventory
-            if (Input.GetKeyDown("i") && canDo)
+        //accessing the inventory
+        if (Input.GetKeyDown("i") && canDo)
         {
             canDo = false;
-            if (UI.inventory.activeSelf)
+            if (GameManagerScript.isActive)
             {
+                StopAllCoroutines();
                 StartCoroutine(FadeOut());
             }
             else
             {
-                speed = 0;
                 UI.inventory.SetActive(true);
-                Inventory.weightText.text = "Weight: " +PlayerStats.curWeight.ToString() + "/" + PlayerStats.maxWeight.ToString() + "(" + ((PlayerStats.curWeight / PlayerStats.maxWeight)*100).ToString() + "%" + ")";
-                Inventory.healthText.text = "Health: " + PlayerStats.health.ToString() + "/" + PlayerStats.maxHealth.ToString() + "(" + ((PlayerStats.health / PlayerStats.maxHealth)*100).ToString() + "%" + ")";
+                speed = 0;
+                StopAllCoroutines();
                 StartCoroutine(FadeIn());
             }
+        }
+        //altering the mini map
+        if (Input.GetKeyDown("m") && canDo)
+        {
+            canDo = false;
+            StopAllCoroutines();
+            StartCoroutine(MiniMap());
+
         }
     }//end of update
 
@@ -108,7 +122,7 @@ public class Controls : MonoBehaviour
             Inventory.fade.alpha -= .01f;
         }
         UI.inventory.SetActive(false);
-        speed = 3;
+        speed = PlayerStats.speed;
         canDo = true;
     }
     IEnumerator FadeIn()
@@ -117,25 +131,54 @@ public class Controls : MonoBehaviour
         {
             yield return new WaitForSeconds(.01f);
             Inventory.fade.alpha += .01f;
+            canDo = true;
         }
-        canDo = true;
     }
     //the functions associated with the player stats
     IEnumerator StatsIn()
     {
+        Animator anim = UI.playerStats.GetComponent<Animator>();
         UI.playerStats.SetActive(true);
-        UI.playerStats.GetComponent<Animator>().Play("TurnOnStats");
-        print("on");
-        yield return new WaitForSeconds(2f);
+        //playing the animations for the animator, but starting the animator where it last left off
+        anim.Play("TurnOnStats", 0, 0);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         canDo = true;
-
     }
     IEnumerator StatsOut()
     {
-        UI.playerStats.GetComponent<Animator>().Play("TurnOffStats");
-        print("on");
-        yield return new WaitForSeconds(2f);
+
+        Animator anim = UI.playerStats.GetComponent<Animator>();
+        //playing the animations for the animator, but starting the animator where it last left off
+        anim.Play("TurnOffStats", 0, 0);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         UI.playerStats.SetActive(false);
+        speed = PlayerStats.speed;
+        canDo = true;
+    }
+
+    //the functions associated with the inventory
+    IEnumerator MiniMap()
+    {
+        switch (miniMapSelect)
+        {
+            default:
+                miniMapCamera.gameObject.SetActive(true);
+                miniMapSelect++;
+                break;
+            case 1:
+                miniMapCamera.Play("FullScreen", 0, 0);
+                miniMapSelect++;
+                break;
+            case 2:
+                miniMapCamera.Play("SmallScreen", 0, 0);
+                miniMapSelect++;
+                break;
+            case 3:
+                miniMapCamera.gameObject.SetActive(false);
+                miniMapSelect = 0;
+                break;
+        }
+        yield return new WaitForSeconds(.5f);
         canDo = true;
     }
 

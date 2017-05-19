@@ -42,7 +42,7 @@ public class PlayerStats : ScriptableObject
     public static int defense;
     public static int curLevel;
     public static int statPoints;
-    public static float speed;
+    public static float speed = 3f;
     public static float lightRadius;
     public static float curWeight = 0f;
     public static float maxWeight = 6f;

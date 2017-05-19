@@ -24,6 +24,7 @@ public class GameManagerScript : MonoBehaviour
     Image _itemInfoImage;
     //gamespeed
     public static float gameSpeed = 1f;
+    public static bool isActive;
 
     // Use this for initialization
     void Start ()
