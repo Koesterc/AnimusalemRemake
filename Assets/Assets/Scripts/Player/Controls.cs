@@ -15,7 +15,6 @@ public class Controls : MonoBehaviour
     AudioSource cycleItems;
    // bool canUse = true; //the boolean that allows players to use items
    // int addHealth = 0;
-    [HideInInspector]
     public Animator anim;
     public Animator reflectionAnim;
     float horizontal;
@@ -29,6 +28,7 @@ public class Controls : MonoBehaviour
 
     void Awake()
     {
+
         _Player = gameObject.transform;
     }
 
@@ -39,22 +39,24 @@ public class Controls : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         transform.Translate(horizontal * Time.deltaTime * speed, vertical * Time.deltaTime * speed, 0);
-        //if (horizontal != 0 || vertical != 0)
-        //{
-        //    Vector3 up = -myBody.velocity;
-        //    transform.Translate(horizontal * Time.deltaTime * speed, vertical * Time.deltaTime * speed, 0);
-        //    PlayerAnimation();
-        //    if (Physics.Raycast(transform.position, up, targetLayer))
-        //    {
-        //        print("There is something in front of the object!");
-        //    }
-        //    Debug.DrawRay(transform.position, up, Color.white);
-        //}
-        //else
-        //{
-        //    anim.SetBool("isWalking", false);
-        //    reflectionAnim.SetBool("isWalking", false);
-        //}
+        if (horizontal != 0 || vertical != 0)
+        {
+            Vector3 up = -myBody.velocity;
+            transform.Translate(horizontal * Time.deltaTime * speed, vertical * Time.deltaTime * speed, 0);
+            PlayerAnimation();
+            if (Physics.Raycast(transform.position, up, targetLayer))
+            {
+                print("There is something in front of the object!");
+            }
+            Debug.DrawRay(transform.position, up, Color.white);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+            reflectionAnim.SetBool("isWalking", false);
+        }
+
+
         //accessing character stats
         if (Input.GetKeyDown("c") && canDo)
         {
@@ -66,7 +68,7 @@ public class Controls : MonoBehaviour
                 PlayerStatSounds.on.Play();
                 StartCoroutine(StatsIn());
             }
-            else
+            else if (GameManagerScript.isActive && UI.playerStats.activeSelf)
             {
                 PlayerStatSounds.off.Play();
                 StartCoroutine(StatsOut());
@@ -76,12 +78,12 @@ public class Controls : MonoBehaviour
         if (Input.GetKeyDown("i") && canDo)
         {
             canDo = false;
-            if (GameManagerScript.isActive)
+            if (GameManagerScript.isActive && UI.inventory.activeSelf)
             {
                 StopAllCoroutines();
-                StartCoroutine(FadeOut());
+                StartCoroutine(FadeOut()); 
             }
-            else
+            else if (!GameManagerScript.isActive)
             {
                 UI.inventory.SetActive(true);
                 speed = 0;
@@ -92,25 +94,24 @@ public class Controls : MonoBehaviour
         //altering the mini map
         if (Input.GetKeyDown("m") && canDo && !GameManagerScript.isActive)
         {
+            canDo = false;
             StopAllCoroutines();
             StartCoroutine(MiniMap());
         }
     }//end of update
 
-    //void PlayerAnimation()
-    //{//animating the player's movement and the player's mirror reflection
-    //    anim.SetBool("isWalking", true);
-    //    reflectionAnim.SetBool("isWalking", true);
-    //    anim.SetFloat("vertical", vertical);
-    //    anim.SetFloat("horizontal", horizontal);
-    //    reflectionAnim.SetFloat("horizontal", -horizontal);
-    //    reflectionAnim.SetFloat("vertical", -vertical);
-    //}
+    //Player Animations
+    void PlayerAnimation()
+    {//animating the player's movement and the player's mirror reflection
+        anim.SetBool("isWalking", true);
+      //  reflectionAnim.SetBool("isWalking", true);
+        anim.SetFloat("vertical", vertical);
+        anim.SetFloat("horizontal", horizontal);
+      //  reflectionAnim.SetFloat("horizontal", -horizontal);
+      //  reflectionAnim.SetFloat("vertical", -vertical);
+    }
 
-
-
-
-//the functions associated with the inventory
+    //the functions associated with the inventory
     IEnumerator FadeOut()
     {
         UI.UIevent.SetSelectedGameObject(null);

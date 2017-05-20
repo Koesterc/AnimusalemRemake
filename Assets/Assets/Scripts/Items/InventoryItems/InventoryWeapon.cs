@@ -43,8 +43,9 @@ public class InventoryWeapon : MonoBehaviour
             {
                 if (InventoryList.itemList[i] == gameObject)
                 {
-                      InventoryList.itemList.Remove(gameObject);
-                      Destroy(gameObject);
+                    InventoryList.itemList.Remove(gameObject);
+                    InventoryList.weaponList.Remove(gameObject);
+                    Destroy(gameObject);
                     if (InventoryList.itemList.Count > 0)
                     {
                         if (i != InventoryList.itemList.Count)

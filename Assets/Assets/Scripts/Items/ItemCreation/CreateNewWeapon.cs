@@ -31,16 +31,16 @@ public class CreateNewWeapon : MonoBehaviour {
         newWeapon = new BaseWeapon();
         newWeapon.ItemID = Random.Range(0, 10000);
         int temp = Random.Range(0, 100);
-        if (temp >= 90)//use luck here to increase the chance of magic item
+        if (temp >= 95)//use luck here to increase the chance of magic item
             newWeapon.Leech += Random.Range(1, 5);
         temp = Random.Range(0, 100);
-        if (temp >= 90)
+        if (temp >= 95)
             newWeapon.AdditionalXP = Mathf.Round(Random.Range(.25f, .5f) * 100) / 100;
         temp = Random.Range(0, 100);
-        if (temp >= 90)
+        if (temp >= 95)
             newWeapon.AdditionalGold = Mathf.Round(Random.Range(.25f, .5f) * 100) / 100;
         temp = Random.Range(0, 100);
-        if (temp >= 90)
+        if (temp >= 95)
             newWeapon.ReducedWeight = Mathf.Round(Random.Range(.1f, .5f) * 100) / 100;
         newWeapon.LevelRestriction = Random.Range(PlayerStats.curLevel-5, PlayerStats.curLevel + 5);
         if (newWeapon.LevelRestriction < 1)
@@ -50,6 +50,15 @@ public class CreateNewWeapon : MonoBehaviour {
         newWeapon.SellValue += ((int)(newWeapon.AdditionalGold * 8) + ((int)newWeapon.AdditionalXP * 8) +
             newWeapon.Leech * 2 + (int)(newWeapon.ReducedWeight*10));
         newWeapon.Weight = newWeapon.Weight - (newWeapon.Weight*newWeapon.ReducedWeight);
+
+        //the power of all upgrades
+        newWeapon.UpDamage = (int)(newWeapon.Damage*.1);
+        newWeapon.UpFireRate = (newWeapon.Firerate*.05f);
+        newWeapon.UpReload = (newWeapon.ExpeditiveReload * .1f);
+        newWeapon.UpCriticalChance = (newWeapon.CriticalChance * .8f); 
+        newWeapon.UpCriticalDamage = (newWeapon.CriticalDamage * .3f);
+        newWeapon.UpCapacity = (int)(newWeapon.Capacity* .2f);
+        newWeapon.UpAccuracy = (newWeapon.Accuracy * .05f);
     }
 
     public void ChooseWeaponType()
@@ -65,28 +74,28 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.EnhancedDamage += Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ExtendedClip += Random.Range(1, 8);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.PoisonDamage = Random.Range(1+newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ColdDamage = Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.FireDamage = Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.LightDamage = Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IncreasedCriticalChance = Mathf.Round(Random.Range(.3f, .05f) * 100) / 100;
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
                 temp = Random.Range(0, 100);
                 if (temp >= 90 || newWeapon.ItemName == "Trident")
@@ -119,31 +128,31 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.EnhancedDamage += Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ExtendedClip += Random.Range(1, 3);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.PoisonDamage = Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ColdDamage = Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.FireDamage = Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.LightDamage = Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IncreasedCriticalChance = Mathf.Round(Random.Range(.05f, .15f) * 100) / 100;
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ThreeRoundBurst = true;
                 newWeapon.Weight = Random.Range(4, 7);
 
@@ -162,8 +171,8 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 newWeapon.SellValue = (newWeapon.IgnoreArmor * 2 + (int)(newWeapon.Capacity/8)+ (int)(newWeapon.PoisonDamage/2) +
                 (int)(newWeapon.Damage/4) + (int)(6 - newWeapon.Reload) + (int)(4 - (newWeapon.Firerate * 3)) +
-                 (int)(newWeapon.CriticalChance * 10) + (int)(newWeapon.CriticalDamage * 2) +
-                 (int)(newWeapon.Accuracy * 3));
+                (int)(newWeapon.CriticalChance * 10) + (int)(newWeapon.CriticalDamage * 2) +
+                (int)(newWeapon.Accuracy * 3));
                 newWeapon.ItemDesc = "The "+newWeapon.ItemName+" is a long sturdy rifle. Rifles have a far greater chance to perform critical hits and deal greater damage than other firearms when achieved.";
                 newWeapon.Icon = Resources.Load<Sprite>("Icons/Weapons/Rifles/Rifle");
                 newWeapon.MapIcon = Resources.Load<Sprite>("Icons/MapIcons/Rifle");
@@ -177,28 +186,28 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.EnhancedDamage += Random.Range(10 + newWeapon.LevelRestriction, 20 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ExtendedClip += Random.Range(1, 2);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.PoisonDamage = Random.Range(10 + newWeapon.LevelRestriction, 20 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ColdDamage = Random.Range(10 + newWeapon.LevelRestriction, 20 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.FireDamage = Random.Range(10 + newWeapon.LevelRestriction, 20 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.LightDamage = Random.Range(10 + newWeapon.LevelRestriction, 20 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IncreasedCriticalChance = Mathf.Round(Random.Range(.03f, .05f) * 100) / 100;
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
                 temp = Random.Range(0, 100);
                 if (temp >= 90 && !newWeapon.ThreeRoundBurst && !newWeapon.TrippleBarrel)
@@ -246,31 +255,31 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.EnhancedDamage += Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ExtendedClip += Random.Range(10, 20);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.PoisonDamage = Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ColdDamage = Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.FireDamage = Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.LightDamage = Random.Range(1 + newWeapon.LevelRestriction, 5 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IncreasedCriticalChance = Mathf.Round(Random.Range(.03f, .05f) * 100) / 100;
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IgnoreArmor = Random.Range(1, 3);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ThreeRoundBurst = true;
                 newWeapon.Weight = Random.Range(3, 5);
 
@@ -303,31 +312,31 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.EnhancedDamage += Random.Range(5 + newWeapon.LevelRestriction, 12 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ExtendedClip += Random.Range(5, 15);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.PoisonDamage = Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ColdDamage = Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.FireDamage = Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.LightDamage = Random.Range(5 + newWeapon.LevelRestriction, 15 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IncreasedCriticalChance = Mathf.Round(Random.Range(.03f, .05f) * 100) / 100;
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IgnoreArmor = Random.Range(1, 5);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ThreeRoundBurst = true;
                 newWeapon.Weight = Random.Range(7, 10);
 
@@ -361,28 +370,28 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.EnhancedDamage += Random.Range(20 + newWeapon.LevelRestriction, 30 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ExtendedClip += Random.Range(1, 3);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.PoisonDamage = Random.Range(20 + newWeapon.LevelRestriction, 30 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ColdDamage = Random.Range(20 + newWeapon.LevelRestriction, 30 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.FireDamage = Random.Range(20 + newWeapon.LevelRestriction, 30 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.LightDamage = Random.Range(20 + newWeapon.LevelRestriction, 30 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IncreasedCriticalChance = Mathf.Round(Random.Range(.03f, .05f) * 100) / 100;
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IgnoreArmor = Random.Range(1, 10);
                 newWeapon.Weight = Random.Range(4, 7);
 
@@ -415,25 +424,25 @@ public class CreateNewWeapon : MonoBehaviour {
 
                 //adding bonuses
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.EnhancedDamage += Random.Range(30 + newWeapon.LevelRestriction, 50 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.PoisonDamage = Random.Range(20 + newWeapon.LevelRestriction, 40 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.ColdDamage = Random.Range(20 + newWeapon.LevelRestriction, 40 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.FireDamage = Random.Range(20 + newWeapon.LevelRestriction, 40 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.LightDamage = Random.Range(20 + newWeapon.LevelRestriction, 40 + newWeapon.LevelRestriction);
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IncreasedCriticalChance = Mathf.Round(Random.Range(.03f, .05f) * 100) / 100;
                 temp = Random.Range(0, 100);
-                if (temp >= 90)
+                if (temp >= 95)
                     newWeapon.IgnoreArmor = Random.Range(1, 10);
                 newWeapon.Weight = Random.Range(15, 20);
 

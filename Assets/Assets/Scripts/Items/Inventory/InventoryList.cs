@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class InventoryList : MonoBehaviour
 {
-    //public static Dictionary<string,GameObject> itemList = new Dictionary<string,GameObject>();
     public static List<GameObject> itemList = new List<GameObject>();
     public static Scrollbar scrollBar;
+    //used for the shop list
+    public static List<GameObject> weaponList = new List<GameObject>();
 
     void Awake()
     {
