@@ -19,8 +19,7 @@ public class DroppedArmor : MonoBehaviour
     public void DropArmor(BaseArmor myArmor)
     {
         dropArmor = myArmor;
-        gameObject.GetComponent<ItemDisplay>().myText.text = dropArmor.ArmorTypes.ToString()+" Armor";
-        //subtract player's weight
+        gameObject.GetComponent<ArmorDisplay>().myText.text = dropArmor.ArmorTypes.ToString()+" Armor";
     }
 
     public void PickedUp()
@@ -55,6 +54,7 @@ public class DroppedArmor : MonoBehaviour
         GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropArmor.ArmorTypes.ToString(), "<color=#FFFFFFFF>" + dropArmor.ArmorTypes.ToString() + "</color>");
         GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
+        AmmoDisplay.isActive = false;
         Destroy(gameObject);
     }
 
@@ -64,7 +64,8 @@ public class DroppedArmor : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropArmor.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        GameManagerScript.stat.gameObject.SetActive(false);
+        AmmoDisplay.isActive = false;
+      //  GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 

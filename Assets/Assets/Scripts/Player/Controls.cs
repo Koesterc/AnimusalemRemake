@@ -36,6 +36,7 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(AmmoDisplay.isActive);
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         transform.Translate(horizontal * Time.deltaTime * speed, vertical * Time.deltaTime * speed, 0);
@@ -60,9 +61,9 @@ public class Controls : MonoBehaviour
         //accessing character stats
         if (Input.GetKeyDown("c") && canDo)
         {
-            canDo = false;
             if (!GameManagerScript.isActive)
             {
+                canDo = false;
                 StopAllCoroutines();
                 speed = 0;
                 PlayerStatSounds.on.Play();
@@ -70,6 +71,7 @@ public class Controls : MonoBehaviour
             }
             else if (GameManagerScript.isActive && UI.playerStats.activeSelf)
             {
+                canDo = false;
                 PlayerStatSounds.off.Play();
                 StartCoroutine(StatsOut());
             }
@@ -77,14 +79,15 @@ public class Controls : MonoBehaviour
         //accessing the inventory
         if (Input.GetKeyDown("i") && canDo)
         {
-            canDo = false;
             if (GameManagerScript.isActive && UI.inventory.activeSelf)
             {
+                canDo = false;
                 StopAllCoroutines();
-                StartCoroutine(FadeOut()); 
+                StartCoroutine(FadeOut());
             }
             else if (!GameManagerScript.isActive)
             {
+                canDo = false;
                 UI.inventory.SetActive(true);
                 speed = 0;
                 StopAllCoroutines();
@@ -132,35 +135,41 @@ public class Controls : MonoBehaviour
                 break;
         }
         canDo = true;
+        anim.speed = 1;
+        anim.enabled = true;
     }
     IEnumerator FadeIn()
     {
         miniMapCamera.gameObject.SetActive(false);
+        anim.speed = 0;
+        anim.enabled = false;
         while (Inventory.fade.alpha < 1)
         {
             yield return new WaitForSeconds(.01f);
             Inventory.fade.alpha += .01f;
-            canDo = true;
         }
+        canDo = true;
     }
     //the functions associated with the player stats
     IEnumerator StatsIn()
     {
+        anim.speed = 0;
+        anim.enabled = false;
         miniMapCamera.gameObject.SetActive(false);
-        Animator anim = UI.playerStats.GetComponent<Animator>();
+        Animator temp = UI.playerStats.GetComponent<Animator>();
         UI.playerStats.SetActive(true);
         //playing the animations for the animator, but starting the animator where it last left off
-        anim.Play("TurnOnStats", 0, 0);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        temp.Play("TurnOnStats", 0, 0);
+        yield return new WaitForSeconds(temp.GetCurrentAnimatorStateInfo(0).length);
         canDo = true;
     }
     IEnumerator StatsOut()
     {
 
-        Animator anim = UI.playerStats.GetComponent<Animator>();
+        Animator temp = UI.playerStats.GetComponent<Animator>();
         //playing the animations for the animator, but starting the animator where it last left off
-        anim.Play("TurnOffStats", 0, 0);
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        temp.Play("TurnOffStats", 0, 0);
+        yield return new WaitForSeconds(temp.GetCurrentAnimatorStateInfo(0).length);
         UI.playerStats.SetActive(false);
         speed = PlayerStats.speed;
         switch (miniMapSelect)
@@ -173,6 +182,8 @@ public class Controls : MonoBehaviour
                 break;
         }
         canDo = true;
+        anim.enabled = true;
+        anim.speed = 1;
     }
 
     //the functions associated with the inventory

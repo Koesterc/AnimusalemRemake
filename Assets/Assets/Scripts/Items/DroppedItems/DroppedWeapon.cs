@@ -18,8 +18,7 @@ public class DroppedWeapon : MonoBehaviour
     public void DropWeapon(BaseWeapon myWeapon)
     {
         dropWeapon = myWeapon;
-        gameObject.GetComponent<ItemDisplay>().myText.text = dropWeapon.WeaponTypes.ToString();
-        //subtract player's weight
+        gameObject.GetComponent<WeaponDisplay>().myText.text = dropWeapon.WeaponTypes.ToString();
     }
     public BaseWeapon WeaponStats
     {
@@ -55,6 +54,7 @@ public class DroppedWeapon : MonoBehaviour
         GameManagerScript.stat.gameObject.SetActive(false);
         PlayerStats.curWeight += dropWeapon.Weight;
         Time.timeScale = 0;
+        AmmoDisplay.isActive = false;
         Destroy(gameObject);
     }
 
@@ -64,7 +64,8 @@ public class DroppedWeapon : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropWeapon.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        GameManagerScript.stat.gameObject.SetActive(false);
+        AmmoDisplay.isActive = false;
+        //GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 }

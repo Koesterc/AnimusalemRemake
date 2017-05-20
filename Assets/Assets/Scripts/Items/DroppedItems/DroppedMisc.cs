@@ -20,8 +20,7 @@ public class DroppedMisc : MonoBehaviour
     public void DropMisc(BaseMisc myMisc)
     {
         dropMisc = myMisc;
-        gameObject.GetComponent<ItemDisplay>().myText.text = dropMisc.MiscTypes.ToString();
-        //subtract player's weight
+        gameObject.GetComponent<MiscDisplay>().myText.text = dropMisc.MiscTypes.ToString();
     }
     public BaseMisc MiscStats
     {
@@ -55,6 +54,7 @@ public class DroppedMisc : MonoBehaviour
         GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropMisc.ItemName.ToString(), "<color=#FFFFFFFF>" + dropMisc.ItemName.ToString() + "</color>");
         GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
+        AmmoDisplay.isActive = false;
         Destroy(gameObject);
     }
 
@@ -64,9 +64,10 @@ public class DroppedMisc : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropMisc.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        GameManagerScript.stat.gameObject.SetActive(false);
+        AmmoDisplay.isActive = false;
+       // GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
-
+        AmmoDisplay.isActive = false;
         Destroy(gameObject);
     }
 }

@@ -106,7 +106,10 @@
     <Compile Include="Assets\Assets\Scripts\Items\ItemCreation\CreateNewGloves.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\ItemCreation\CreateNewMisc.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\ItemCreation\CreateNewWeapon.cs" />
-    <Compile Include="Assets\Assets\Scripts\Items\ItemDisplay.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\ItemDisplay\AmmoDisplay.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\ItemDisplay\ArmorDisplay.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\ItemDisplay\MiscDisplay.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\ItemDisplay\WeaponDisplay.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\ItemInfo\ItemInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Items.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\WeaponPerks.cs" />
@@ -117,6 +120,7 @@
     <Compile Include="Assets\Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\Skills\Base\BaseSkills.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\Skills\Combat\BaseCombat.cs" />
+    <Compile Include="Assets\Interact.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

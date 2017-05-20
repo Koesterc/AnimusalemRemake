@@ -10,7 +10,7 @@ public class DroppedAmmo : MonoBehaviour
     public void DropAmmo(BaseAmmo myAmmo)
     {
         dropAmmo = myAmmo;
-        gameObject.GetComponent<ItemDisplay>().myText.text = dropAmmo.AmmoTypes.ToString();
+        gameObject.GetComponent<AmmoDisplay>().myText.text = dropAmmo.AmmoTypes.ToString();
     }
 
     public void PickedUp()
@@ -238,6 +238,7 @@ public class DroppedAmmo : MonoBehaviour
         GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropAmmo.ItemName.ToString(), "<color=#FFFFFFFF>" + dropAmmo.ItemName.ToString() + "</color>");
         GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
+        AmmoDisplay.isActive = false;
         Destroy(gameObject);
     }
 
@@ -247,7 +248,8 @@ public class DroppedAmmo : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropAmmo.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        GameManagerScript.stat.gameObject.SetActive(false);
+        AmmoDisplay.isActive = false;
+        //  GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 }
