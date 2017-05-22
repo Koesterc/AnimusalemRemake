@@ -8,6 +8,11 @@ public class WeaponDisplay : MonoBehaviour
     public Text myText;
     bool pickUp = false;
 
+    void OnDestroy()
+    {
+        pickUp = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -30,7 +35,7 @@ public class WeaponDisplay : MonoBehaviour
             pickUp = false;
             myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f, 1, 1);
             Color c = myText.GetComponent<Outline>().effectColor;
-            myText.fontSize = 14;
+            myText.fontSize = 10;
             Transform canvas = transform.Find("MyCanvas");
             canvas.GetComponent<Canvas>().sortingOrder = 100;
             c.a = .5f;
@@ -55,7 +60,7 @@ public class WeaponDisplay : MonoBehaviour
             Color c = myText.GetComponent<Outline>().effectColor;
             c.a = .5f;
             myText.GetComponent<Outline>().effectColor = c;
-            myText.fontSize = 16;
+            myText.fontSize = 12;
             Transform canvas = transform.Find("MyCanvas");
             canvas.GetComponent<Canvas>().sortingOrder = 101;
             Display();
@@ -66,8 +71,8 @@ public class WeaponDisplay : MonoBehaviour
             //add weight
             //play sound
           //  AmmoDisplay.isActive = false;
-            pickUp = false;
-            GameManagerScript.stat.gameObject.SetActive(false);
+          //  pickUp = false;
+          //  GameManagerScript.stat.gameObject.SetActive(false);
             gameObject.GetComponent<DroppedWeapon>().PickedUp();
         }
     }

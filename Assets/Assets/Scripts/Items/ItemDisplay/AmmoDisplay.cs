@@ -9,6 +9,11 @@ public class AmmoDisplay : MonoBehaviour
     public static bool isActive = false;
     bool pickUp = false;
 
+    void OnDestroy()
+    {
+        pickUp = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -31,7 +36,7 @@ public class AmmoDisplay : MonoBehaviour
             pickUp = false;
             myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f, 1, 1);
             Color c = myText.GetComponent<Outline>().effectColor;
-            myText.fontSize = 14;
+            myText.fontSize = 10;
             Transform canvas = transform.Find("MyCanvas");
             canvas.GetComponent<Canvas>().sortingOrder = 100;
             c.a = .5f;
@@ -56,7 +61,7 @@ public class AmmoDisplay : MonoBehaviour
             Color c = myText.GetComponent<Outline>().effectColor;
             c.a = .5f;
             myText.GetComponent<Outline>().effectColor = c;
-            myText.fontSize = 16;
+            myText.fontSize = 12;
             Transform canvas = transform.Find("MyCanvas");
             canvas.GetComponent<Canvas>().sortingOrder = 101;
             Display();
@@ -64,8 +69,8 @@ public class AmmoDisplay : MonoBehaviour
         else if (other.CompareTag("Interact") && pickUp && Input.GetKeyDown("return") && !GameManagerScript.isActive)
         {
     //        isActive = false;
-            pickUp = false;
-            GameManagerScript.stat.gameObject.SetActive(false);
+      //      pickUp = false;
+        //    GameManagerScript.stat.gameObject.SetActive(false);
             gameObject.GetComponent<DroppedAmmo>().PickedUp();
         }
     }

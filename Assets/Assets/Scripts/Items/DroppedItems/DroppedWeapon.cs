@@ -51,10 +51,10 @@ public class DroppedWeapon : MonoBehaviour
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You've obtained the " + "\"" + dropWeapon.ItemName + "\"" + " " + dropWeapon.WeaponTypes +".";
         GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropWeapon.WeaponTypes.ToString(), "<color=#FFFFFFFF>" + dropWeapon.WeaponTypes.ToString() + "</color>");
-        GameManagerScript.stat.gameObject.SetActive(false);
         PlayerStats.curWeight += dropWeapon.Weight;
         Time.timeScale = 0;
         AmmoDisplay.isActive = false;
+        GameManagerScript.stat.gameObject.SetActive(false);
         Destroy(gameObject);
     }
 
@@ -64,8 +64,6 @@ public class DroppedWeapon : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropWeapon.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        AmmoDisplay.isActive = false;
-        //GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 }

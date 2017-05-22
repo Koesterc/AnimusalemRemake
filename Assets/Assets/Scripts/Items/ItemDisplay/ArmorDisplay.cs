@@ -7,6 +7,11 @@ public class ArmorDisplay : MonoBehaviour {
     public Text myText;
     bool pickUp = false;
 
+    void OnDestroy()
+    {
+        pickUp = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -29,7 +34,7 @@ public class ArmorDisplay : MonoBehaviour {
             pickUp = false;
             myText.GetComponent<Outline>().effectColor = Color.HSVToRGB(.585f,1,1);
             Color c = myText.GetComponent<Outline>().effectColor;
-            myText.fontSize = 14;
+            myText.fontSize = 10;
             Transform canvas = transform.Find("MyCanvas");
             canvas.GetComponent<Canvas>().sortingOrder = 100;
             c.a = .5f;
@@ -54,7 +59,7 @@ public class ArmorDisplay : MonoBehaviour {
             Color c = myText.GetComponent<Outline>().effectColor;
             c.a = .5f;
             myText.GetComponent<Outline>().effectColor = c;
-            myText.fontSize = 16;
+            myText.fontSize = 12;
             Transform canvas = transform.Find("MyCanvas");
             canvas.GetComponent<Canvas>().sortingOrder = 101;
             Display();
@@ -62,9 +67,9 @@ public class ArmorDisplay : MonoBehaviour {
         else if (other.CompareTag("Interact") && pickUp && Input.GetKeyDown("return") && !GameManagerScript.isActive)
         {
             //play sound
-         //   AmmoDisplay.isActive = false;
-            pickUp = false;
-            GameManagerScript.stat.gameObject.SetActive(false);
+            //AmmoDisplay.isActive = false;
+           // pickUp = false;
+         //   GameManagerScript.stat.gameObject.SetActive(false);
             gameObject.GetComponent<DroppedArmor>().PickedUp();
         }
     }

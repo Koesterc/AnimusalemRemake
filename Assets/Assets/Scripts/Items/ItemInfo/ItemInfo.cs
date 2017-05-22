@@ -14,7 +14,7 @@ public class ItemInfo : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown("return"))
         {
             Time.timeScale = GameManagerScript.gameSpeed;
             gameObject.SetActive(false);

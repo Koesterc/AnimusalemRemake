@@ -19,12 +19,6 @@ public class CreateNewWeapon : MonoBehaviour {
      //explosives 46-53
      "Kamikaze","PK Destroyer","Iradicator","Goliath","Warhammer","Horizon's Nuke", "Bazooka", "Winter's Plow"};
 
-    void Start()
-    {
-
-  
-    }
-
     public void CreateWeapon()
     {
 
@@ -219,7 +213,6 @@ public class CreateNewWeapon : MonoBehaviour {
                 temp = Random.Range(0, 100);
                 if (temp >= 90 && !newWeapon.ThreeRoundBurst && !newWeapon.DoubleBarrel)
                 {
-                    newWeapon.TrippleBarrel = false;
                     newWeapon.ThreeRoundBurst = false;
                     newWeapon.DoubleBarrel = false;
                     newWeapon.TrippleBarrel = true;

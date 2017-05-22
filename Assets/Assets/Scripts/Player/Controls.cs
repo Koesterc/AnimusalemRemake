@@ -36,7 +36,6 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(AmmoDisplay.isActive);
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         transform.Translate(horizontal * Time.deltaTime * speed, vertical * Time.deltaTime * speed, 0);

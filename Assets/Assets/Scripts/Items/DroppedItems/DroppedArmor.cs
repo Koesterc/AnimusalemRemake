@@ -52,9 +52,9 @@ public class DroppedArmor : MonoBehaviour
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You've obtained the " + "\"" + dropArmor.ItemName + "\"" + " " + dropArmor.ArmorTypes + ".";
         GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropArmor.ArmorTypes.ToString(), "<color=#FFFFFFFF>" + dropArmor.ArmorTypes.ToString() + "</color>");
-        GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
         AmmoDisplay.isActive = false;
+        GameManagerScript.stat.gameObject.SetActive(false);
         Destroy(gameObject);
     }
 
@@ -64,8 +64,6 @@ public class DroppedArmor : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropArmor.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        AmmoDisplay.isActive = false;
-      //  GameManagerScript.stat.gameObject.SetActive(false);
         Time.timeScale = 0;
     }
 
