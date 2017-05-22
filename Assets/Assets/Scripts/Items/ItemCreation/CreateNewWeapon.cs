@@ -45,6 +45,8 @@ public class CreateNewWeapon : MonoBehaviour {
             newWeapon.Leech * 2 + (int)(newWeapon.ReducedWeight*10));
         newWeapon.Weight = newWeapon.Weight - (newWeapon.Weight*newWeapon.ReducedWeight);
 
+        newWeapon.CostValue = newWeapon.SellValue * 10;
+
         //the power of all upgrades
         newWeapon.UpDamage = (int)(newWeapon.Damage*.1);
         newWeapon.UpFireRate = (newWeapon.Firerate*.05f);

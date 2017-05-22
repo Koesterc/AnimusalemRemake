@@ -18,6 +18,7 @@ public class BaseItem
     int requiredIntelligence;
     float weight;
     int sellValue;
+    int costValue;
     public enum ItemTypes { weapon, armor, ring, belt, boots, gloves, amulate, misc};
     private ItemTypes itemTypes;
 
@@ -144,5 +145,10 @@ public class BaseItem
     {
         get { return sellValue; }
         set { sellValue = value; }
+    }
+    public int CostValue
+    {
+        get { return costValue; }
+        set { costValue = value; }
     }
 }
