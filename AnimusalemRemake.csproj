@@ -112,6 +112,9 @@
     <Compile Include="Assets\Assets\Scripts\Items\ItemDisplay\WeaponDisplay.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\ItemInfo\ItemInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Items.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\Shop\DybbukAmmo.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\Shop\DybbukArmor.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\Shop\DybbukMisc.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Shop\DybbukWeapon.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\WeaponPerks.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Weapons.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Assets\Assets\Scripts\Player\Skills\Base\BaseSkills.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\Skills\Combat\BaseCombat.cs" />
     <Compile Include="Assets\DybbukShop.cs" />
+    <Compile Include="Assets\InventorySounds.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -26,7 +26,7 @@ public class InventoryWeapon : MonoBehaviour
     {
         if (Input.GetKeyDown("return"))
         {
-            Inventory._drop.Play();//playing the sound
+            InventorySounds.drop.Play();//playing the sound
             GameObject clone;
             Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
             clone = Instantiate(droppedWeapon, pos, transform.rotation) as GameObject;
@@ -43,6 +43,12 @@ public class InventoryWeapon : MonoBehaviour
             {
                 if (InventoryList.itemList[i] == gameObject)
                 {
+                    //removing the dybbuk shop item of the same type from the sell list
+                    GameObject shopItem = InventoryList.sellList[i];
+                    InventoryList.sellList.Remove(shopItem);
+                    Destroy(shopItem);
+
+                    //removing the item from the inventory list
                     InventoryList.itemList.Remove(gameObject);
                     InventoryList.weaponList.Remove(gameObject);
                     Destroy(gameObject);
@@ -82,6 +88,6 @@ public class InventoryWeapon : MonoBehaviour
         Inventory.capBar.transform.localScale = new Vector3(itemWeapon.CriticalDamageLvl / 5, 1, 1);
         UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
 
-        Inventory._select.Play();
+        InventorySounds.select.Play();
     }
 }

@@ -19,9 +19,6 @@ public class Inventory : MonoBehaviour
     public static Text healthText;
     public static Text weightText;
 
-    public static AudioSource _select;
-    public static AudioSource _drop;
-
 
     void Awake()
     {
@@ -35,8 +32,6 @@ public class Inventory : MonoBehaviour
         accBar = GameObject.Find("Canvas/Inventory/WeaponStats/Panels/Accuracy/Image/Image").GetComponent<Image>();
         ccBar = GameObject.Find("Canvas/Inventory/WeaponStats/Panels/CriticalChance/Image/Image").GetComponent<Image>();
         cdBar = GameObject.Find("Canvas/Inventory/WeaponStats/Panels/CriticalDamage/Image/Image").GetComponent<Image>();
-        _select = GameObject.Find("Canvas/Inventory/InventorySounds/Select").GetComponent<AudioSource>();
-        _drop = GameObject.Find("Canvas/Inventory/InventorySounds/Drop").GetComponent<AudioSource>();
 
         weightText = GameObject.Find("Canvas/Inventory/Health").GetComponent<Text>();
         healthText = GameObject.Find("Canvas/Inventory/CurrentWeight").GetComponent<Text>();

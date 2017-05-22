@@ -55,7 +55,7 @@ public class InventoryAmmo : MonoBehaviour
     {
         if (Input.GetKeyDown("return"))
         {
-            Inventory._drop.Play();//playing the sound
+            InventorySounds.drop.Play();//playing the sound
             switch (itemAmmo.AmmoTypes)
             {//handgun ammo
                 case BaseAmmo.AmmoType.HandgunAmmo:
@@ -89,6 +89,12 @@ public class InventoryAmmo : MonoBehaviour
                         {
                             if (InventoryList.itemList[i] == gameObject)
                             {
+                                //removing the dybbuk shop item of the same type from the sell list
+                                GameObject shopItem = InventoryList.sellList[i];
+                                InventoryList.sellList.Remove(shopItem);
+                                Destroy(shopItem);
+
+                                //removing the item from the inventory list
                                 InventoryList.itemList.Remove(gameObject);
                                 Destroy(gameObject);
                                 if (InventoryList.itemList.Count > 0)
@@ -134,6 +140,12 @@ public class InventoryAmmo : MonoBehaviour
                         {
                             if (InventoryList.itemList[i] == gameObject)
                             {
+                                //removing the dybbuk shop item of the same type from the sell list
+                                GameObject shopItem = InventoryList.sellList[i];
+                                InventoryList.sellList.Remove(shopItem);
+                                Destroy(shopItem);
+
+                                //removing the item from the inventory list
                                 InventoryList.itemList.Remove(gameObject);
                                 Destroy(gameObject);
                                 if (InventoryList.itemList.Count > 0)
@@ -179,6 +191,12 @@ public class InventoryAmmo : MonoBehaviour
                         {
                             if (InventoryList.itemList[i] == gameObject)
                             {
+                                //removing the dybbuk shop item of the same type from the sell list
+                                GameObject shopItem = InventoryList.sellList[i];
+                                InventoryList.sellList.Remove(shopItem);
+                                Destroy(shopItem);
+
+                                //removing the item from the inventory list
                                 InventoryList.itemList.Remove(gameObject);
                                 Destroy(gameObject);
                                 if (InventoryList.itemList.Count > 0)
@@ -224,6 +242,12 @@ public class InventoryAmmo : MonoBehaviour
                         {
                             if (InventoryList.itemList[i] == gameObject)
                             {
+                                //removing the dybbuk shop item of the same type from the sell list
+                                GameObject shopItem = InventoryList.sellList[i];
+                                InventoryList.sellList.Remove(shopItem);
+                                Destroy(shopItem);
+
+                                //removing the item from the inventory list
                                 InventoryList.itemList.Remove(gameObject);
                                 Destroy(gameObject);
                                 if (InventoryList.itemList.Count > 0)
@@ -269,6 +293,12 @@ public class InventoryAmmo : MonoBehaviour
                         {
                             if (InventoryList.itemList[i] == gameObject)
                             {
+                                //removing the dybbuk shop item of the same type from the sell list
+                                GameObject shopItem = InventoryList.sellList[i];
+                                InventoryList.sellList.Remove(shopItem);
+                                Destroy(shopItem);
+
+                                //removing the item from the inventory list
                                 InventoryList.itemList.Remove(gameObject);
                                 Destroy(gameObject);
                                 if (InventoryList.itemList.Count > 0)
@@ -314,6 +344,12 @@ public class InventoryAmmo : MonoBehaviour
                         {
                             if (InventoryList.itemList[i] == gameObject)
                             {
+                                //removing the dybbuk shop item of the same type from the sell list
+                                GameObject shopItem = InventoryList.sellList[i];
+                                InventoryList.sellList.Remove(shopItem);
+                                Destroy(shopItem);
+
+                                //removing the item from the inventory list
                                 InventoryList.itemList.Remove(gameObject);
                                 Destroy(gameObject);
                                 if (InventoryList.itemList.Count > 0)
@@ -359,6 +395,12 @@ public class InventoryAmmo : MonoBehaviour
                         {
                             if (InventoryList.itemList[i] == gameObject)
                             {
+                                //removing the dybbuk shop item of the same type from the sell list
+                                GameObject shopItem = InventoryList.sellList[i];
+                                InventoryList.sellList.Remove(shopItem);
+                                Destroy(shopItem);
+
+                                //removing the item from the inventory list
                                 InventoryList.itemList.Remove(gameObject);
                                 Destroy(gameObject);
                                 if (InventoryList.itemList.Count > 0)
@@ -417,6 +459,6 @@ public class InventoryAmmo : MonoBehaviour
         Inventory._name.text = itemAmmo.ItemName;
         Inventory._image.sprite = itemAmmo.Icon;
         UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
-        Inventory._select.Play();
+        InventorySounds.select.Play();
     }
 }

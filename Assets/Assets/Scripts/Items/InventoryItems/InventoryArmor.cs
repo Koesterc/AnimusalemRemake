@@ -24,7 +24,7 @@ public class InventoryArmor : MonoBehaviour
     {
         if (Input.GetKeyDown("return"))
         {
-            Inventory._drop.Play();
+            InventorySounds.drop.Play();
             GameObject clone;
             Vector3 pos = new Vector3(Random.Range(Controls._Player.transform.position.x - 1.5f, Controls._Player.transform.position.x + 1.5f), Controls._Player.transform.position.y, Random.Range(Controls._Player.transform.position.z - 1.5f, Controls._Player.transform.position.z + 1.5f));
             clone = Instantiate(droppedArmor, pos, transform.rotation) as GameObject;
@@ -41,6 +41,12 @@ public class InventoryArmor : MonoBehaviour
             {
                 if (InventoryList.itemList[i] == gameObject)
                 {
+                    //removing the dybbuk shop item of the same type from the sell list
+                    GameObject shopItem = InventoryList.sellList[i];
+                    InventoryList.sellList.Remove(shopItem);
+                    Destroy(shopItem);
+
+                    //removing the item from the inventory list
                     InventoryList.itemList.Remove(gameObject);
                     Destroy(gameObject);
                     if (InventoryList.itemList.Count > 0)
@@ -71,6 +77,6 @@ public class InventoryArmor : MonoBehaviour
         Inventory._image.sprite = itemArmor.Icon;
         UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
 
-        Inventory._select.Play();
+        InventorySounds.select.Play();
     }
 }

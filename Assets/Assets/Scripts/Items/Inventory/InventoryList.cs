@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryList : MonoBehaviour
 {
+    [Header("These are prefabs (Prefabs > Items > Shop)")]
     [SerializeField]
     GameObject shopWeaponPrefab;
     [SerializeField]
@@ -37,8 +38,8 @@ public class InventoryList : MonoBehaviour
 
                 //adding the gameobject to the sell list
                 GameObject clone;
-                clone = Instantiate(shopWeaponPrefab, DybbukShop.sellContent.transform.position, transform.rotation) as GameObject;
-                clone.transform.SetParent(DybbukShop.sellContent.transform, true);
+                clone = Instantiate(shopWeaponPrefab, UI.sellContent.transform.position, transform.rotation) as GameObject;
+                clone.transform.SetParent(UI.sellContent.transform, true);
                 clone.transform.localScale = new Vector3(1, 1, 1);
                 //transfering the data
                 clone.gameObject.GetComponent<DybbukWeapon>().TransferData(cw.NewWeapon);
@@ -46,6 +47,7 @@ public class InventoryList : MonoBehaviour
                 clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.ItemName.ToString();
                 clone.transform.FindChild("Level").GetComponent<Text>().text = "Level: "+clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.LevelRestriction.ToString();
                 clone.SetActive(true);
+                sellList.Add(clone);
             }
             else if (r.GetComponent<InventoryArmor>())
             {
@@ -55,13 +57,17 @@ public class InventoryList : MonoBehaviour
                 r.gameObject.SetActive(true);
 
                 ////adding the gameobject to the sell list
-                //GameObject clone;
-                //clone = Instantiate(shopWeaponPrefab, DybbukShop.sellContent.transform.position, transform.rotation) as GameObject;
-                //clone.transform.SetParent(DybbukShop.sellContent.transform, true);
-                //clone.transform.localScale = new Vector3(1, 1, 1);
-                ////transfering the data
-                ////clone.GetComponent<DybbukWeapon>().TransferData(cw.NewWeapon);
-                //clone.SetActive(true);
+                GameObject clone;
+                clone = Instantiate(shopArmorPrefab, UI.sellContent.transform.position, transform.rotation) as GameObject;
+                clone.transform.SetParent(UI.sellContent.transform, true);
+                clone.transform.localScale = new Vector3(1, 1, 1);
+                //transfering the data
+                clone.gameObject.GetComponent<DybbukArmor>().TransferData(ca.NewArmor);
+                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.SellValue.ToString();
+                clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.ItemName.ToString();
+                clone.transform.FindChild("Level").GetComponent<Text>().text = "Level: " + clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.LevelRestriction.ToString();
+                clone.SetActive(true);
+                sellList.Add(clone);
             }
             else if (r.GetComponent<InventoryMisc>())
             {
@@ -70,14 +76,18 @@ public class InventoryList : MonoBehaviour
                 cm.CreateMisc();
                 r.gameObject.SetActive(true);
 
-               // //adding the gameobject to the sell list
-               // GameObject clone;
-               // clone = Instantiate(shopWeaponPrefab, DybbukShop.sellContent.transform.position, transform.rotation) as GameObject;
-               // clone.transform.SetParent(DybbukShop.sellContent.transform, true);
-               // clone.transform.localScale = new Vector3(1, 1, 1);
-               // //transfering the data
-               //// clone.GetComponent<DybbukWeapon>().TransferData(cw.NewWeapon);
-               // clone.SetActive(true);
+                ////adding the gameobject to the sell list
+                GameObject clone;
+                clone = Instantiate(shopMiscPrefab, UI.sellContent.transform.position, transform.rotation) as GameObject;
+                clone.transform.SetParent(UI.sellContent.transform, true);
+                clone.transform.localScale = new Vector3(1, 1, 1);
+                //transfering the data
+                clone.gameObject.GetComponent<DybbukMisc>().TransferData(cm.NewMisc);
+                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.SellValue.ToString();
+                clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.ItemName.ToString();
+                clone.transform.FindChild("Level").GetComponent<Text>().text = " ";
+                clone.SetActive(true);
+                sellList.Add(clone);
             }
             else if (r.GetComponent<InventoryAmmo>())
             {
@@ -87,15 +97,18 @@ public class InventoryList : MonoBehaviour
                 r.gameObject.SetActive(true);
 
                 ////adding the gameobject to the sell list
-                //GameObject clone;
-                //clone = Instantiate(shopWeaponPrefab, DybbukShop.sellContent.transform.position, transform.rotation) as GameObject;
-                //clone.transform.SetParent(DybbukShop.sellContent.transform, true);
-                //clone.transform.localScale = new Vector3(1, 1, 1);
-                ////transfering the data
-                ////clone.GetComponent<DybbukWeapon>().TransferData(cw.NewWeapon);
-                //clone.SetActive(true);
+                GameObject clone;
+                clone = Instantiate(shopAmmoPrefab, UI.sellContent.transform.position, transform.rotation) as GameObject;
+                clone.transform.SetParent(UI.sellContent.transform, true);
+                clone.transform.localScale = new Vector3(1, 1, 1);
+                //transfering the data
+                clone.gameObject.GetComponent<DybbukAmmo>().TransferData(a.NewAmmo);
+                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString();
+                clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.ItemName.ToString();
+                clone.transform.FindChild("Level").GetComponent<Text>().text = "Quantity: " + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.Quantity.ToString();
+                clone.SetActive(true);
+                sellList.Add(clone);
             }
-
         }
     }
 

@@ -6,19 +6,6 @@ public class DybbukWeapon : MonoBehaviour
 {
     BaseWeapon shopWeapon = new BaseWeapon();
 
-    // Use this for initialization
-    void Start()
-    {
-        //if (gameObject.GetComponent<CreateNewWeapon>())
-        //{
-        //    CreateNewWeapon c = gameObject.GetComponent<CreateNewWeapon>();
-        //    shopWeapon = c.NewWeapon;
-        //    Destroy(c);
-        //    transform.FindChild("Value").GetComponent<Text>().text = "$" + shopWeapon.SellValue.ToString();
-        //    print (shopWeapon.SellValue);
-        //}
-    }
-
     public void TransferData(BaseWeapon weapon)
     {
         shopWeapon = weapon;
@@ -28,6 +15,12 @@ public class DybbukWeapon : MonoBehaviour
     {
         get { return shopWeapon; }
         set { shopWeapon = value; }
+    }
+
+    public void OnSelect()
+    {
+        UI.sellContent.transform.localPosition = new Vector3(UI.sellContent.transform.localPosition.x, -transform.localPosition.y, UI.sellContent.transform.localPosition.z);
+        InventorySounds.select.Play();
     }
 }
 

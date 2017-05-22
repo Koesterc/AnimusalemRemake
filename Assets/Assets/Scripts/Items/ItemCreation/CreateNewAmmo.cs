@@ -17,6 +17,7 @@ public class CreateNewAmmo : MonoBehaviour
         switch (temp)
         {
             default:
+                newAmmo.SellValue = 2;
                 newAmmo.AmmoTypes = BaseAmmo.AmmoType.HandgunAmmo;
                 //assigning the name
                 newAmmo.ItemName = "Handgun Bullets";
@@ -26,6 +27,7 @@ public class CreateNewAmmo : MonoBehaviour
                 newAmmo.Icon= Resources.Load<Sprite>("Icons/Ammo/Handgun");
                 break;
             case 1:
+                newAmmo.SellValue = 5;
                 newAmmo.AmmoTypes = BaseAmmo.AmmoType.ShotgunShells;
                 //assigning the name
                 newAmmo.ItemName = "Shotgun Shells";
@@ -35,6 +37,7 @@ public class CreateNewAmmo : MonoBehaviour
                 newAmmo.Icon = Resources.Load<Sprite>("Icons/Ammo/Shotgun");
                 break;
             case 2:
+                newAmmo.SellValue = 4;
                 newAmmo.AmmoTypes = BaseAmmo.AmmoType.RifleAmmo;
                 //assigning the name
                 newAmmo.ItemName = "Rifle Rounds";
@@ -44,6 +47,7 @@ public class CreateNewAmmo : MonoBehaviour
                 newAmmo.Icon = Resources.Load<Sprite>("Icons/Ammo/Rifle");
                 break;
             case 3:
+                newAmmo.SellValue = 1;
                 newAmmo.AmmoTypes = BaseAmmo.AmmoType.MachinegunAmmo;
                 //assigning the name
                 newAmmo.ItemName = "Machinegun Bullets";
@@ -53,6 +57,7 @@ public class CreateNewAmmo : MonoBehaviour
                 newAmmo.Icon = Resources.Load<Sprite>("Icons/Ammo/Machinegun");
                 break;
             case 4:
+                newAmmo.SellValue = 2;
                 newAmmo.AmmoTypes = BaseAmmo.AmmoType.AssaultRifleAmmo;
                 //assigning the name
                 newAmmo.ItemName = "Assault Rifle Bullets";
@@ -62,6 +67,7 @@ public class CreateNewAmmo : MonoBehaviour
                 newAmmo.Icon = Resources.Load<Sprite>("Icons/Ammo/AssaultRifle");
                 break;
             case 5:
+                newAmmo.SellValue = 8;
                 newAmmo.AmmoTypes = BaseAmmo.AmmoType.MagnumAmmo;
                 //assigning the name
                 newAmmo.ItemName = "Magnum Rounds";
@@ -71,6 +77,7 @@ public class CreateNewAmmo : MonoBehaviour
                 newAmmo.Icon = Resources.Load<Sprite>("Icons/Ammo/Magnum");
                 break;
             case 6:
+                newAmmo.SellValue = 12;
                 newAmmo.AmmoTypes = BaseAmmo.AmmoType.ExplosiveRounds;
                 //assigning the name
                 newAmmo.ItemName = "Explosive Rounds";
