@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DroppedWeapon : MonoBehaviour
 {
     public GameObject inventoryWeaponPrefab;
     BaseWeapon dropWeapon = new BaseWeapon();
+    [SerializeField]
+    GameObject shopWeaponPrefab;
+
     void Start()
     {
         if (gameObject.GetComponent<CreateNewWeapon>())
@@ -39,6 +43,18 @@ public class DroppedWeapon : MonoBehaviour
             InventoryList.weaponList.Add(clone);
             PlayerStats.curWeight += dropWeapon.Weight;
             StartCoroutine(ItemObtained());
+
+            //creating the same game object for the player in the sell list
+            clone = Instantiate(shopWeaponPrefab, UI.sellContent.transform.position, transform.rotation) as GameObject;
+            clone.transform.SetParent(UI.sellContent.transform, true);
+            clone.transform.localScale = new Vector3(1, 1, 1);
+            //transfering the data
+            clone.gameObject.GetComponent<DybbukWeapon>().TransferData(dropWeapon);
+            clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.SellValue.ToString();
+            clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.ItemName.ToString();
+            clone.transform.FindChild("Level").GetComponent<Text>().text = "Level: " + clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.LevelRestriction.ToString();
+            clone.SetActive(true);
+            InventoryList.sellList.Add(clone);
         }
         else
             StartCoroutine(NoStrength());

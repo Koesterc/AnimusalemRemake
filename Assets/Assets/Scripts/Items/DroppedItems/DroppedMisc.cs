@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DroppedMisc : MonoBehaviour
 {
     public GameObject inventoryMiscPrefab;
     BaseMisc dropMisc = new BaseMisc();
+    [SerializeField]
+    GameObject shopMiscPrefab;
 
     void start()
     {
@@ -40,6 +43,18 @@ public class DroppedMisc : MonoBehaviour
             InventoryList.itemList.Add(clone);
             PlayerStats.curWeight += dropMisc.Weight;
             StartCoroutine(ItemObtained());
+
+            ////adding the gameobject to the sell list
+            clone = Instantiate(shopMiscPrefab, UI.sellContent.transform.position, transform.rotation) as GameObject;
+            clone.transform.SetParent(UI.sellContent.transform, true);
+            clone.transform.localScale = new Vector3(1, 1, 1);
+            //transfering the data
+            clone.gameObject.GetComponent<DybbukMisc>().TransferData(dropMisc);
+            clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.SellValue.ToString();
+            clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.ItemName.ToString();
+            clone.transform.FindChild("Level").GetComponent<Text>().text = " ";
+            clone.SetActive(true);
+            InventoryList.sellList.Add(clone);
         }
         else
             StartCoroutine(NoStrength());

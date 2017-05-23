@@ -114,7 +114,8 @@ public class InventoryList : MonoBehaviour
 
     void OnEnable()
     {
-        StartCoroutine(Wait());
+        if (itemList.Count > 0)
+            StartCoroutine(Wait());
     }
 
 
@@ -123,11 +124,11 @@ public class InventoryList : MonoBehaviour
         scrollBar.value = 1;
         UI.UIevent.SetSelectedGameObject(null);
         yield return new WaitForSeconds(.06f);
-       if (UI.UIevent.currentSelectedGameObject == null)
+        if (UI.UIevent.currentSelectedGameObject == null)
             UI.UIevent.SetSelectedGameObject(itemList[0]);
         else
         {
-            yield return new WaitForSeconds(.06f);
+            yield return new WaitForSeconds(.1f);
             UI.UIevent.SetSelectedGameObject(itemList[0]);
         }
     }

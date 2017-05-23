@@ -87,7 +87,6 @@ public class Controls : MonoBehaviour
             else if (!GameManagerScript.isActive)
             {
                 canDo = false;
-                UI.inventory.SetActive(true);
                 speed = 0;
                 StopAllCoroutines();
                 StartCoroutine(FadeIn());
@@ -117,12 +116,13 @@ public class Controls : MonoBehaviour
     IEnumerator FadeOut()
     {
         UI.UIevent.SetSelectedGameObject(null);
-        while (Inventory.fade.alpha > 0)
-        {
-            yield return new WaitForSeconds(.01f);
-            Inventory.fade.alpha -= .01f;
-        }
+        UI.screenEffect.Play("FadeOut");
+        UI.screenEffect.speed = 4;
+        yield return new WaitForSeconds(.5f);
         UI.inventory.SetActive(false);
+        UI.screenEffect.Play("FadeIn");
+        yield return new WaitForSeconds(.5f);
+        UI.screenEffect.speed = 1;
         speed = PlayerStats.speed;
         switch (miniMapSelect)
         {
@@ -142,11 +142,13 @@ public class Controls : MonoBehaviour
         miniMapCamera.gameObject.SetActive(false);
         anim.speed = 0;
         anim.enabled = false;
-        while (Inventory.fade.alpha < 1)
-        {
-            yield return new WaitForSeconds(.01f);
-            Inventory.fade.alpha += .01f;
-        }
+        UI.screenEffect.Play("FadeOut");
+        UI.screenEffect.speed = 4;
+        yield return new WaitForSeconds(.5f);
+        UI.inventory.SetActive(true);
+        UI.screenEffect.Play("FadeIn");
+        yield return new WaitForSeconds(.5f);
+        UI.screenEffect.speed = 1;
         canDo = true;
     }
     //the functions associated with the player stats

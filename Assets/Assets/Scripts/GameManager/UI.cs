@@ -27,14 +27,22 @@ public class UI : MonoBehaviour {
     //dybbuk shop
     [Header("These gameobjects are chilren to the dybbuk shop")]
     [SerializeField]
+    GameObject _dibbukShop;
+    [SerializeField]
     GameObject _sellContent;
     [SerializeField]
     GameObject _buyContent;
     [SerializeField]
     GameObject _upgradeContent;
+    public static GameObject dibbukShop;
     public static GameObject sellContent;
     public static GameObject buyContent;
     public static GameObject upgradeContent;
+    //UI screen effect effect
+    [Header("The child of screen effect (Canvas > ScreenEffect > Image)")]
+    [SerializeField]
+    Animator _screenEffect;
+    public static Animator screenEffect;
 
     // Update is called once per frame
     void Awake ()
@@ -47,5 +55,7 @@ public class UI : MonoBehaviour {
         buyContent = _buyContent;
         sellContent = _sellContent;
         upgradeContent = _upgradeContent;
+        dibbukShop = _dibbukShop;
+        screenEffect = _screenEffect;
     }
 }

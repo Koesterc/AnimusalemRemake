@@ -8,7 +8,6 @@ public class ShopButton : MonoBehaviour
 
     public void OnSelect()
     {
-
         Text text = gameObject.GetComponent<Text>();
         Color color = GetComponent<Text>().color;
         color.a = .5f;
@@ -35,6 +34,29 @@ public class ShopButton : MonoBehaviour
         color = GetComponent<Outline>().effectColor;
         color.a = .2f;
         GetComponent<Outline>().effectColor = color;
+    }
+
+    public void ExitShop()
+    {
+        gameObject.GetComponent<Animator>().Play("SelectButton");
+        StartCoroutine(FadeOut());
+    }
+
+    IEnumerator FadeOut ()
+    {
+        UI.screenEffect.Play("FadeOut");
+        yield return new WaitForSeconds(2f);
+        UI.screenEffect.Play("FadeIn");
+        Text text = gameObject.GetComponent<Text>();
+        Color color = GetComponent<Text>().color;
+        color.a = .2f;
+        text.color = color;
+        text.fontStyle = FontStyle.Normal;
+        text.fontSize = 40;
+        color = GetComponent<Outline>().effectColor;
+        color.a = .2f;
+        GetComponent<Outline>().effectColor = color;
+        UI.dibbukShop.SetActive(false);
     }
 
 }
