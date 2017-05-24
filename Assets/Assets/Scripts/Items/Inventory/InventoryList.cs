@@ -43,7 +43,7 @@ public class InventoryList : MonoBehaviour
                 clone.transform.localScale = new Vector3(1, 1, 1);
                 //transfering the data
                 clone.gameObject.GetComponent<DybbukWeapon>().TransferData(cw.NewWeapon);
-                clone.transform.FindChild("Value").GetComponent<Text>().text = "$"+clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.SellValue.ToString();
+                clone.transform.FindChild("Value").GetComponent<Text>().text = "$"+clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.SellValue.ToString("n0");
                 clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.ItemName.ToString();
                 clone.transform.FindChild("Level").GetComponent<Text>().text = "Level: "+clone.gameObject.GetComponent<DybbukWeapon>().ShopWeapon.LevelRestriction.ToString();
                 clone.SetActive(true);
@@ -63,7 +63,7 @@ public class InventoryList : MonoBehaviour
                 clone.transform.localScale = new Vector3(1, 1, 1);
                 //transfering the data
                 clone.gameObject.GetComponent<DybbukArmor>().TransferData(ca.NewArmor);
-                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.SellValue.ToString();
+                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.SellValue.ToString("n0");
                 clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.ItemName.ToString();
                 clone.transform.FindChild("Level").GetComponent<Text>().text = "Level: " + clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.LevelRestriction.ToString();
                 clone.SetActive(true);
@@ -83,7 +83,7 @@ public class InventoryList : MonoBehaviour
                 clone.transform.localScale = new Vector3(1, 1, 1);
                 //transfering the data
                 clone.gameObject.GetComponent<DybbukMisc>().TransferData(cm.NewMisc);
-                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.SellValue.ToString();
+                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.SellValue.ToString("n0");
                 clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.ItemName.ToString();
                 clone.transform.FindChild("Level").GetComponent<Text>().text = " ";
                 clone.SetActive(true);
@@ -103,7 +103,7 @@ public class InventoryList : MonoBehaviour
                 clone.transform.localScale = new Vector3(1, 1, 1);
                 //transfering the data
                 clone.gameObject.GetComponent<DybbukAmmo>().TransferData(a.NewAmmo);
-                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString();
+                clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString("n0");
                 clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.ItemName.ToString();
                 clone.transform.FindChild("Level").GetComponent<Text>().text = "Quantity: " + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.Quantity.ToString();
                 clone.SetActive(true);

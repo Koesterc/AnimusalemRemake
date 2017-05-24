@@ -6,7 +6,7 @@ public class PlayerStats : ScriptableObject
 {
     //player Info
     [Header("Items")]
-    public static int money;
+    public static int money =3750;
     [Space]
     [Tooltip("Handgun Ammo")]
     public static int hgAmmo = 25;

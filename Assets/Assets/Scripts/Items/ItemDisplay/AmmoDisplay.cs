@@ -7,7 +7,7 @@ public class AmmoDisplay : MonoBehaviour
 {
     public Text myText;
     public static bool isActive = false;
-    bool pickUp = false;
+    public bool pickUp = false;
 
     void OnDestroy()
     {
@@ -69,7 +69,7 @@ public class AmmoDisplay : MonoBehaviour
         else if (other.CompareTag("Interact") && pickUp && Input.GetKeyDown("return") && !GameManagerScript.isActive)
         {
     //        isActive = false;
-      //      pickUp = false;
+              pickUp = false;
         //    GameManagerScript.stat.gameObject.SetActive(false);
             gameObject.GetComponent<DroppedAmmo>().PickedUp();
         }
@@ -108,42 +108,42 @@ public class AmmoDisplay : MonoBehaviour
             int i = 0;
             GameManagerScript.statDisplay[i].text = "[" + droppedAmmo.AmmoStats.ItemName + "]";
             i++;
-            GameManagerScript.statDisplay[i].text = "Quantity: " + droppedAmmo.AmmoStats.Quantity;
+            GameManagerScript.statDisplay[i].text = "Quantity: " + droppedAmmo.AmmoStats.Quantity.ToString("n0");
             i++;
             switch (droppedAmmo.AmmoStats.AmmoTypes)
             {
                 case BaseAmmo.AmmoType.HandgunAmmo:
-                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.hgAmmoWeight).ToString() + " lbs";
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.hgAmmoWeight).ToString("n0") + " lbs";
                     if (PlayerStats.curWeight + (droppedAmmo.AmmoStats.Quantity * PlayerStats.hgAmmoWeight) > PlayerStats.maxWeight)
                         GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                     break;
                 case BaseAmmo.AmmoType.ShotgunShells:
-                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.sgAmmoWeight).ToString() + " lbs";
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.sgAmmoWeight).ToString("n0") + " lbs";
                     if (PlayerStats.curWeight + (droppedAmmo.AmmoStats.Quantity * PlayerStats.sgAmmoWeight) > PlayerStats.maxWeight)
                         GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                     break;
                 case BaseAmmo.AmmoType.MachinegunAmmo:
-                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.mgAmmoWeight).ToString() + " lbs";
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.mgAmmoWeight).ToString("n0") + " lbs";
                     if (PlayerStats.curWeight + (droppedAmmo.AmmoStats.Quantity * PlayerStats.mgAmmoWeight) > PlayerStats.maxWeight)
                         GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                     break;
                 case BaseAmmo.AmmoType.RifleAmmo:
-                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.rifleAmmoWeight).ToString() + " lbs";
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.rifleAmmoWeight).ToString("n0") + " lbs";
                     if (PlayerStats.curWeight + (droppedAmmo.AmmoStats.Quantity * PlayerStats.rifleAmmoWeight) > PlayerStats.maxWeight)
                         GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                     break;
                 case BaseAmmo.AmmoType.AssaultRifleAmmo:
-                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.arAmmoWeight).ToString() + " lbs";
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.arAmmoWeight).ToString("n0") + " lbs";
                     if (PlayerStats.curWeight + (droppedAmmo.AmmoStats.Quantity * PlayerStats.arAmmoWeight) > PlayerStats.maxWeight)
                         GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                     break;
                 case BaseAmmo.AmmoType.MagnumAmmo:
-                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.magnumAmmoWeight).ToString() + " lbs";
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.magnumAmmoWeight).ToString("n0") + " lbs";
                     if (PlayerStats.curWeight + (droppedAmmo.AmmoStats.Quantity * PlayerStats.magnumAmmoWeight) > PlayerStats.maxWeight)
                         GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                     break;
                 case BaseAmmo.AmmoType.ExplosiveRounds:
-                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.explosiveAmmoWeight).ToString() + " lbs";
+                    GameManagerScript.statDisplay[i].text = "Weight: " + (droppedAmmo.AmmoStats.Quantity * PlayerStats.explosiveAmmoWeight).ToString("n0") + " lbs";
                     if (PlayerStats.curWeight + (droppedAmmo.AmmoStats.Quantity * PlayerStats.explosiveAmmoWeight) > PlayerStats.maxWeight)
                         GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                     break;

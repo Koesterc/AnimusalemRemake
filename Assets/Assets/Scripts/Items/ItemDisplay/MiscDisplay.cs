@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MiscDisplay : MonoBehaviour
 {
     public Text myText;
-    bool pickUp = false;
+    public bool pickUp = false;
 
     void OnDestroy()
     {
@@ -25,7 +25,7 @@ public class MiscDisplay : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // AmmoDisplay.isActive = false;
+            //AmmoDisplay.isActive = false;
             StopAllCoroutines();
             StartCoroutine(Disable());
         }
@@ -67,10 +67,8 @@ public class MiscDisplay : MonoBehaviour
         }
         else if (other.CompareTag("Interact") && pickUp && Input.GetKeyDown("return") && !GameManagerScript.isActive)
         {
-      //    AmmoDisplay.isActive = false;
-      //    pickUp = false;
-      //      GameManagerScript.stat.gameObject.SetActive(false);
-            gameObject.GetComponent<DroppedMisc>().PickedUp();
+          pickUp = false;
+          gameObject.GetComponent<DroppedMisc>().PickedUp();
         }
     }
 
@@ -108,6 +106,8 @@ public class MiscDisplay : MonoBehaviour
         GameManagerScript.statDisplay[i].text = "[" + droppedMisc.MiscStats.ItemName + "]";
         i++;
         GameManagerScript.statDisplay[i].text = " ";
+        i++;
+        GameManagerScript.statDisplay[i].text = "Value: $"+droppedMisc.MiscStats.SellValue.ToString("n0");
         i++;
         while (i < (GameManagerScript.statDisplay.Count - 1))
         {

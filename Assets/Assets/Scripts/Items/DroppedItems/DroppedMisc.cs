@@ -50,7 +50,7 @@ public class DroppedMisc : MonoBehaviour
             clone.transform.localScale = new Vector3(1, 1, 1);
             //transfering the data
             clone.gameObject.GetComponent<DybbukMisc>().TransferData(dropMisc);
-            clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.SellValue.ToString();
+            clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.SellValue.ToString("n0");
             clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukMisc>().ShopMisc.ItemName.ToString();
             clone.transform.FindChild("Level").GetComponent<Text>().text = " ";
             clone.SetActive(true);
@@ -80,5 +80,6 @@ public class DroppedMisc : MonoBehaviour
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
         Time.timeScale = 0;
+        gameObject.GetComponent<MiscDisplay>().pickUp = true;
     }
 }

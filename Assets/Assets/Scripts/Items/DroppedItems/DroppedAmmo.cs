@@ -90,7 +90,7 @@ public class DroppedAmmo : MonoBehaviour
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         //transfering the data
                         clone.gameObject.GetComponent<DybbukAmmo>().TransferData(dropAmmo);
-                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString();
+                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString("n0");
                         clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.ItemName.ToString();
                         clone.transform.FindChild("Level").GetComponent<Text>().text = "Quantity: " + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.Quantity.ToString();
                         clone.SetActive(true);
@@ -131,7 +131,7 @@ public class DroppedAmmo : MonoBehaviour
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         //transfering the data
                         clone.gameObject.GetComponent<DybbukAmmo>().TransferData(dropAmmo);
-                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString();
+                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString("n0");
                         clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.ItemName.ToString();
                         clone.transform.FindChild("Level").GetComponent<Text>().text = "Quantity: " + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.Quantity.ToString();
                         clone.SetActive(true);
@@ -172,7 +172,7 @@ public class DroppedAmmo : MonoBehaviour
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         //transfering the data
                         clone.gameObject.GetComponent<DybbukAmmo>().TransferData(dropAmmo);
-                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString();
+                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString("n0");
                         clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.ItemName.ToString();
                         clone.transform.FindChild("Level").GetComponent<Text>().text = "Quantity: " + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.Quantity.ToString();
                         clone.SetActive(true);
@@ -213,7 +213,7 @@ public class DroppedAmmo : MonoBehaviour
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         //transfering the data
                         clone.gameObject.GetComponent<DybbukAmmo>().TransferData(dropAmmo);
-                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString();
+                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString("n0");
                         clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.ItemName.ToString();
                         clone.transform.FindChild("Level").GetComponent<Text>().text = "Quantity: " + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.Quantity.ToString();
                         clone.SetActive(true);
@@ -254,7 +254,7 @@ public class DroppedAmmo : MonoBehaviour
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         //transfering the data
                         clone.gameObject.GetComponent<DybbukAmmo>().TransferData(dropAmmo);
-                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString();
+                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString("n0");
                         clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.ItemName.ToString();
                         clone.transform.FindChild("Level").GetComponent<Text>().text = "Quantity: " + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.Quantity.ToString();
                         clone.SetActive(true);
@@ -295,7 +295,7 @@ public class DroppedAmmo : MonoBehaviour
                         clone.transform.localScale = new Vector3(1, 1, 1);
                         //transfering the data
                         clone.gameObject.GetComponent<DybbukAmmo>().TransferData(dropAmmo);
-                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString();
+                        clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.SellValue.ToString("n0");
                         clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.ItemName.ToString();
                         clone.transform.FindChild("Level").GetComponent<Text>().text = "Quantity: " + clone.gameObject.GetComponent<DybbukAmmo>().ShopAmmo.Quantity.ToString();
                         clone.SetActive(true);
@@ -336,5 +336,6 @@ public class DroppedAmmo : MonoBehaviour
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
         Time.timeScale = 0;
+        gameObject.GetComponent<AmmoDisplay>().pickUp = true;
     }
 }

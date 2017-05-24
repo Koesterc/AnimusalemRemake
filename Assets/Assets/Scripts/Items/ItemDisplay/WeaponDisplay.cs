@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class WeaponDisplay : MonoBehaviour
 {
     public Text myText;
-    bool pickUp = false;
+    public bool pickUp = false;
 
     void OnDestroy()
     {
@@ -71,7 +71,7 @@ public class WeaponDisplay : MonoBehaviour
             //add weight
             //play sound
           //  AmmoDisplay.isActive = false;
-          //  pickUp = false;
+             pickUp = false;
           //  GameManagerScript.stat.gameObject.SetActive(false);
             gameObject.GetComponent<DroppedWeapon>().PickedUp();
         }

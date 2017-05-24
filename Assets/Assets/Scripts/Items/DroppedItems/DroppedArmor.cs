@@ -45,7 +45,7 @@ public class DroppedArmor : MonoBehaviour
             clone.transform.localScale = new Vector3(1, 1, 1);
             //transfering the data
             clone.gameObject.GetComponent<DybbukArmor>().TransferData(dropArmor);
-            clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.SellValue.ToString();
+            clone.transform.FindChild("Value").GetComponent<Text>().text = "$" + clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.SellValue.ToString("n0");
             clone.transform.FindChild("Name").GetComponent<Text>().text = clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.ItemName.ToString();
             clone.transform.FindChild("Level").GetComponent<Text>().text = "Level: " + clone.gameObject.GetComponent<DybbukArmor>().ShopArmor.LevelRestriction.ToString();
             clone.SetActive(true);
@@ -80,6 +80,7 @@ public class DroppedArmor : MonoBehaviour
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
         Time.timeScale = 0;
+        gameObject.GetComponent<ArmorDisplay>().pickUp = true;
     }
 
 }

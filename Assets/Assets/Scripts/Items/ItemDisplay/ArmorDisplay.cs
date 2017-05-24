@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ArmorDisplay : MonoBehaviour {
     public Text myText;
-    bool pickUp = false;
+    public bool pickUp = false;
 
     void OnDestroy()
     {
@@ -68,7 +68,7 @@ public class ArmorDisplay : MonoBehaviour {
         {
             //play sound
             //AmmoDisplay.isActive = false;
-           // pickUp = false;
+            pickUp = false;
          //   GameManagerScript.stat.gameObject.SetActive(false);
             gameObject.GetComponent<DroppedArmor>().PickedUp();
         }
@@ -106,7 +106,7 @@ public class ArmorDisplay : MonoBehaviour {
             int i = 0;
             GameManagerScript.statDisplay[i].text = "[" + droppedArmor.ArmorStats.ItemName + "]";
             i++;
-            GameManagerScript.statDisplay[i].text = "Defense: " + droppedArmor.ArmorStats.Defense.ToString();
+            GameManagerScript.statDisplay[i].text = "Defense: " + droppedArmor.ArmorStats.Defense.ToString("n0");
             i++;
             if (droppedArmor.ArmorStats.LevelRestriction > 0)
             {
@@ -136,11 +136,11 @@ public class ArmorDisplay : MonoBehaviour {
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                 i++;
             }
-            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString() + " lbs";
+            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString("n0") + " lbs";
             if (droppedArmor.ArmorStats.Weight + PlayerStats.curWeight > PlayerStats.maxWeight)
                 GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
             i++;
-            GameManagerScript.statDisplay[i].text = "Value: $" + droppedArmor.ArmorStats.SellValue.ToString();
+            GameManagerScript.statDisplay[i].text = "Value: $" + droppedArmor.ArmorStats.SellValue.ToString("n0");
             i++;
             GameManagerScript.statDisplay[i].text = " ";
             i++;
