@@ -31,6 +31,7 @@ public class DroppedWeapon : MonoBehaviour
 
     public void PickedUp()
     {
+        Controls.speed = 0;
         if ((PlayerStats.curWeight + dropWeapon.Weight) <= PlayerStats.maxWeight)
         {
             GameObject clone;
@@ -68,10 +69,10 @@ public class DroppedWeapon : MonoBehaviour
         GameManagerScript.itemInfoText.text = "You've obtained the " + "\"" + dropWeapon.ItemName + "\"" + " " + dropWeapon.WeaponTypes +".";
         GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropWeapon.WeaponTypes.ToString(), "<color=#FFFFFFFF>" + dropWeapon.WeaponTypes.ToString() + "</color>");
         PlayerStats.curWeight += dropWeapon.Weight;
-        Time.timeScale = 0;
         AmmoDisplay.isActive = false;
         GameManagerScript.stat.gameObject.SetActive(false);
         Destroy(gameObject);
+        Time.timeScale = 0;
     }
 
     IEnumerator NoStrength()
@@ -80,7 +81,7 @@ public class DroppedWeapon : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropWeapon.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        Time.timeScale = 0;
         gameObject.GetComponent<WeaponDisplay>().pickUp = true;
+        Time.timeScale = 0;
     }
 }

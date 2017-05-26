@@ -67,9 +67,7 @@ public class ArmorDisplay : MonoBehaviour {
         else if (other.CompareTag("Interact") && pickUp && Input.GetKeyDown("return") && !GameManagerScript.isActive)
         {
             //play sound
-            //AmmoDisplay.isActive = false;
             pickUp = false;
-         //   GameManagerScript.stat.gameObject.SetActive(false);
             gameObject.GetComponent<DroppedArmor>().PickedUp();
         }
     }
@@ -136,7 +134,7 @@ public class ArmorDisplay : MonoBehaviour {
                     GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
                 i++;
             }
-            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString("n0") + " lbs";
+            GameManagerScript.statDisplay[i].text = "Weight: " + droppedArmor.ArmorStats.Weight.ToString() + " lbs";
             if (droppedArmor.ArmorStats.Weight + PlayerStats.curWeight > PlayerStats.maxWeight)
                 GameManagerScript.statDisplay[i].GetComponent<Outline>().effectColor = Color.red;
             i++;

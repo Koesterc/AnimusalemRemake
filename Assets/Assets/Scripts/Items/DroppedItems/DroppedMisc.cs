@@ -32,6 +32,7 @@ public class DroppedMisc : MonoBehaviour
 
     public void PickedUp()
     {
+        Controls.speed = 0;
         if ((PlayerStats.curWeight + dropMisc.Weight) <= PlayerStats.maxWeight)
         {
             GameObject clone;
@@ -67,10 +68,10 @@ public class DroppedMisc : MonoBehaviour
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You've obtained the " + dropMisc.ItemName + ".";
         GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropMisc.ItemName.ToString(), "<color=#FFFFFFFF>" + dropMisc.ItemName.ToString() + "</color>");
-        Time.timeScale = 0;
         AmmoDisplay.isActive = false;
         GameManagerScript.stat.gameObject.SetActive(false);
         Destroy(gameObject);
+        Time.timeScale = 0;
     }
 
     IEnumerator NoStrength()
@@ -79,7 +80,7 @@ public class DroppedMisc : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropMisc.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        Time.timeScale = 0;
         gameObject.GetComponent<MiscDisplay>().pickUp = true;
+        Time.timeScale = 0;
     }
 }

@@ -103,6 +103,8 @@ public class InventoryAmmo : MonoBehaviour
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
+                                    if (i > InventoryList.itemList.Count - 3 && i > 2)
+                                        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -154,6 +156,8 @@ public class InventoryAmmo : MonoBehaviour
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
+                                    if (i > InventoryList.itemList.Count - 3 && i > 2)
+                                        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -205,6 +209,8 @@ public class InventoryAmmo : MonoBehaviour
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
+                                    if (i > InventoryList.itemList.Count - 3 && i > 2)
+                                        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -256,6 +262,8 @@ public class InventoryAmmo : MonoBehaviour
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
+                                    if (i > InventoryList.itemList.Count - 3 && i > 2)
+                                        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -307,6 +315,8 @@ public class InventoryAmmo : MonoBehaviour
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
+                                    if (i > InventoryList.itemList.Count - 3 && i > 2)
+                                        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -358,6 +368,8 @@ public class InventoryAmmo : MonoBehaviour
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
+                                    if (i > InventoryList.itemList.Count - 3 && i > 2)
+                                        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -409,6 +421,8 @@ public class InventoryAmmo : MonoBehaviour
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                                     else
                                         UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i - 1]);
+                                    if (i > InventoryList.itemList.Count - 3 && i > 2)
+                                        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
                                     i = InventoryList.itemList.Count;
                                 }
                             }//end of if
@@ -458,7 +472,17 @@ public class InventoryAmmo : MonoBehaviour
         Inventory._desc.text = itemAmmo.ItemDesc;
         Inventory._name.text = itemAmmo.ItemName;
         Inventory._image.sprite = itemAmmo.Icon;
-        UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
+        //checking to see what inventory item (index) was selected to decide whether or not we want the
+        //inventory to change transforms based on the iem selected
+        for (int i = 0; i < InventoryList.itemList.Count; i++)
+        {
+            if (InventoryList.itemList[i] == gameObject)
+            {
+                if (i > 2 && i < InventoryList.itemList.Count - 3)
+                    UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
+                i = InventoryList.itemList.Count;
+            }
+        }
         InventorySounds.select.Play();
     }
 }

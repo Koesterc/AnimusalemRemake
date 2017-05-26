@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class Controls : MonoBehaviour
 {
 
-    [Range(0, 10)]
-    public float speed = 4f;
+    public static float speed = 4f;
     RaycastHit hit;
     public LayerMask targetLayer;
     public Rigidbody myBody;
@@ -30,6 +29,7 @@ public class Controls : MonoBehaviour
     {
 
         _Player = gameObject.transform;
+        speed = PlayerStats.speed;
     }
 
 

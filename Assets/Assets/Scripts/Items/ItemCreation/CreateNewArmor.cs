@@ -44,13 +44,15 @@ public class CreateNewArmor : MonoBehaviour
             newArmor.Luck = Random.Range(1, 5);
         temp = Random.Range(0, 100);
         if (temp >= 90)
-            newArmor.ReducedWeight = Mathf.Round(Random.Range(.1f, .5f) * 100) / 100;
+            newArmor.ReducedWeight = Mathf.Round(Random.Range(.1f, .5f) * 10) / 10;
 
         ChooseArmor();
         newArmor.SellValue = (((int)newArmor.Defense/2) + newArmor.Strength * 2 +
             newArmor.Dexterity * 2 + newArmor.Constitution * 2 + newArmor.Charisma * 2 + newArmor.Luck * 2  
             + newArmor.Agility * 2 + newArmor.Perception * 2 + newArmor.Intelligence * 2 + newArmor.Fortitude * 2);
         newArmor.Weight = newArmor.Weight - (newArmor.Weight * newArmor.ReducedWeight)+ (int)(newArmor.ReducedWeight * 10 + (int)(newArmor.MaxHealth * 100));
+
+        newArmor.Weight = newArmor.Weight - (newArmor.Weight * newArmor.ReducedWeight);
     }
     private void ChooseArmor()
     {
@@ -65,7 +67,7 @@ public class CreateNewArmor : MonoBehaviour
                 if (temp >= 90)
                     newArmor.EnhancedDefense = Random.Range(1 + newArmor.LevelRestriction, 3 + newArmor.LevelRestriction);
                 newArmor.Defense = Random.Range(1+(newArmor.LevelRestriction + newArmor.EnhancedDefense), 5 +(newArmor.LevelRestriction + newArmor.EnhancedDefense));
-                newArmor.Weight = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
+                newArmor.Weight = Mathf.Round(Random.Range(4, 8) * 10) / 10;
                 newArmor.RequiredStrength = Random.Range(0, newArmor.LevelRestriction * 2);
 
                 temp = Random.Range(0, 100);
@@ -94,7 +96,7 @@ public class CreateNewArmor : MonoBehaviour
                 if (temp >= 90)
                     newArmor.EnhancedDefense = Random.Range(1 + newArmor.LevelRestriction, 6 + newArmor.LevelRestriction);
                 newArmor.Defense = Random.Range(3 + (newArmor.LevelRestriction + newArmor.EnhancedDefense), 8 + (newArmor.LevelRestriction + newArmor.EnhancedDefense));
-                newArmor.Weight = Random.Range(newArmor.LevelRestriction * 2, newArmor.LevelRestriction * 3);
+                newArmor.Weight = Mathf.Round(Random.Range(6, 10) * 100) / 100;
                 newArmor.SpeedReduction = -2;
 
                 temp = Random.Range(0, 100);
@@ -124,7 +126,7 @@ public class CreateNewArmor : MonoBehaviour
                     newArmor.EnhancedDefense = Random.Range(1 + newArmor.LevelRestriction, 10 + newArmor.LevelRestriction);
                 newArmor.Defense = Random.Range(8 + (newArmor.LevelRestriction + newArmor.EnhancedDefense), 13 + (newArmor.LevelRestriction + newArmor.EnhancedDefense));
                 newArmor.SpeedReduction = -4;
-                newArmor.Weight = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
+                newArmor.Weight = Mathf.Round(Random.Range(8, 12)*10)/10;
                 newArmor.RequiredStrength = Random.Range(newArmor.LevelRestriction * 3, newArmor.LevelRestriction * 4);
                 temp = Random.Range(0, 100);
                 if (temp >= 90)

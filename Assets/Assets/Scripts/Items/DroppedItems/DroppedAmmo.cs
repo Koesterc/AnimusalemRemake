@@ -18,7 +18,8 @@ public class DroppedAmmo : MonoBehaviour
 
     public void PickedUp()
     {
-        switch(dropAmmo.AmmoTypes)
+        Controls.speed = 0;
+        switch (dropAmmo.AmmoTypes)
         {
             default://picking up handgun ammo
                 if (PlayerStats.curWeight + (dropAmmo.Quantity * PlayerStats.hgAmmoWeight) <= PlayerStats.maxWeight)
@@ -323,10 +324,10 @@ public class DroppedAmmo : MonoBehaviour
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You've obtained the "+ ammoCount +" "+dropAmmo.ItemName+".";
         GameManagerScript.itemInfoText.text = GameManagerScript.itemInfoText.text.Replace(dropAmmo.ItemName.ToString(), "<color=#FFFFFFFF>" + dropAmmo.ItemName.ToString() + "</color>");
-        Time.timeScale = 0;
         AmmoDisplay.isActive = false;
         GameManagerScript.stat.gameObject.SetActive(false);
         Destroy(gameObject);
+        Time.timeScale = 0;
     }
 
     IEnumerator NoStrength()
@@ -335,7 +336,7 @@ public class DroppedAmmo : MonoBehaviour
         GameManagerScript.itemInfoImage.sprite = dropAmmo.Icon;
         GameManagerScript.itemInfo.SetActive(true);
         GameManagerScript.itemInfoText.text = "You haven't enough strength to carry any further items.";
-        Time.timeScale = 0;
         gameObject.GetComponent<AmmoDisplay>().pickUp = true;
+        Time.timeScale = 0;
     }
 }
