@@ -9,20 +9,30 @@ public class EnterDybbukShop : MonoBehaviour {
     {
 		if (Input.GetKeyDown("return") && !UI.dibbukShop.activeSelf && !GameManagerScript.isActive)
         {
-            StartCoroutine(EnterShop());    
+            StartCoroutine(EnterShop());
+            Controls controls = GameManagerScript.player.GetComponent<Controls>();
+            controls.anim.speed = 0;
+            controls.reflectionAnim.speed = 0;
+            controls.enabled = false;
         }
 	}
 
     void OnTriggerEnter (Collider other)
     {
         if (other.CompareTag("Interact"))
-            gameObject.GetComponent<EnterDybbukShop>().enabled = true;
+        {
+                Controls.question.SetActive(true);
+                gameObject.GetComponent<EnterDybbukShop>().enabled = true;
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Interact"))
+        {
+            Controls.question.SetActive(false);
             gameObject.GetComponent<EnterDybbukShop>().enabled = false;
+        }
     }
 
     IEnumerator EnterShop()

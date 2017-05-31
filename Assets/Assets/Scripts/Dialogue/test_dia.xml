@@ -1,0 +1,30 @@
+<nodes>
+	  <dialogueNode>
+	      <nodeID>0</nodeID>
+	      <text>Welcome to my test</text>
+        <options>
+              <dialogueOptions>
+	                <text>You smell</text>
+                  <destinationNode>1</destinationNode>
+              </dialogueOptions>
+              <dialogueOptions>
+                  <text>You're a nice person.</text>
+                  <destinationNode>2</destinationNode>
+              </dialogueOptions>
+        </options>
+	  </dialogueNode>
+	  <dialogueNode>
+	      <nodeID>1</nodeID>
+	      <text>Well that wasn't very nice!</text>
+        <options>
+              <dialogueOptions>
+	                <text>I know, I'm sorry</text>
+                  <destinationNode>1</destinationNode>
+              </dialogueOptions>
+              <dialogueOptions>
+                  <text>Get over it.</text>
+                  <destinationNode>2</destinationNode>
+              </dialogueOptions>
+        </options>
+	  </dialogueNode>
+</nodes>

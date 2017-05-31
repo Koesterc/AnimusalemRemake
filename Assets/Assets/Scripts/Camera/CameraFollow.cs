@@ -34,8 +34,8 @@ public class CameraFollow : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl) && canZoom == true && GetComponent<Camera>().orthographicSize >= maxZoom && !GameManagerScript.isActive)
         {
             //zoom in
-            //zoomIn.Stop();
-            //zoomOut.Play();
+            zoomOut.Stop();
+            zoomIn.Play();
             canZoom = false;
             StopCoroutine("ZoomOut");
             StartCoroutine(ZoomIn(.01f));
@@ -43,8 +43,8 @@ public class CameraFollow : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.LeftControl) && canZoom == false && GetComponent<Camera>().orthographicSize <= minZoom && !GameManagerScript.isActive)
         {
             //zoom out
-            //zoomIn.Stop();
-            //zoomOut.Play();
+            zoomIn.Stop();
+            zoomOut.Play();
             canZoom = true;
             StopCoroutine("ZoomIn");
             StartCoroutine(ZoomOut(.01f));

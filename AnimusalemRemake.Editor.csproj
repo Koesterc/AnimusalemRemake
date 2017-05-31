@@ -125,6 +125,31 @@
     <Compile Include="Assets\Assets\Editor\PlayerUtility.cs" />
     <Compile Include="Assets\Assets\Editor\ScriptableObjectUtility.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Assets\Scripts\Dialogue\test_dia.xml" />
+    <None Include="Assets\Assets\TextDocuments\Doors\Broken\Broken01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\Broken\Broken02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\Broken\Broken03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\Broken\Broken04.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\LockFromOtherSide\Locked01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\LockFromOtherSide\Locked02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\LockFromOtherSide\Locked03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\LockFromOtherSide\Locked04.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\SpecialKeyNeeded\Locked01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\SpecialKeyNeeded\Locked02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\SpecialKeyNeeded\Locked03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\SpecialKeyNeeded\Locked04.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window04.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window05.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window06.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Fine\Window01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Fine\Window02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Fine\Window03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Fine\Window04.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

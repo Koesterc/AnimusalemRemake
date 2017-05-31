@@ -77,6 +77,11 @@
   <ItemGroup>
     <Compile Include="Assets\Assets\Scripts\Camera\CameraClamp.cs" />
     <Compile Include="Assets\Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Assets\Scripts\Dialogue\Dialogue.cs" />
+    <Compile Include="Assets\Assets\Scripts\Dialogue\DialogueNPC.cs" />
+    <Compile Include="Assets\Assets\Scripts\Dialogue\DialogueNode.cs" />
+    <Compile Include="Assets\Assets\Scripts\Dialogue\DialogueOptions.cs" />
+    <Compile Include="Assets\Assets\Scripts\Dialogue\NewDialogue\NPC.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\GameInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\GameManagerScript.cs" />
     <Compile Include="Assets\Assets\Scripts\GameManager\MusicScript.cs" />
@@ -96,6 +101,7 @@
     <Compile Include="Assets\Assets\Scripts\Items\Gun.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Inventory\Inventory.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Inventory\InventoryList.cs" />
+    <Compile Include="Assets\Assets\Scripts\Items\Inventory\InventorySounds.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\InventoryItems\InventoryAmmo.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\InventoryItems\InventoryArmor.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\InventoryItems\InventoryMisc.cs" />
@@ -119,15 +125,39 @@
     <Compile Include="Assets\Assets\Scripts\Items\WeaponPerks.cs" />
     <Compile Include="Assets\Assets\Scripts\Items\Weapons.cs" />
     <Compile Include="Assets\Assets\Scripts\Menus\DybbukShop\Buttons\ShopButton.cs" />
+    <Compile Include="Assets\Assets\Scripts\Menus\DybbukShop\DybbukShop.cs" />
+    <Compile Include="Assets\Assets\Scripts\Menus\DybbukShop\EnterDybbukShop.cs" />
     <Compile Include="Assets\Assets\Scripts\Physics\Brightness.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\Controls.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\PlayerShadow.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\Skills\Base\BaseSkills.cs" />
     <Compile Include="Assets\Assets\Scripts\Player\Skills\Combat\BaseCombat.cs" />
-    <Compile Include="Assets\DybbukShop.cs" />
-    <Compile Include="Assets\EnterDybbukShop.cs" />
-    <Compile Include="Assets\InventorySounds.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Assets\Scripts\Dialogue\test_dia.xml" />
+    <None Include="Assets\Assets\TextDocuments\Doors\Broken\Broken01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\Broken\Broken02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\Broken\Broken03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\Broken\Broken04.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\LockFromOtherSide\Locked01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\LockFromOtherSide\Locked02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\LockFromOtherSide\Locked03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\LockFromOtherSide\Locked04.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\SpecialKeyNeeded\Locked01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\SpecialKeyNeeded\Locked02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\SpecialKeyNeeded\Locked03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Doors\SpecialKeyNeeded\Locked04.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window04.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window05.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Broken\Window06.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Fine\Window01.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Fine\Window02.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Fine\Window03.txt" />
+    <None Include="Assets\Assets\TextDocuments\Windows\Fine\Window04.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -25,6 +25,9 @@ public class GameManagerScript : MonoBehaviour
     //gamespeed
     public static float gameSpeed = 1f;
     public static bool isActive;
+    [SerializeField]
+    GameObject _player;
+    public static GameObject player;
 
     // Use this for initialization
     void Start ()
@@ -34,6 +37,7 @@ public class GameManagerScript : MonoBehaviour
         itemInfoText = _itemInfoText;
         itemInfoImage = _itemInfoImage;
         itemInfo.SetActive(false);
+        player = _player;
 
         foreach (Transform child in stat)
         {

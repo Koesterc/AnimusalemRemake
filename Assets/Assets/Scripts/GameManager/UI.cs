@@ -24,6 +24,24 @@ public class UI : MonoBehaviour {
     GameObject _playerStats;
     public static GameObject playerStats;
 
+    //dialogue manager
+    [Header("Dialogue Box")]
+    [SerializeField]
+    GameObject _dialogueBox;
+    public static GameObject dialogueBox;
+    [SerializeField]
+    Text _textField;
+    public static Text textField;
+    [SerializeField]
+    Text _optionOne;
+    public static Text optionOne;
+    [SerializeField]
+    Text _optionTwo;
+    public static Text optionTwo;
+    [SerializeField]
+    Text _optionThree;
+    public static Text optionThree;
+
     //dybbuk shop
     [Header("These gameobjects are chilren to the dybbuk shop")]
     [SerializeField]
@@ -57,5 +75,10 @@ public class UI : MonoBehaviour {
         upgradeContent = _upgradeContent;
         dibbukShop = _dibbukShop;
         screenEffect = _screenEffect;
+        dialogueBox = _dialogueBox;
+        textField = _textField;
+        optionOne = _optionOne;
+        optionTwo = _optionTwo;
+        optionThree= _optionThree;
     }
 }

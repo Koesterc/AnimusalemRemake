@@ -22,6 +22,10 @@ public class Controls : MonoBehaviour
     static bool canDo = true;
     public Animator miniMapCamera;
     int miniMapSelect = 0;
+    public static GameObject question;
+    [Tooltip("The child gameobject, 'QuestionMark'")]
+    [SerializeField]
+    GameObject _question;
 
 
 
@@ -30,6 +34,7 @@ public class Controls : MonoBehaviour
 
         _Player = gameObject.transform;
         speed = PlayerStats.speed;
+        question = _question;
     }
 
 
@@ -135,12 +140,14 @@ public class Controls : MonoBehaviour
         }
         canDo = true;
         anim.speed = 1;
+        reflectionAnim.speed = 1;
         anim.enabled = true;
     }
     IEnumerator FadeIn()
     {
         miniMapCamera.gameObject.SetActive(false);
         anim.speed = 0;
+        reflectionAnim.speed = 0;
         anim.enabled = false;
         UI.screenEffect.Play("FadeOut");
         UI.screenEffect.speed = 4;
@@ -155,6 +162,7 @@ public class Controls : MonoBehaviour
     IEnumerator StatsIn()
     {
         anim.speed = 0;
+        reflectionAnim.speed = 0;
         anim.enabled = false;
         miniMapCamera.gameObject.SetActive(false);
         Animator temp = UI.playerStats.GetComponent<Animator>();
@@ -185,6 +193,7 @@ public class Controls : MonoBehaviour
         canDo = true;
         anim.enabled = true;
         anim.speed = 1;
+        reflectionAnim.speed = 1;
     }
 
     //the functions associated with the inventory

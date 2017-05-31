@@ -56,6 +56,10 @@ public class ShopButton : MonoBehaviour
         color = GetComponent<Outline>().effectColor;
         color.a = .2f;
         GetComponent<Outline>().effectColor = color;
+        Controls controls = GameManagerScript.player.GetComponent<Controls>();
+        controls.enabled = true;
+        controls.anim.speed = 1;
+        controls.reflectionAnim.speed = 1;
         UI.dibbukShop.SetActive(false);
     }
 

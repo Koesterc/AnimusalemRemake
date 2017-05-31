@@ -58,8 +58,8 @@ public class InventoryWeapon : MonoBehaviour
                             UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i]);
                         else
                             UI.UIevent.SetSelectedGameObject(InventoryList.itemList[i-1]);
-                        if (i > InventoryList.itemList.Count - 3 && i > 2)
-                            UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
+                        //if (i > InventoryList.itemList.Count - 3 && i > 2)
+                            //UI.inventoryContent.transform.localPosition = new Vector3(UI.inventoryContent.transform.localPosition.x, -InventoryList.itemList[InventoryList.itemList.Count - 3].transform.localPosition.y, UI.inventoryContent.transform.localPosition.z);
                         i = InventoryList.itemList.Count;
                     }//end of if
                 }//end of if
